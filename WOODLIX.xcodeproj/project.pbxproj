@@ -1,0 +1,532 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0B6A91872BDBBE2E003333F1 /* UserInfo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A91852BDBBE2E003333F1 /* UserInfo+CoreDataClass.swift */; };
+		0B6A91882BDBBE2E003333F1 /* UserInfo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A91862BDBBE2E003333F1 /* UserInfo+CoreDataProperties.swift */; };
+		0B787AE52BDA2D2B006F45FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B787AE42BDA2D2B006F45FF /* AppDelegate.swift */; };
+		0B787AE72BDA2D2B006F45FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B787AE62BDA2D2B006F45FF /* SceneDelegate.swift */; };
+		0B787AEF2BDA2D2B006F45FF /* WOODLIX.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B787AED2BDA2D2B006F45FF /* WOODLIX.xcdatamodeld */; };
+		0B787AF12BDA2D2E006F45FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B787AF02BDA2D2E006F45FF /* Assets.xcassets */; };
+		0B787AF42BDA2D2E006F45FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B787AF22BDA2D2E006F45FF /* LaunchScreen.storyboard */; };
+		0B787AFD2BDA2DFF006F45FF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0B787AFC2BDA2DFF006F45FF /* FirebaseAnalytics */; };
+		0B787B082BDA2E4F006F45FF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0B787B072BDA2E4F006F45FF /* FirebaseAuth */; };
+		0B787B0A2BDA2E4F006F45FF /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 0B787B092BDA2E4F006F45FF /* FirebaseDatabase */; };
+		0B787B0C2BDA2E4F006F45FF /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 0B787B0B2BDA2E4F006F45FF /* FirebaseFirestore */; };
+		0B787B0E2BDA2E4F006F45FF /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 0B787B0D2BDA2E4F006F45FF /* FirebaseStorage */; };
+		0B787B102BDA2ECE006F45FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B787B0F2BDA2ECE006F45FF /* Main.storyboard */; };
+		0B787B1A2BDA2EDD006F45FF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B787B122BDA2EDD006F45FF /* SignUpViewController.swift */; };
+		0B787B1B2BDA2EDD006F45FF /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B787B132BDA2EDD006F45FF /* AuthViewController.swift */; };
+		0B787B1C2BDA2EDD006F45FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B787B142BDA2EDD006F45FF /* ViewController.swift */; };
+		0B787B1D2BDA2EDD006F45FF /* TicketingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B787B152BDA2EDD006F45FF /* TicketingViewController.swift */; };
+		0B787B1E2BDA2EDD006F45FF /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B787B162BDA2EDD006F45FF /* DetailViewController.swift */; };
+		0B787B1F2BDA2EDD006F45FF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B787B172BDA2EDD006F45FF /* LoginViewController.swift */; };
+		0B787B202BDA2EDD006F45FF /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B787B182BDA2EDD006F45FF /* TabBarViewController.swift */; };
+		0B787B212BDA2EDD006F45FF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B787B192BDA2EDD006F45FF /* ProfileViewController.swift */; };
+		0B787B252BDA2EE4006F45FF /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B787B232BDA2EE4006F45FF /* CoreDataManager.swift */; };
+		0B787B262BDA2EE4006F45FF /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B787B242BDA2EE4006F45FF /* APIManager.swift */; };
+		0BA93B7B2BDF6A520018B103 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0BA93B7A2BDF6A520018B103 /* GoogleService-Info.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0B6A91852BDBBE2E003333F1 /* UserInfo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserInfo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0B6A91862BDBBE2E003333F1 /* UserInfo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserInfo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0B787AE12BDA2D2B006F45FF /* WOODLIX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WOODLIX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B787AE42BDA2D2B006F45FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0B787AE62BDA2D2B006F45FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		0B787AEE2BDA2D2B006F45FF /* WOODLIX.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WOODLIX.xcdatamodel; sourceTree = "<group>"; };
+		0B787AF02BDA2D2E006F45FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0B787AF32BDA2D2E006F45FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0B787AF52BDA2D2E006F45FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0B787B0F2BDA2ECE006F45FF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		0B787B122BDA2EDD006F45FF /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		0B787B132BDA2EDD006F45FF /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		0B787B142BDA2EDD006F45FF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0B787B152BDA2EDD006F45FF /* TicketingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketingViewController.swift; sourceTree = "<group>"; };
+		0B787B162BDA2EDD006F45FF /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		0B787B172BDA2EDD006F45FF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0B787B182BDA2EDD006F45FF /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		0B787B192BDA2EDD006F45FF /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		0B787B232BDA2EE4006F45FF /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		0B787B242BDA2EE4006F45FF /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		0BA93B7A2BDF6A520018B103 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0B787ADE2BDA2D2B006F45FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B787B082BDA2E4F006F45FF /* FirebaseAuth in Frameworks */,
+				0B787B0E2BDA2E4F006F45FF /* FirebaseStorage in Frameworks */,
+				0B787AFD2BDA2DFF006F45FF /* FirebaseAnalytics in Frameworks */,
+				0B787B0C2BDA2E4F006F45FF /* FirebaseFirestore in Frameworks */,
+				0B787B0A2BDA2E4F006F45FF /* FirebaseDatabase in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0B6A91892BDBBF82003333F1 /* UserInfoData */ = {
+			isa = PBXGroup;
+			children = (
+				0B6A91852BDBBE2E003333F1 /* UserInfo+CoreDataClass.swift */,
+				0B6A91862BDBBE2E003333F1 /* UserInfo+CoreDataProperties.swift */,
+			);
+			path = UserInfoData;
+			sourceTree = "<group>";
+		};
+		0B787AD82BDA2D2B006F45FF = {
+			isa = PBXGroup;
+			children = (
+				0B787AE32BDA2D2B006F45FF /* WOODLIX */,
+				0B787AE22BDA2D2B006F45FF /* Products */,
+				0B787B062BDA2E4F006F45FF /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		0B787AE22BDA2D2B006F45FF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0B787AE12BDA2D2B006F45FF /* WOODLIX.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0B787AE32BDA2D2B006F45FF /* WOODLIX */ = {
+			isa = PBXGroup;
+			children = (
+				0B6A91892BDBBF82003333F1 /* UserInfoData */,
+				0BDAECD72BDA315D003A31A8 /* Supports */,
+				0B787B112BDA2EDD006F45FF /* Controllers */,
+				0BDAECD62BDA314B003A31A8 /* Views */,
+				0B787B222BDA2EE4006F45FF /* Models */,
+				0B787AF52BDA2D2E006F45FF /* Info.plist */,
+				0BA93B7A2BDF6A520018B103 /* GoogleService-Info.plist */,
+				0B787AED2BDA2D2B006F45FF /* WOODLIX.xcdatamodeld */,
+			);
+			path = WOODLIX;
+			sourceTree = "<group>";
+		};
+		0B787B062BDA2E4F006F45FF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0B787B112BDA2EDD006F45FF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0B787B122BDA2EDD006F45FF /* SignUpViewController.swift */,
+				0B787B132BDA2EDD006F45FF /* AuthViewController.swift */,
+				0B787B142BDA2EDD006F45FF /* ViewController.swift */,
+				0B787B152BDA2EDD006F45FF /* TicketingViewController.swift */,
+				0B787B162BDA2EDD006F45FF /* DetailViewController.swift */,
+				0B787B172BDA2EDD006F45FF /* LoginViewController.swift */,
+				0B787B182BDA2EDD006F45FF /* TabBarViewController.swift */,
+				0B787B192BDA2EDD006F45FF /* ProfileViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0B787B222BDA2EE4006F45FF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0B787B232BDA2EE4006F45FF /* CoreDataManager.swift */,
+				0B787B242BDA2EE4006F45FF /* APIManager.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0BDAECD62BDA314B003A31A8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0B787B0F2BDA2ECE006F45FF /* Main.storyboard */,
+				0B787AF22BDA2D2E006F45FF /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0BDAECD72BDA315D003A31A8 /* Supports */ = {
+			isa = PBXGroup;
+			children = (
+				0B787AE42BDA2D2B006F45FF /* AppDelegate.swift */,
+				0B787AE62BDA2D2B006F45FF /* SceneDelegate.swift */,
+				0B787AF02BDA2D2E006F45FF /* Assets.xcassets */,
+			);
+			path = Supports;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0B787AE02BDA2D2B006F45FF /* WOODLIX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0B787AF82BDA2D2E006F45FF /* Build configuration list for PBXNativeTarget "WOODLIX" */;
+			buildPhases = (
+				0B787ADD2BDA2D2B006F45FF /* Sources */,
+				0B787ADE2BDA2D2B006F45FF /* Frameworks */,
+				0B787ADF2BDA2D2B006F45FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WOODLIX;
+			packageProductDependencies = (
+				0B787AFC2BDA2DFF006F45FF /* FirebaseAnalytics */,
+				0B787B072BDA2E4F006F45FF /* FirebaseAuth */,
+				0B787B092BDA2E4F006F45FF /* FirebaseDatabase */,
+				0B787B0B2BDA2E4F006F45FF /* FirebaseFirestore */,
+				0B787B0D2BDA2E4F006F45FF /* FirebaseStorage */,
+			);
+			productName = WOODLIX;
+			productReference = 0B787AE12BDA2D2B006F45FF /* WOODLIX.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0B787AD92BDA2D2B006F45FF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1510;
+				LastUpgradeCheck = 1510;
+				TargetAttributes = {
+					0B787AE02BDA2D2B006F45FF = {
+						CreatedOnToolsVersion = 15.1;
+					};
+				};
+			};
+			buildConfigurationList = 0B787ADC2BDA2D2B006F45FF /* Build configuration list for PBXProject "WOODLIX" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0B787AD82BDA2D2B006F45FF;
+			packageReferences = (
+				0B787AFB2BDA2DFF006F45FF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			productRefGroup = 0B787AE22BDA2D2B006F45FF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0B787AE02BDA2D2B006F45FF /* WOODLIX */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0B787ADF2BDA2D2B006F45FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B787B102BDA2ECE006F45FF /* Main.storyboard in Resources */,
+				0BA93B7B2BDF6A520018B103 /* GoogleService-Info.plist in Resources */,
+				0B787AF42BDA2D2E006F45FF /* LaunchScreen.storyboard in Resources */,
+				0B787AF12BDA2D2E006F45FF /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0B787ADD2BDA2D2B006F45FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0B6A91882BDBBE2E003333F1 /* UserInfo+CoreDataProperties.swift in Sources */,
+				0B787B1F2BDA2EDD006F45FF /* LoginViewController.swift in Sources */,
+				0B787B1C2BDA2EDD006F45FF /* ViewController.swift in Sources */,
+				0B787B1D2BDA2EDD006F45FF /* TicketingViewController.swift in Sources */,
+				0B787AE52BDA2D2B006F45FF /* AppDelegate.swift in Sources */,
+				0B787AEF2BDA2D2B006F45FF /* WOODLIX.xcdatamodeld in Sources */,
+				0B787B1B2BDA2EDD006F45FF /* AuthViewController.swift in Sources */,
+				0B787B252BDA2EE4006F45FF /* CoreDataManager.swift in Sources */,
+				0B787B212BDA2EDD006F45FF /* ProfileViewController.swift in Sources */,
+				0B787B1A2BDA2EDD006F45FF /* SignUpViewController.swift in Sources */,
+				0B787AE72BDA2D2B006F45FF /* SceneDelegate.swift in Sources */,
+				0B6A91872BDBBE2E003333F1 /* UserInfo+CoreDataClass.swift in Sources */,
+				0B787B262BDA2EE4006F45FF /* APIManager.swift in Sources */,
+				0B787B202BDA2EDD006F45FF /* TabBarViewController.swift in Sources */,
+				0B787B1E2BDA2EDD006F45FF /* DetailViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0B787AF22BDA2D2E006F45FF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0B787AF32BDA2D2E006F45FF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0B787AF62BDA2D2E006F45FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0B787AF72BDA2D2E006F45FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0B787AF92BDA2D2E006F45FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KWVJ99C465;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WOODLIX/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.xoul.WOODLIX;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0B787AFA2BDA2D2E006F45FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KWVJ99C465;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WOODLIX/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.xoul.WOODLIX;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0B787ADC2BDA2D2B006F45FF /* Build configuration list for PBXProject "WOODLIX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B787AF62BDA2D2E006F45FF /* Debug */,
+				0B787AF72BDA2D2E006F45FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0B787AF82BDA2D2E006F45FF /* Build configuration list for PBXNativeTarget "WOODLIX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B787AF92BDA2D2E006F45FF /* Debug */,
+				0B787AFA2BDA2D2E006F45FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0B787AFB2BDA2DFF006F45FF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.24.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0B787AFC2BDA2DFF006F45FF /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0B787AFB2BDA2DFF006F45FF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		0B787B072BDA2E4F006F45FF /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0B787AFB2BDA2DFF006F45FF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		0B787B092BDA2E4F006F45FF /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0B787AFB2BDA2DFF006F45FF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		0B787B0B2BDA2E4F006F45FF /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0B787AFB2BDA2DFF006F45FF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		0B787B0D2BDA2E4F006F45FF /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0B787AFB2BDA2DFF006F45FF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		0B787AED2BDA2D2B006F45FF /* WOODLIX.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0B787AEE2BDA2D2B006F45FF /* WOODLIX.xcdatamodel */,
+			);
+			currentVersion = 0B787AEE2BDA2D2B006F45FF /* WOODLIX.xcdatamodel */;
+			path = WOODLIX.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 0B787AD92BDA2D2B006F45FF /* Project object */;
+}
