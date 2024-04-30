@@ -143,7 +143,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아이디를 입력해 주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mib-vV-BOM">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일을 입력해 주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mib-vV-BOM">
                                                         <rect key="frame" x="11.999999999999993" y="8" width="114.33333333333331" height="12"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="12" id="eVR-wy-uQS"/>
@@ -272,7 +272,7 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아이디 또는 비밀번호를 다시 한 번 확인해 주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jn1-8h-0i4">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일 또는 비밀번호를 다시 한 번 확인해 주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jn1-8h-0i4">
                                         <rect key="frame" x="98.333333333333329" y="270" width="196.66666666666669" height="12"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" name="RedColor"/>
@@ -356,7 +356,7 @@
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아이디를 입력해 주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ucw-Od-Q9e">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일을 입력해 주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ucw-Od-Q9e">
                                                                 <rect key="frame" x="11.999999999999993" y="8" width="114.33333333333331" height="12"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="12" id="xbk-bl-dko"/>
@@ -388,6 +388,9 @@
                                                         <color key="tintColor" name="WhiteColor"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="checkmark" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="clickCheckID" destination="x9f-PK-SRz" eventType="touchUpInside" id="vm6-Mi-1RS"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -499,22 +502,14 @@
                                             <action selector="navigateToMainPage" destination="x9f-PK-SRz" eventType="touchUpInside" id="SVF-qy-ula"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아이디 또는 비밀번호를 다시 한 번 확인해 주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="812-ZD-YfX">
-                                        <rect key="frame" x="98.333333333333329" y="270" width="196.66666666666669" height="12"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <color key="textColor" name="RedColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" name="BackColor"/>
                                 <constraints>
                                     <constraint firstItem="oLu-5G-eIt" firstAttribute="centerX" secondItem="9mb-zo-ILA" secondAttribute="centerX" id="3ev-BD-Du5"/>
                                     <constraint firstItem="oLu-5G-eIt" firstAttribute="top" secondItem="9mb-zo-ILA" secondAttribute="top" constant="200" id="8fq-e5-odb"/>
                                     <constraint firstItem="ygz-vi-xyY" firstAttribute="centerX" secondItem="9mb-zo-ILA" secondAttribute="centerX" id="JzA-JR-uB9"/>
-                                    <constraint firstItem="gMU-3G-5oC" firstAttribute="top" secondItem="812-ZD-YfX" secondAttribute="bottom" constant="6" id="QGq-au-IJk"/>
                                     <constraint firstItem="ygz-vi-xyY" firstAttribute="top" secondItem="gMU-3G-5oC" secondAttribute="bottom" constant="60" id="awQ-cL-tfg"/>
                                     <constraint firstItem="gMU-3G-5oC" firstAttribute="centerX" secondItem="9mb-zo-ILA" secondAttribute="centerX" id="g4W-yI-wlB"/>
-                                    <constraint firstItem="812-ZD-YfX" firstAttribute="centerX" secondItem="9mb-zo-ILA" secondAttribute="centerX" id="gIf-SH-d6R"/>
                                     <constraint firstItem="gMU-3G-5oC" firstAttribute="top" secondItem="oLu-5G-eIt" secondAttribute="bottom" constant="40" id="z3X-Hr-ntH"/>
                                 </constraints>
                             </view>
@@ -530,7 +525,6 @@
                     </view>
                     <navigationItem key="navigationItem" style="editor" id="fK3-5S-SNa"/>
                     <connections>
-                        <outlet property="alertLabel" destination="812-ZD-YfX" id="dig-t4-oZd"/>
                         <outlet property="inputID" destination="AOe-pW-Hbc" id="ilR-th-cik"/>
                         <outlet property="inputIDCheckButton" destination="rhI-CE-FwI" id="IAh-c9-kbP"/>
                         <outlet property="inputIDLabel" destination="Ucw-Od-Q9e" id="HGG-sm-DOf"/>
