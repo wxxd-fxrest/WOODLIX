@@ -94,7 +94,6 @@ class ViewController: UIViewController {
                 icon.transform = .identity
             }
         }
-        
         resetIconOpacity()
     }
     
