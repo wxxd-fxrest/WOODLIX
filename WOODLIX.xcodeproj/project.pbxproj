@@ -30,6 +30,7 @@
 		0B787B262BDA2EE4006F45FF /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B787B242BDA2EE4006F45FF /* APIManager.swift */; };
 		0B7BF7E32BE1CBA600654E04 /* TiketListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7BF7E22BE1CBA600654E04 /* TiketListViewController.swift */; };
 		0B7BF7E52BE1DB4C00654E04 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7BF7E42BE1DB4C00654E04 /* MainViewController.swift */; };
+		0B7BF7E72BE1F4A800654E04 /* ApiKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B7BF7E62BE1F4A800654E04 /* ApiKey.plist */; };
 		0BD6FAB12BE0DD68000527AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0BD6FAB02BE0DD68000527AF /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		0B787B242BDA2EE4006F45FF /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		0B7BF7E22BE1CBA600654E04 /* TiketListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiketListViewController.swift; sourceTree = "<group>"; };
 		0B7BF7E42BE1DB4C00654E04 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		0B7BF7E62BE1F4A800654E04 /* ApiKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApiKey.plist; sourceTree = "<group>"; };
 		0BD6FAB02BE0DD68000527AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,6 +110,7 @@
 				0BDAECD62BDA314B003A31A8 /* Views */,
 				0B787B222BDA2EE4006F45FF /* Models */,
 				0B787AF52BDA2D2E006F45FF /* Info.plist */,
+				0B7BF7E62BE1F4A800654E04 /* ApiKey.plist */,
 				0BD6FAB02BE0DD68000527AF /* GoogleService-Info.plist */,
 				0B787AED2BDA2D2B006F45FF /* WOODLIX.xcdatamodeld */,
 			);
@@ -280,6 +283,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B7BF7E72BE1F4A800654E04 /* ApiKey.plist in Resources */,
 				0B787B102BDA2ECE006F45FF /* Main.storyboard in Resources */,
 				0BD6FAB12BE0DD68000527AF /* GoogleService-Info.plist in Resources */,
 				0B787AF42BDA2D2E006F45FF /* LaunchScreen.storyboard in Resources */,
