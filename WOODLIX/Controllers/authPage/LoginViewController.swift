@@ -196,7 +196,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func navigateToMainPage() {
         let targetStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let targetVC = targetStoryboard.instantiateViewController(withIdentifier: "TabBarView") as? TabBarViewController else {
+        guard let targetVC = targetStoryboard.instantiateViewController(withIdentifier: "ViewController") as? ViewController else {
             print("Failed to instantiate MainPageViewController from UserStoryboard.")
             return
         }

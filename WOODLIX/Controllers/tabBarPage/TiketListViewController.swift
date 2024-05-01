@@ -1,13 +1,13 @@
 //
-//  TabBarViewController.swift
-//  WOOFLIX
+//  TiketListViewController.swift
+//  WOODLIX
 //
-//  Created by 밀가루 on 4/24/24.
+//  Created by 밀가루 on 5/1/24.
 //
 
 import UIKit
 
-class TabBarViewController: UIViewController {
+class TiketListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
