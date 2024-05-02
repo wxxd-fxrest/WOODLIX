@@ -2,7 +2,6 @@
 //  ViewController.swift
 //  WOOFLIX
 //
-//  Created by 밀가루 on 4/24/24.
 //
 
 import UIKit
@@ -51,11 +50,22 @@ class ViewController: UIViewController {
     
     // MARK: - Navigation
     func startPage() {
-        guard let viewController = self.storyboard?.instantiateViewController(identifier: "MainView") as? MainViewController else { return }
+        contentView.subviews.forEach { $0.removeFromSuperview() }
+        
+        guard let storyboard = storyboard,
+              let viewController = storyboard.instantiateViewController(identifier: "MainView") as? MainViewController else {
+            return
+        }
+        
+        addChild(viewController)
         contentView.addSubview(viewController.view)
-        animateIcon(mainIcon)
+        viewController.view.frame = contentView.bounds
+        viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         viewController.didMove(toParent: self)
+        
+        animateIcon(mainIcon)
     }
+
 
     // MARK: - Animation
     func animateIcon(_ icon: UIImageView) {
@@ -73,17 +83,37 @@ class ViewController: UIViewController {
         resetIconScaleAndOpacity()
 
         if tag == 0 {
-            guard let tiketViewController = self.storyboard?.instantiateViewController(identifier: "TiketList") as? TiketListViewController else { return }
-            contentView.addSubview(tiketViewController.view)
+            contentView.subviews.forEach { $0.removeFromSuperview() }
+            
+            guard let storyboard = storyboard,
+                  let viewController = storyboard.instantiateViewController(identifier: "TiketList") as? TiketListViewController else {
+                return
+            }
+            
+            addChild(viewController)
+            contentView.addSubview(viewController.view)
+            viewController.view.frame = contentView.bounds
+            viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            viewController.didMove(toParent: self)
+            
             animateIcon(tiketIcon)
-            tiketViewController.didMove(toParent: self)
         } else if tag == 1 {
             startPage()
         } else if tag == 2 {
-            guard let profileViewController = self.storyboard?.instantiateViewController(identifier: "ProfileView") as? ProfileViewController else { return }
-            contentView.addSubview(profileViewController.view)
+            contentView.subviews.forEach { $0.removeFromSuperview() }
+            
+            guard let storyboard = storyboard,
+                  let viewController = storyboard.instantiateViewController(identifier: "ProfileView") as? ProfileViewController else {
+                return
+            }
+            
+            addChild(viewController)
+            contentView.addSubview(viewController.view)
+            viewController.view.frame = contentView.bounds
+            viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            viewController.didMove(toParent: self)
+            
             animateIcon(profileIcon)
-            profileViewController.didMove(toParent: self)
         }
     }
     
