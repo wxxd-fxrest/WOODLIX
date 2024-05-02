@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B1C19832BE32ED0001BB1C7 /* CommingSoonCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C19822BE32ED0001BB1C7 /* CommingSoonCellController.swift */; };
+		0B1C19852BE33F7B001BB1C7 /* MovieTableViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C19842BE33F7B001BB1C7 /* MovieTableViewCellController.swift */; };
+		0B1C19872BE35B8F001BB1C7 /* ShowingCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C19862BE35B8F001BB1C7 /* ShowingCellController.swift */; };
+		0B1C19892BE368AD001BB1C7 /* MovieListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C19882BE368AD001BB1C7 /* MovieListCollectionViewController.swift */; };
+		0B1C198B2BE37275001BB1C7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C198A2BE37275001BB1C7 /* SearchViewController.swift */; };
+		0B1C198D2BE3916A001BB1C7 /* OttCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C198C2BE3916A001BB1C7 /* OttCellViewController.swift */; };
 		0B6A91872BDBBE2E003333F1 /* UserInfo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A91852BDBBE2E003333F1 /* UserInfo+CoreDataClass.swift */; };
 		0B6A91882BDBBE2E003333F1 /* UserInfo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A91862BDBBE2E003333F1 /* UserInfo+CoreDataProperties.swift */; };
 		0B787AE52BDA2D2B006F45FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B787AE42BDA2D2B006F45FF /* AppDelegate.swift */; };
@@ -30,10 +36,22 @@
 		0B787B262BDA2EE4006F45FF /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B787B242BDA2EE4006F45FF /* APIManager.swift */; };
 		0B7BF7E32BE1CBA600654E04 /* TiketListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7BF7E22BE1CBA600654E04 /* TiketListViewController.swift */; };
 		0B7BF7E52BE1DB4C00654E04 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7BF7E42BE1DB4C00654E04 /* MainViewController.swift */; };
+		0B7BF7E72BE1F4A800654E04 /* ApiKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B7BF7E62BE1F4A800654E04 /* ApiKey.plist */; };
+		0B7BF7EA2BE21C8D00654E04 /* BoxOfficeCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7BF7E92BE21C8D00654E04 /* BoxOfficeCellController.swift */; };
+		0B8CA0292BE3B92800C9FE5E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0B8CA0282BE3B92800C9FE5E /* FirebaseAnalytics */; };
+		0B9415D82BE3D43D00CBBD4F /* ProfileCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9415D72BE3D43D00CBBD4F /* ProfileCellController.swift */; };
+		0B9415DA2BE3EF5900CBBD4F /* BeforeListCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9415D92BE3EF5900CBBD4F /* BeforeListCellController.swift */; };
+		0B9415DC2BE3EFB400CBBD4F /* OttListCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9415DB2BE3EFB400CBBD4F /* OttListCellController.swift */; };
 		0BD6FAB12BE0DD68000527AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0BD6FAB02BE0DD68000527AF /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B1C19822BE32ED0001BB1C7 /* CommingSoonCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommingSoonCellController.swift; sourceTree = "<group>"; };
+		0B1C19842BE33F7B001BB1C7 /* MovieTableViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCellController.swift; sourceTree = "<group>"; };
+		0B1C19862BE35B8F001BB1C7 /* ShowingCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingCellController.swift; sourceTree = "<group>"; };
+		0B1C19882BE368AD001BB1C7 /* MovieListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCollectionViewController.swift; sourceTree = "<group>"; };
+		0B1C198A2BE37275001BB1C7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		0B1C198C2BE3916A001BB1C7 /* OttCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OttCellViewController.swift; sourceTree = "<group>"; };
 		0B6A91852BDBBE2E003333F1 /* UserInfo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserInfo+CoreDataClass.swift"; sourceTree = "<group>"; };
 		0B6A91862BDBBE2E003333F1 /* UserInfo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserInfo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0B787AE12BDA2D2B006F45FF /* WOODLIX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WOODLIX.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +72,11 @@
 		0B787B242BDA2EE4006F45FF /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		0B7BF7E22BE1CBA600654E04 /* TiketListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiketListViewController.swift; sourceTree = "<group>"; };
 		0B7BF7E42BE1DB4C00654E04 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		0B7BF7E62BE1F4A800654E04 /* ApiKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApiKey.plist; sourceTree = "<group>"; };
+		0B7BF7E92BE21C8D00654E04 /* BoxOfficeCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeCellController.swift; sourceTree = "<group>"; };
+		0B9415D72BE3D43D00CBBD4F /* ProfileCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCellController.swift; sourceTree = "<group>"; };
+		0B9415D92BE3EF5900CBBD4F /* BeforeListCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeListCellController.swift; sourceTree = "<group>"; };
+		0B9415DB2BE3EFB400CBBD4F /* OttListCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OttListCellController.swift; sourceTree = "<group>"; };
 		0BD6FAB02BE0DD68000527AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,6 +87,7 @@
 			files = (
 				0B787B082BDA2E4F006F45FF /* FirebaseAuth in Frameworks */,
 				0B787B0E2BDA2E4F006F45FF /* FirebaseStorage in Frameworks */,
+				0B8CA0292BE3B92800C9FE5E /* FirebaseAnalytics in Frameworks */,
 				0B787AFD2BDA2DFF006F45FF /* FirebaseAnalytics in Frameworks */,
 				0B787B0C2BDA2E4F006F45FF /* FirebaseFirestore in Frameworks */,
 				0B787B0A2BDA2E4F006F45FF /* FirebaseDatabase in Frameworks */,
@@ -108,6 +132,7 @@
 				0BDAECD62BDA314B003A31A8 /* Views */,
 				0B787B222BDA2EE4006F45FF /* Models */,
 				0B787AF52BDA2D2E006F45FF /* Info.plist */,
+				0B7BF7E62BE1F4A800654E04 /* ApiKey.plist */,
 				0BD6FAB02BE0DD68000527AF /* GoogleService-Info.plist */,
 				0B787AED2BDA2D2B006F45FF /* WOODLIX.xcdatamodeld */,
 			);
@@ -124,6 +149,7 @@
 		0B787B112BDA2EDD006F45FF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0B7BF7E82BE21C6300654E04 /* mainPage */,
 				0B7BF7E12BE1CB2200654E04 /* authPage */,
 				0B7BF7DF2BE1CB0300654E04 /* sharePage */,
 				0B7BF7DE2BE1CAE000654E04 /* tiketPage */,
@@ -156,6 +182,8 @@
 		0B7BF7DD2BE1CAD600654E04 /* profilePage */ = {
 			isa = PBXGroup;
 			children = (
+				0B9415D92BE3EF5900CBBD4F /* BeforeListCellController.swift */,
+				0B9415DB2BE3EFB400CBBD4F /* OttListCellController.swift */,
 			);
 			path = profilePage;
 			sourceTree = "<group>";
@@ -191,6 +219,21 @@
 				0B787B172BDA2EDD006F45FF /* LoginViewController.swift */,
 			);
 			path = authPage;
+			sourceTree = "<group>";
+		};
+		0B7BF7E82BE21C6300654E04 /* mainPage */ = {
+			isa = PBXGroup;
+			children = (
+				0B7BF7E92BE21C8D00654E04 /* BoxOfficeCellController.swift */,
+				0B1C19822BE32ED0001BB1C7 /* CommingSoonCellController.swift */,
+				0B1C19842BE33F7B001BB1C7 /* MovieTableViewCellController.swift */,
+				0B1C19862BE35B8F001BB1C7 /* ShowingCellController.swift */,
+				0B1C19882BE368AD001BB1C7 /* MovieListCollectionViewController.swift */,
+				0B1C198A2BE37275001BB1C7 /* SearchViewController.swift */,
+				0B1C198C2BE3916A001BB1C7 /* OttCellViewController.swift */,
+				0B9415D72BE3D43D00CBBD4F /* ProfileCellController.swift */,
+			);
+			path = mainPage;
 			sourceTree = "<group>";
 		};
 		0BDAECD62BDA314B003A31A8 /* Views */ = {
@@ -234,6 +277,7 @@
 				0B787B092BDA2E4F006F45FF /* FirebaseDatabase */,
 				0B787B0B2BDA2E4F006F45FF /* FirebaseFirestore */,
 				0B787B0D2BDA2E4F006F45FF /* FirebaseStorage */,
+				0B8CA0282BE3B92800C9FE5E /* FirebaseAnalytics */,
 			);
 			productName = WOODLIX;
 			productReference = 0B787AE12BDA2D2B006F45FF /* WOODLIX.app */;
@@ -280,6 +324,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B7BF7E72BE1F4A800654E04 /* ApiKey.plist in Resources */,
 				0B787B102BDA2ECE006F45FF /* Main.storyboard in Resources */,
 				0BD6FAB12BE0DD68000527AF /* GoogleService-Info.plist in Resources */,
 				0B787AF42BDA2D2E006F45FF /* LaunchScreen.storyboard in Resources */,
@@ -294,21 +339,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B1C198D2BE3916A001BB1C7 /* OttCellViewController.swift in Sources */,
 				0B6A91882BDBBE2E003333F1 /* UserInfo+CoreDataProperties.swift in Sources */,
+				0B7BF7EA2BE21C8D00654E04 /* BoxOfficeCellController.swift in Sources */,
+				0B1C19852BE33F7B001BB1C7 /* MovieTableViewCellController.swift in Sources */,
 				0B787B1F2BDA2EDD006F45FF /* LoginViewController.swift in Sources */,
+				0B1C198B2BE37275001BB1C7 /* SearchViewController.swift in Sources */,
 				0B787B1C2BDA2EDD006F45FF /* ViewController.swift in Sources */,
+				0B9415D82BE3D43D00CBBD4F /* ProfileCellController.swift in Sources */,
 				0B787B1D2BDA2EDD006F45FF /* TicketingViewController.swift in Sources */,
 				0B787AE52BDA2D2B006F45FF /* AppDelegate.swift in Sources */,
 				0B787AEF2BDA2D2B006F45FF /* WOODLIX.xcdatamodeld in Sources */,
 				0B7BF7E32BE1CBA600654E04 /* TiketListViewController.swift in Sources */,
+				0B1C19872BE35B8F001BB1C7 /* ShowingCellController.swift in Sources */,
 				0B787B252BDA2EE4006F45FF /* CoreDataManager.swift in Sources */,
+				0B9415DC2BE3EFB400CBBD4F /* OttListCellController.swift in Sources */,
 				0B787B212BDA2EDD006F45FF /* ProfileViewController.swift in Sources */,
 				0B7BF7E52BE1DB4C00654E04 /* MainViewController.swift in Sources */,
+				0B1C19892BE368AD001BB1C7 /* MovieListCollectionViewController.swift in Sources */,
+				0B1C19832BE32ED0001BB1C7 /* CommingSoonCellController.swift in Sources */,
 				0B787B1A2BDA2EDD006F45FF /* SignUpViewController.swift in Sources */,
 				0B787AE72BDA2D2B006F45FF /* SceneDelegate.swift in Sources */,
 				0B6A91872BDBBE2E003333F1 /* UserInfo+CoreDataClass.swift in Sources */,
 				0B787B262BDA2EE4006F45FF /* APIManager.swift in Sources */,
 				0B787B1E2BDA2EDD006F45FF /* DetailViewController.swift in Sources */,
+				0B9415DA2BE3EF5900CBBD4F /* BeforeListCellController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -560,6 +615,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0B787AFB2BDA2DFF006F45FF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		0B8CA0282BE3B92800C9FE5E /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0B787AFB2BDA2DFF006F45FF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 
