@@ -38,7 +38,6 @@ class ViewController: UIViewController {
         let cornerRadius: CGFloat = 24.0
         tabBarView.layer.cornerRadius = cornerRadius
         tabBarView.clipsToBounds = true
-        
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = tabBarView.bounds
         gradientLayer.colors = [UIColor(red: 84/255, green: 148/255, blue: 216/255, alpha: 0.3).cgColor, UIColor.white.cgColor]

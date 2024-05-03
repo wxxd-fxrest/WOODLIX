@@ -70,7 +70,7 @@
 		0B787B192BDA2EDD006F45FF /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0B787B232BDA2EE4006F45FF /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		0B787B242BDA2EE4006F45FF /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
-		0B7BF7E22BE1CBA600654E04 /* TiketListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiketListViewController.swift; sourceTree = "<group>"; };
+		0B7BF7E22BE1CBA600654E04 /* TiketListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiketListViewController.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		0B7BF7E42BE1DB4C00654E04 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		0B7BF7E62BE1F4A800654E04 /* ApiKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApiKey.plist; sourceTree = "<group>"; };
 		0B7BF7E92BE21C8D00654E04 /* BoxOfficeCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeCellController.swift; sourceTree = "<group>"; };
