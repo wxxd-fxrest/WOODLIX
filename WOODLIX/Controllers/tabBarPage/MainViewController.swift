@@ -414,7 +414,6 @@ extension MainViewController: UICollectionViewDelegate {
         targetVC.modalPresentationStyle = .fullScreen
         present(targetVC, animated: true, completion: nil)
     }
-
 }
 
 // MARK: - CollectionView DataSource
