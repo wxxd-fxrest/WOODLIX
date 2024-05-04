@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UICollectionViewDelegate, UITableViewDelegate {
+class MainViewController: UIViewController, UITableViewDelegate {
     // MARK: - Properties
     let boxofficeList: String = "boxoffice"
     let movieList: String = "movie"
@@ -397,6 +397,26 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UITableVie
     }
 }
 
+extension MainViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        navigateToDetailPage(indexPath: indexPath)
+    }
+
+    private func navigateToDetailPage(indexPath: IndexPath) {
+        let targetStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let targetVC = targetStoryboard.instantiateViewController(withIdentifier: "DetailView") as? DetailViewController else {
+            print("Failed to instantiate DetailViewController from Main storyboard.")
+            return
+        }
+        
+        targetVC.selectedItemIndex = indexPath.row
+        
+        targetVC.modalPresentationStyle = .fullScreen
+        present(targetVC, animated: true, completion: nil)
+    }
+
+}
+
 // MARK: - CollectionView DataSource
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -439,7 +459,6 @@ extension MainViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
     }
-
 }
 
 // MARK: - TableView DataSource

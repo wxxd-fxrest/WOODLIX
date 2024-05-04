@@ -13,6 +13,9 @@
 		0B1C19892BE368AD001BB1C7 /* MovieListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C19882BE368AD001BB1C7 /* MovieListCollectionViewController.swift */; };
 		0B1C198B2BE37275001BB1C7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C198A2BE37275001BB1C7 /* SearchViewController.swift */; };
 		0B1C198D2BE3916A001BB1C7 /* OttCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C198C2BE3916A001BB1C7 /* OttCellViewController.swift */; };
+		0B49129B2BE6113900274B78 /* DetailCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B49129A2BE6113900274B78 /* DetailCellController.swift */; };
+		0B49129D2BE6368C00274B78 /* TicketDateCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B49129C2BE6368C00274B78 /* TicketDateCellController.swift */; };
+		0B49129F2BE636A100274B78 /* TicketTimeCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B49129E2BE636A100274B78 /* TicketTimeCellController.swift */; };
 		0B6A91872BDBBE2E003333F1 /* UserInfo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A91852BDBBE2E003333F1 /* UserInfo+CoreDataClass.swift */; };
 		0B6A91882BDBBE2E003333F1 /* UserInfo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A91862BDBBE2E003333F1 /* UserInfo+CoreDataProperties.swift */; };
 		0B787AE52BDA2D2B006F45FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B787AE42BDA2D2B006F45FF /* AppDelegate.swift */; };
@@ -52,6 +55,9 @@
 		0B1C19882BE368AD001BB1C7 /* MovieListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCollectionViewController.swift; sourceTree = "<group>"; };
 		0B1C198A2BE37275001BB1C7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		0B1C198C2BE3916A001BB1C7 /* OttCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OttCellViewController.swift; sourceTree = "<group>"; };
+		0B49129A2BE6113900274B78 /* DetailCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCellController.swift; sourceTree = "<group>"; };
+		0B49129C2BE6368C00274B78 /* TicketDateCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketDateCellController.swift; sourceTree = "<group>"; };
+		0B49129E2BE636A100274B78 /* TicketTimeCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTimeCellController.swift; sourceTree = "<group>"; };
 		0B6A91852BDBBE2E003333F1 /* UserInfo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserInfo+CoreDataClass.swift"; sourceTree = "<group>"; };
 		0B6A91862BDBBE2E003333F1 /* UserInfo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserInfo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0B787AE12BDA2D2B006F45FF /* WOODLIX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WOODLIX.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,6 +214,9 @@
 			children = (
 				0B787B162BDA2EDD006F45FF /* DetailViewController.swift */,
 				0B787B152BDA2EDD006F45FF /* TicketingViewController.swift */,
+				0B49129A2BE6113900274B78 /* DetailCellController.swift */,
+				0B49129C2BE6368C00274B78 /* TicketDateCellController.swift */,
+				0B49129E2BE636A100274B78 /* TicketTimeCellController.swift */,
 			);
 			path = detailePage;
 			sourceTree = "<group>";
@@ -360,8 +369,11 @@
 				0B1C19832BE32ED0001BB1C7 /* CommingSoonCellController.swift in Sources */,
 				0B787B1A2BDA2EDD006F45FF /* SignUpViewController.swift in Sources */,
 				0B787AE72BDA2D2B006F45FF /* SceneDelegate.swift in Sources */,
+				0B49129D2BE6368C00274B78 /* TicketDateCellController.swift in Sources */,
 				0B6A91872BDBBE2E003333F1 /* UserInfo+CoreDataClass.swift in Sources */,
 				0B787B262BDA2EE4006F45FF /* APIManager.swift in Sources */,
+				0B49129F2BE636A100274B78 /* TicketTimeCellController.swift in Sources */,
+				0B49129B2BE6113900274B78 /* DetailCellController.swift in Sources */,
 				0B787B1E2BDA2EDD006F45FF /* DetailViewController.swift in Sources */,
 				0B9415DA2BE3EF5900CBBD4F /* BeforeListCellController.swift in Sources */,
 			);
