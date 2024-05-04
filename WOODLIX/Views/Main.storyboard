@@ -1263,6 +1263,18 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P2Z-j9-Dij">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vmE-UA-AUQ">
+                                        <rect key="frame" x="0.0" y="140" width="393" height="46"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="46" id="4kF-97-eX9"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SDJ-xc-7xR">
+                                        <rect key="frame" x="20" y="142" width="353" height="710"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="710" id="edg-Un-pkP"/>
+                                        </constraints>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Db2-48-MXD">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="130"/>
                                         <color key="backgroundColor" red="0.06266021729" green="0.090933270750000003" blue="0.15473181010000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1316,22 +1328,21 @@
                                             <constraint firstItem="66O-gD-re1" firstAttribute="top" secondItem="iau-6A-8OQ" secondAttribute="top" id="WTy-4Y-YNi"/>
                                         </constraints>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SearchView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUC-fO-qVp">
-                                        <rect key="frame" x="151" y="398" width="89.333333333333314" height="56"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" name="WhiteColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" name="BackColor"/>
                                 <constraints>
+                                    <constraint firstItem="SDJ-xc-7xR" firstAttribute="top" secondItem="Db2-48-MXD" secondAttribute="bottom" constant="12" id="1sI-wY-VU3"/>
+                                    <constraint firstItem="vmE-UA-AUQ" firstAttribute="leading" secondItem="P2Z-j9-Dij" secondAttribute="leading" id="9Lc-Nh-by9"/>
                                     <constraint firstAttribute="trailing" secondItem="Db2-48-MXD" secondAttribute="trailing" id="KRZ-6S-MOA"/>
+                                    <constraint firstItem="vmE-UA-AUQ" firstAttribute="top" secondItem="Db2-48-MXD" secondAttribute="bottom" constant="10" id="Teq-4B-6RZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="SDJ-xc-7xR" secondAttribute="trailing" constant="20" id="Xdu-Vj-NnX"/>
                                     <constraint firstItem="Db2-48-MXD" firstAttribute="leading" secondItem="P2Z-j9-Dij" secondAttribute="leading" id="c7v-eb-U6z"/>
                                     <constraint firstItem="iau-6A-8OQ" firstAttribute="top" secondItem="P2Z-j9-Dij" secondAttribute="top" constant="70" id="fme-4y-YNJ"/>
                                     <constraint firstItem="iau-6A-8OQ" firstAttribute="leading" secondItem="P2Z-j9-Dij" secondAttribute="leading" id="jZU-aq-MBB"/>
                                     <constraint firstAttribute="trailing" secondItem="iau-6A-8OQ" secondAttribute="trailing" id="odK-f1-sPT"/>
                                     <constraint firstItem="Db2-48-MXD" firstAttribute="top" secondItem="P2Z-j9-Dij" secondAttribute="top" id="p6i-BO-ahT"/>
+                                    <constraint firstAttribute="trailing" secondItem="vmE-UA-AUQ" secondAttribute="trailing" id="vxO-OJ-qRe"/>
+                                    <constraint firstItem="SDJ-xc-7xR" firstAttribute="leading" secondItem="P2Z-j9-Dij" secondAttribute="leading" constant="20" id="wj8-4K-ddT"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1346,7 +1357,10 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="Jdz-Ow-RHT" id="wHD-rl-cqR"/>
+                        <outlet property="inSearchWordBox" destination="1sI-wY-VU3" id="haV-Sl-hKh"/>
                         <outlet property="searchBar" destination="ZOE-OF-ghA" id="q5Y-DF-knW"/>
+                        <outlet property="searchWordView" destination="vmE-UA-AUQ" id="ZpL-p0-UA6"/>
+                        <outlet property="suggestionView" destination="SDJ-xc-7xR" id="V6U-Vh-NjL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ox-7s-agR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
