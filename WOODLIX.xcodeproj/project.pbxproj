@@ -45,12 +45,17 @@
 		0B9415DC2BE3EFB400CBBD4F /* OttListCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9415DB2BE3EFB400CBBD4F /* OttListCellController.swift */; };
 		0BD6FAB12BE0DD68000527AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0BD6FAB02BE0DD68000527AF /* GoogleService-Info.plist */; };
 		0BDA23CB2BE73174007A2ED8 /* SetUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA23CA2BE73174007A2ED8 /* SetUpViewController.swift */; };
-		0BDA23CD2BE731D5007A2ED8 /* MarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA23CC2BE731D5007A2ED8 /* MarkViewController.swift */; };
+		0BDA23CD2BE731D5007A2ED8 /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA23CC2BE731D5007A2ED8 /* WishListViewController.swift */; };
 		0BDA23CF2BE73A43007A2ED8 /* SetUpCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA23CE2BE73A43007A2ED8 /* SetUpCellController.swift */; };
 		0BDA23D32BE7419C007A2ED8 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA23D22BE7419C007A2ED8 /* ProfileEditViewController.swift */; };
 		0BDA23D52BE741C2007A2ED8 /* PaymentManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA23D42BE741C2007A2ED8 /* PaymentManagementViewController.swift */; };
 		0BDA23D82BE7471E007A2ED8 /* PointRechargeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA23D72BE7471E007A2ED8 /* PointRechargeViewController.swift */; };
 		0BDA23DA2BE76F46007A2ED8 /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA23D92BE76F46007A2ED8 /* AddCardViewController.swift */; };
+		0BDA23DE2BE78F33007A2ED8 /* BeforeTicketListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA23DD2BE78F33007A2ED8 /* BeforeTicketListViewController.swift */; };
+		0BDA23E02BE78F51007A2ED8 /* OTTListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA23DF2BE78F51007A2ED8 /* OTTListViewController.swift */; };
+		0BDA23E22BE78F75007A2ED8 /* BeforeTicketListCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA23E12BE78F74007A2ED8 /* BeforeTicketListCellController.swift */; };
+		0BDA23E42BE78F8A007A2ED8 /* OTTListCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA23E32BE78F8A007A2ED8 /* OTTListCellController.swift */; };
+		0BDA23E62BE790EA007A2ED8 /* WishListCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA23E52BE790EA007A2ED8 /* WishListCellController.swift */; };
 		0BF6A4B72BE682BE00490AE7 /* SearchSuggestionCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF6A4B62BE682BE00490AE7 /* SearchSuggestionCellController.swift */; };
 		0BF6A4BA2BE6957300490AE7 /* SearchWordCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF6A4B92BE6957300490AE7 /* SearchWordCellController.swift */; };
 /* End PBXBuildFile section */
@@ -90,12 +95,17 @@
 		0B9415DB2BE3EFB400CBBD4F /* OttListCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OttListCellController.swift; sourceTree = "<group>"; };
 		0BD6FAB02BE0DD68000527AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0BDA23CA2BE73174007A2ED8 /* SetUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpViewController.swift; sourceTree = "<group>"; };
-		0BDA23CC2BE731D5007A2ED8 /* MarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkViewController.swift; sourceTree = "<group>"; };
+		0BDA23CC2BE731D5007A2ED8 /* WishListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
 		0BDA23CE2BE73A43007A2ED8 /* SetUpCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpCellController.swift; sourceTree = "<group>"; };
 		0BDA23D22BE7419C007A2ED8 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		0BDA23D42BE741C2007A2ED8 /* PaymentManagementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentManagementViewController.swift; sourceTree = "<group>"; };
 		0BDA23D72BE7471E007A2ED8 /* PointRechargeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointRechargeViewController.swift; sourceTree = "<group>"; };
 		0BDA23D92BE76F46007A2ED8 /* AddCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
+		0BDA23DD2BE78F33007A2ED8 /* BeforeTicketListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeTicketListViewController.swift; sourceTree = "<group>"; };
+		0BDA23DF2BE78F51007A2ED8 /* OTTListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTTListViewController.swift; sourceTree = "<group>"; };
+		0BDA23E12BE78F74007A2ED8 /* BeforeTicketListCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeTicketListCellController.swift; sourceTree = "<group>"; };
+		0BDA23E32BE78F8A007A2ED8 /* OTTListCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTTListCellController.swift; sourceTree = "<group>"; };
+		0BDA23E52BE790EA007A2ED8 /* WishListCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListCellController.swift; sourceTree = "<group>"; };
 		0BF6A4B62BE682BE00490AE7 /* SearchSuggestionCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionCellController.swift; sourceTree = "<group>"; };
 		0BF6A4B92BE6957300490AE7 /* SearchWordCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWordCellController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -207,6 +217,8 @@
 			children = (
 				0B9415D92BE3EF5900CBBD4F /* BeforeListCellController.swift */,
 				0B9415DB2BE3EFB400CBBD4F /* OttListCellController.swift */,
+				0BDA23DB2BE78EC4007A2ED8 /* BeforeTicketList */,
+				0BDA23DC2BE78ECE007A2ED8 /* OTTList */,
 			);
 			path = profilePage;
 			sourceTree = "<group>";
@@ -266,7 +278,8 @@
 		0BDA23C92BE7314B007A2ED8 /* markPage */ = {
 			isa = PBXGroup;
 			children = (
-				0BDA23CC2BE731D5007A2ED8 /* MarkViewController.swift */,
+				0BDA23CC2BE731D5007A2ED8 /* WishListViewController.swift */,
+				0BDA23E52BE790EA007A2ED8 /* WishListCellController.swift */,
 			);
 			path = markPage;
 			sourceTree = "<group>";
@@ -294,6 +307,24 @@
 				0BDA23D72BE7471E007A2ED8 /* PointRechargeViewController.swift */,
 			);
 			path = pointRecharge;
+			sourceTree = "<group>";
+		};
+		0BDA23DB2BE78EC4007A2ED8 /* BeforeTicketList */ = {
+			isa = PBXGroup;
+			children = (
+				0BDA23DD2BE78F33007A2ED8 /* BeforeTicketListViewController.swift */,
+				0BDA23E12BE78F74007A2ED8 /* BeforeTicketListCellController.swift */,
+			);
+			path = BeforeTicketList;
+			sourceTree = "<group>";
+		};
+		0BDA23DC2BE78ECE007A2ED8 /* OTTList */ = {
+			isa = PBXGroup;
+			children = (
+				0BDA23DF2BE78F51007A2ED8 /* OTTListViewController.swift */,
+				0BDA23E32BE78F8A007A2ED8 /* OTTListCellController.swift */,
+			);
+			path = OTTList;
 			sourceTree = "<group>";
 		};
 		0BDAECD62BDA314B003A31A8 /* Views */ = {
@@ -411,6 +442,7 @@
 			files = (
 				0B1C198D2BE3916A001BB1C7 /* OttCellViewController.swift in Sources */,
 				0B6A91882BDBBE2E003333F1 /* UserInfo+CoreDataProperties.swift in Sources */,
+				0BDA23E42BE78F8A007A2ED8 /* OTTListCellController.swift in Sources */,
 				0B7BF7EA2BE21C8D00654E04 /* BoxOfficeCellController.swift in Sources */,
 				0B1C19852BE33F7B001BB1C7 /* MovieTableViewCellController.swift in Sources */,
 				0B787B1F2BDA2EDD006F45FF /* LoginViewController.swift in Sources */,
@@ -419,6 +451,7 @@
 				0BDA23D52BE741C2007A2ED8 /* PaymentManagementViewController.swift in Sources */,
 				0B787B1C2BDA2EDD006F45FF /* ViewController.swift in Sources */,
 				0B787B1D2BDA2EDD006F45FF /* TicketingViewController.swift in Sources */,
+				0BDA23E22BE78F75007A2ED8 /* BeforeTicketListCellController.swift in Sources */,
 				0B787AE52BDA2D2B006F45FF /* AppDelegate.swift in Sources */,
 				0B787AEF2BDA2D2B006F45FF /* WOODLIX.xcdatamodeld in Sources */,
 				0B7BF7E32BE1CBA600654E04 /* TiketListViewController.swift in Sources */,
@@ -434,13 +467,16 @@
 				0BDA23CB2BE73174007A2ED8 /* SetUpViewController.swift in Sources */,
 				0B787AE72BDA2D2B006F45FF /* SceneDelegate.swift in Sources */,
 				0B49129D2BE6368C00274B78 /* TicketDateCellController.swift in Sources */,
+				0BDA23E02BE78F51007A2ED8 /* OTTListViewController.swift in Sources */,
+				0BDA23DE2BE78F33007A2ED8 /* BeforeTicketListViewController.swift in Sources */,
 				0B6A91872BDBBE2E003333F1 /* UserInfo+CoreDataClass.swift in Sources */,
 				0B787B262BDA2EE4006F45FF /* APIManager.swift in Sources */,
 				0BDA23D82BE7471E007A2ED8 /* PointRechargeViewController.swift in Sources */,
 				0BF6A4BA2BE6957300490AE7 /* SearchWordCellController.swift in Sources */,
 				0B49129F2BE636A100274B78 /* TicketTimeCellController.swift in Sources */,
+				0BDA23E62BE790EA007A2ED8 /* WishListCellController.swift in Sources */,
 				0B49129B2BE6113900274B78 /* DetailCellController.swift in Sources */,
-				0BDA23CD2BE731D5007A2ED8 /* MarkViewController.swift in Sources */,
+				0BDA23CD2BE731D5007A2ED8 /* WishListViewController.swift in Sources */,
 				0B787B1E2BDA2EDD006F45FF /* DetailViewController.swift in Sources */,
 				0BDA23CF2BE73A43007A2ED8 /* SetUpCellController.swift in Sources */,
 				0B9415DA2BE3EF5900CBBD4F /* BeforeListCellController.swift in Sources */,
