@@ -11,7 +11,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     // MARK: - Outlets
     @IBOutlet weak var headerStackView: UIStackView!
-    @IBOutlet weak var profileEditButton: UIButton!
     
     @IBOutlet weak var beforeListView: UIView!
     @IBOutlet weak var ottListView: UIView!
