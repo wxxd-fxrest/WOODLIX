@@ -18,6 +18,10 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var beforeListView: UIView!
     @IBOutlet weak var ottListView: UIView!
     
+    @IBOutlet weak var wishListButton: UIButton!
+    @IBOutlet weak var beforeListButton: UIButton!
+    @IBOutlet weak var ottListButton: UIButton!
+    
     // MARK: - CollectionViews
     private var beforeListCollectionView: UICollectionView!
     private var ottListCollectionView: UICollectionView!
@@ -30,6 +34,10 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
 
         setupBeforeListCollectionView()
         setupOttListCollectionView()
+        
+        wishListButton.addTarget(self, action: #selector(wishListButtonTapped), for: .touchUpInside)
+        beforeListButton.addTarget(self, action: #selector(beforeListButtonTapped), for: .touchUpInside)
+        ottListButton.addTarget(self, action: #selector(ottListButtonTapped), for: .touchUpInside)
     }
 
     // MARK: - CollectionView Setup
@@ -105,6 +113,41 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         } else {
             return UICollectionViewCell()
         }
+    }
+    
+    // MARK: - Button Actions
+
+    @objc func wishListButtonTapped() {
+        let targetStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let targetVC = targetStoryboard.instantiateViewController(withIdentifier: "WishListView") as? WishListViewController else {
+            print("Failed to instantiate MainPageViewController from UserStoryboard.")
+            return
+        }
+        
+        targetVC.modalPresentationStyle = .fullScreen
+        present(targetVC, animated: true, completion: nil)
+    }
+    
+    @objc func beforeListButtonTapped() {
+        let targetStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let targetVC = targetStoryboard.instantiateViewController(withIdentifier: "BeforeTicketListView") as? BeforeTicketListViewController else {
+            print("Failed to instantiate MainPageViewController from UserStoryboard.")
+            return
+        }
+        
+        targetVC.modalPresentationStyle = .fullScreen
+        present(targetVC, animated: true, completion: nil)
+    }
+    
+    @objc func ottListButtonTapped() {
+        let targetStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let targetVC = targetStoryboard.instantiateViewController(withIdentifier: "OTTListView") as? OTTListViewController else {
+            print("Failed to instantiate MainPageViewController from UserStoryboard.")
+            return
+        }
+        
+        targetVC.modalPresentationStyle = .fullScreen
+        present(targetVC, animated: true, completion: nil)
     }
     
     @IBAction func navigateToSetUpPage() {
