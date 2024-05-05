@@ -11,6 +11,9 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     // MARK: - Outlets
     @IBOutlet weak var headerStackView: UIStackView!
+    @IBOutlet weak var setUpButton: UIButton!
+    
+    @IBOutlet weak var profileImage: UIImageView!
     
     @IBOutlet weak var beforeListView: UIView!
     @IBOutlet weak var ottListView: UIView!
@@ -22,6 +25,9 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        profileImage.layer.cornerRadius = profileImage.frame.width / 2
+        profileImage.clipsToBounds = true
+
         setupBeforeListCollectionView()
         setupOttListCollectionView()
     }
@@ -99,5 +105,16 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate, UIColle
         } else {
             return UICollectionViewCell()
         }
+    }
+    
+    @IBAction func navigateToSetUpPage() {
+        let targetStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let targetVC = targetStoryboard.instantiateViewController(withIdentifier: "SetUpView") as? SetUpViewController else {
+            print("Failed to instantiate MainPageViewController from UserStoryboard.")
+            return
+        }
+        
+        targetVC.modalPresentationStyle = .fullScreen
+        present(targetVC, animated: true, completion: nil)
     }
 }
