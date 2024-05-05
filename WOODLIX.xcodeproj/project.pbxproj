@@ -44,6 +44,8 @@
 		0B9415DA2BE3EF5900CBBD4F /* BeforeListCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9415D92BE3EF5900CBBD4F /* BeforeListCellController.swift */; };
 		0B9415DC2BE3EFB400CBBD4F /* OttListCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9415DB2BE3EFB400CBBD4F /* OttListCellController.swift */; };
 		0BD6FAB12BE0DD68000527AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0BD6FAB02BE0DD68000527AF /* GoogleService-Info.plist */; };
+		0BDA23CB2BE73174007A2ED8 /* SetUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA23CA2BE73174007A2ED8 /* SetUpViewController.swift */; };
+		0BDA23CD2BE731D5007A2ED8 /* MarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDA23CC2BE731D5007A2ED8 /* MarkViewController.swift */; };
 		0BF6A4B72BE682BE00490AE7 /* SearchSuggestionCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF6A4B62BE682BE00490AE7 /* SearchSuggestionCellController.swift */; };
 		0BF6A4BA2BE6957300490AE7 /* SearchWordCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF6A4B92BE6957300490AE7 /* SearchWordCellController.swift */; };
 /* End PBXBuildFile section */
@@ -82,6 +84,8 @@
 		0B9415D92BE3EF5900CBBD4F /* BeforeListCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeforeListCellController.swift; sourceTree = "<group>"; };
 		0B9415DB2BE3EFB400CBBD4F /* OttListCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OttListCellController.swift; sourceTree = "<group>"; };
 		0BD6FAB02BE0DD68000527AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0BDA23CA2BE73174007A2ED8 /* SetUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpViewController.swift; sourceTree = "<group>"; };
+		0BDA23CC2BE731D5007A2ED8 /* MarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkViewController.swift; sourceTree = "<group>"; };
 		0BF6A4B62BE682BE00490AE7 /* SearchSuggestionCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSuggestionCellController.swift; sourceTree = "<group>"; };
 		0BF6A4B92BE6957300490AE7 /* SearchWordCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWordCellController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,6 +164,8 @@
 				0B7BF7DE2BE1CAE000654E04 /* tiketPage */,
 				0B7BF7E82BE21C6300654E04 /* mainPage */,
 				0B7BF7DD2BE1CAD600654E04 /* profilePage */,
+				0BDA23C92BE7314B007A2ED8 /* markPage */,
+				0BDA23C82BE730F3007A2ED8 /* setupPage */,
 				0BF6A4B82BE6867500490AE7 /* searchPage */,
 				0B7BF7E02BE1CB1000654E04 /* detailePage */,
 				0B787B142BDA2EDD006F45FF /* ViewController.swift */,
@@ -226,9 +232,29 @@
 		0B7BF7E82BE21C6300654E04 /* mainPage */ = {
 			isa = PBXGroup;
 			children = (
-				0BF6A4B52BE6829700490AE7 /* cellComponents */,
+				0B1C19842BE33F7B001BB1C7 /* MovieTableViewCellController.swift */,
+				0B7BF7E92BE21C8D00654E04 /* BoxOfficeCellController.swift */,
+				0B1C19822BE32ED0001BB1C7 /* CommingSoonCellController.swift */,
+				0B1C19862BE35B8F001BB1C7 /* ShowingCellController.swift */,
+				0B1C198C2BE3916A001BB1C7 /* OttCellViewController.swift */,
 			);
 			path = mainPage;
+			sourceTree = "<group>";
+		};
+		0BDA23C82BE730F3007A2ED8 /* setupPage */ = {
+			isa = PBXGroup;
+			children = (
+				0BDA23CA2BE73174007A2ED8 /* SetUpViewController.swift */,
+			);
+			path = setupPage;
+			sourceTree = "<group>";
+		};
+		0BDA23C92BE7314B007A2ED8 /* markPage */ = {
+			isa = PBXGroup;
+			children = (
+				0BDA23CC2BE731D5007A2ED8 /* MarkViewController.swift */,
+			);
+			path = markPage;
 			sourceTree = "<group>";
 		};
 		0BDAECD62BDA314B003A31A8 /* Views */ = {
@@ -248,18 +274,6 @@
 				0B787AF02BDA2D2E006F45FF /* Assets.xcassets */,
 			);
 			path = Supports;
-			sourceTree = "<group>";
-		};
-		0BF6A4B52BE6829700490AE7 /* cellComponents */ = {
-			isa = PBXGroup;
-			children = (
-				0B1C19842BE33F7B001BB1C7 /* MovieTableViewCellController.swift */,
-				0B7BF7E92BE21C8D00654E04 /* BoxOfficeCellController.swift */,
-				0B1C19822BE32ED0001BB1C7 /* CommingSoonCellController.swift */,
-				0B1C19862BE35B8F001BB1C7 /* ShowingCellController.swift */,
-				0B1C198C2BE3916A001BB1C7 /* OttCellViewController.swift */,
-			);
-			path = cellComponents;
 			sourceTree = "<group>";
 		};
 		0BF6A4B82BE6867500490AE7 /* searchPage */ = {
@@ -375,6 +389,7 @@
 				0B7BF7E52BE1DB4C00654E04 /* MainViewController.swift in Sources */,
 				0B1C19832BE32ED0001BB1C7 /* CommingSoonCellController.swift in Sources */,
 				0B787B1A2BDA2EDD006F45FF /* SignUpViewController.swift in Sources */,
+				0BDA23CB2BE73174007A2ED8 /* SetUpViewController.swift in Sources */,
 				0B787AE72BDA2D2B006F45FF /* SceneDelegate.swift in Sources */,
 				0B49129D2BE6368C00274B78 /* TicketDateCellController.swift in Sources */,
 				0B6A91872BDBBE2E003333F1 /* UserInfo+CoreDataClass.swift in Sources */,
@@ -382,6 +397,7 @@
 				0BF6A4BA2BE6957300490AE7 /* SearchWordCellController.swift in Sources */,
 				0B49129F2BE636A100274B78 /* TicketTimeCellController.swift in Sources */,
 				0B49129B2BE6113900274B78 /* DetailCellController.swift in Sources */,
+				0BDA23CD2BE731D5007A2ED8 /* MarkViewController.swift in Sources */,
 				0B787B1E2BDA2EDD006F45FF /* DetailViewController.swift in Sources */,
 				0B9415DA2BE3EF5900CBBD4F /* BeforeListCellController.swift in Sources */,
 			);
