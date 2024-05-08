@@ -19,7 +19,7 @@ class SearchWordCellController: UICollectionViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.textColor = .black
+        label.textColor = UIColor(named: "BackColor")!
         label.font = UIFont.systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -36,11 +36,11 @@ class SearchWordCellController: UICollectionViewCell {
         let attributedTitle = NSAttributedString(string: "X", attributes: attributes)
         button.setAttributedTitle(attributedTitle, for: .normal)
         
-        button.backgroundColor = UIColor(named: "DarkGreyColor")
+        button.backgroundColor = UIColor(named: "YellowColor")
         button.layer.cornerRadius = 10
         button.layer.masksToBounds = true
         button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor(named: "DarkGreyColor")?.cgColor 
+        button.layer.borderColor = UIColor(named: "YellowColor")?.cgColor
         button.addTarget(self, action: #selector(deleteButtonTapped(_:)), for: .touchUpInside)
         
         button.widthAnchor.constraint(equalToConstant: 18).isActive = true
@@ -68,7 +68,7 @@ class SearchWordCellController: UICollectionViewCell {
     
     // MARK: - Setup
     private func setupCell() {
-        backgroundColor = .red
+        backgroundColor = UIColor(named: "WhiteColor")
         
         addSubview(titleLabel)
         NSLayoutConstraint.activate([

@@ -8,9 +8,15 @@
 import UIKit
 
 class SearchViewController: UIViewController, UICollectionViewDelegate, UISearchBarDelegate, SearchWordCellDelegate {
-
+    
     // MARK: - Properties
-    var wordItems: Array = ["searh", "itemitemitem", "movie", "searh", "item", "movie", "searh", "item", "moviemovie"]
+    var wordItems: Array = ["파묘", "시라노", "범죄도시", "신과 함께", "파묘", "시라노", "범죄도시", "신과 함께"]
+    
+    var showingMovieData: [MovieDataModel] = []
+    var updatedMovieData: [(MovieDataModel, Bool, Bool)] = []
+    
+    var reservable: Bool = false
+    var comming: Bool = false
     
     // MARK: - Outlets
     @IBOutlet weak var backButton: UIButton!
@@ -23,11 +29,17 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UISearch
     @IBOutlet weak var suggestionView: UIView!
     private var suggestionCollectionView: UICollectionView!
     
+    @IBOutlet weak var goSearchButton: UIButton!
+    
     var inSearchWord: Bool = false
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        showingMovieData.shuffle()
+
+        print("showingMovieDatashowingMovieData \(showingMovieData)")
+        
         searchWordView.isHidden = true
         setupSuggestionCollectionView()
         setupSearchWordCollectionView()
@@ -38,7 +50,10 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UISearch
         searchBar.backgroundColor = .clear
         searchBar.tintColor = UIColor(named: "DarkGreyColor")
         searchBar.searchTextField.textColor = UIColor(named: "BackColor")
+        searchBar.delegate = self
 
+        goSearchButton.layer.cornerRadius = 12
+        
         if let textField = searchBar.value(forKey: "searchField") as? UITextField {
             textField.backgroundColor = UIColor(named: "WhiteColor")
             if let leftView = textField.leftView as? UIImageView {
@@ -54,7 +69,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UISearch
                 self.view.layoutIfNeeded()
             }
         }
-
+        
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
     }
     
@@ -75,14 +90,13 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UISearch
         searchWordView.addSubview(searchWordCollectionView)
 
         NSLayoutConstraint.activate([
-            searchWordCollectionView.topAnchor.constraint(equalTo: searchWordView.topAnchor),
+            searchWordCollectionView.topAnchor.constraint(equalTo: searchWordView.topAnchor, constant: -4),
             searchWordCollectionView.leadingAnchor.constraint(equalTo: searchWordView.leadingAnchor),
             searchWordCollectionView.trailingAnchor.constraint(equalTo: searchWordView.trailingAnchor),
             searchWordCollectionView.bottomAnchor.constraint(equalTo: searchWordView.bottomAnchor)
         ])
     }
-    
-    // MARK: - Setup Methods
+
     private func setupSuggestionCollectionView() {
         let screenWidth = suggestionView.bounds.width
         
@@ -112,8 +126,104 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UISearch
             suggestionCollectionView.bottomAnchor.constraint(equalTo: suggestionView.bottomAnchor)
         ])
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+         goSearchWordTapped()
+     }
+        
+    // MARK: - Button Actions
+    @IBAction func goSearchWordTapped() {
+        guard let searchString = searchBar.text, !searchString.isEmpty else {
+            showAlert(message: "검색어를 입력해주세요.")
+            return
+        }
+        
+        SearchAPIManager.fetchDataFromAPI(searchString: searchString) { [weak self] movieData in
+            guard let self = self else { return }
+            
+            var searchResults: [(SearchDataModel, Bool, Bool)] = []
 
+            if !movieData.isEmpty {
+                var processedMovieNames: Set<String> = []
+                var processedMovieID: Set<String> = []
 
+                for movie in movieData {
+                    let movieName = movie.movieNm
+                    let movieID = movie.movieCd
+                    
+                    guard !processedMovieNames.contains(movieName) else {
+                        continue
+                    }
+                    
+                    guard !processedMovieID.contains(movieID) else {
+                        continue
+                    }
+                    
+                    if movie.prdtStatNm == "개봉" || movie.prdtStatNm == "기타" {
+                        comming = false
+                        reservable = true
+                    } else if movie.prdtStatNm == "개봉예정" {
+                        reservable = false
+                    }
+                    
+                    let isWithinOneYear = self.isWithinOneYear(searchMovie: movie)
+                    
+                    print("영화명: \(movieName), 개봉 여부: \(reservable), 1년 이내 개봉 여부: \(isWithinOneYear)")
+                    
+                    searchResults.append((movie, reservable, comming))
+                    
+                    processedMovieNames.insert(movieName)
+                }
+
+                var updatedMovieData: [(MovieDataModel, Bool, Bool)] = []
+
+                let dispatchGroup = DispatchGroup()
+                
+                for (data, reservable, comming) in searchResults {
+                    dispatchGroup.enter()
+                    MovieAPIManager.fetchDataFromAPI(searchString: data.movieNm) { searchData in
+                        let moviesWithReservable = searchData.map { movie in
+                            return (movie, reservable, comming)
+                        }
+                        updatedMovieData.append(contentsOf: moviesWithReservable)
+                        dispatchGroup.leave()
+                        print("MovieAPIManagersearchDatasearchData \(updatedMovieData)")
+                        
+                        DispatchQueue.main.async {
+                            self.searchBar.resignFirstResponder()
+                        }
+                    }
+                }
+                
+                dispatchGroup.notify(queue: .main) {
+                    self.updatedMovieData = updatedMovieData
+                    self.suggestionCollectionView.reloadData()
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.searchBar.text = ""
+                    self.searchBar.resignFirstResponder()
+                    self.showAlert(message: "검색어가 일치하지 않습니다.")
+                }
+            }
+        }
+    }
+
+    func isWithinOneYear(searchMovie: SearchDataModel) -> Bool {
+        guard let prdtYearString = searchMovie.prdtYear, let prdtYear = Int(prdtYearString) else { return false }
+        let currentYear = Calendar.current.component(.year, from: Date())
+        return currentYear - prdtYear <= 1
+    }
+
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        present(alert, animated: true, completion: nil)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            alert.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     // MARK: - Gesture Recognizer
     @objc func backButtonTapped() {
         dismiss(animated: true, completion: nil)
@@ -193,7 +303,6 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
             }
         }
     }
-
 }
 
 
@@ -201,7 +310,11 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
 extension SearchViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == suggestionCollectionView {
-            return 30
+            if !updatedMovieData.isEmpty {
+                return updatedMovieData.count
+            } else {
+                return showingMovieData.count
+            }
         } else if collectionView == searchWordCollectionView {
             return wordItems.count
         } else {
@@ -211,14 +324,37 @@ extension SearchViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == suggestionCollectionView {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchSuggestionCell", for: indexPath) as? SearchSuggestionCellController else {
-                return UICollectionViewCell()
+            if !updatedMovieData.isEmpty {
+                guard indexPath.item < updatedMovieData.count else {
+                    return UICollectionViewCell()
+                }
+                
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchSuggestionCell", for: indexPath) as? SearchSuggestionCellController else {
+                    return UICollectionViewCell()
+                }
+                
+                let updatedMovie = updatedMovieData[indexPath.item].0
+                let imageUrl = "https://image.tmdb.org/t/p/w500/\(updatedMovie.posterPath ?? "")"
+                let title = updatedMovie.title ?? ""
+                cell.configure(with: imageUrl, title: title)
+                
+                return cell
+            } else {
+                guard indexPath.item < showingMovieData.count else {
+                    return UICollectionViewCell()
+                }
+                
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchSuggestionCell", for: indexPath) as? SearchSuggestionCellController else {
+                    return UICollectionViewCell()
+                }
+                
+                let showingMovie = showingMovieData[indexPath.item]
+                let imageUrl = "https://image.tmdb.org/t/p/w500/\(showingMovie.posterPath ?? "")"
+                let title = showingMovie.title ?? ""
+                cell.configure(with: imageUrl, title: title)
+                
+                return cell
             }
-            
-            cell.titleLabel.text = "123"
-            cell.backgroundColor = .red
-            
-            return cell
         } else if collectionView == searchWordCollectionView {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "searchWordCell", for: indexPath) as? SearchWordCellController else {
                 return UICollectionViewCell()
@@ -228,7 +364,6 @@ extension SearchViewController: UICollectionViewDataSource {
             cell.titleLabel.text = word
             cell.delegate = self
             cell.indexPath = indexPath
-            cell.backgroundColor = .red
             
             return cell
         } else {
@@ -253,9 +388,22 @@ extension SearchViewController: UICollectionViewDataSource {
             return
         }
         
-        targetVC.selectedItemIndex = indexPath.row
-        
+        if !updatedMovieData.isEmpty {
+            let updatedMovie = updatedMovieData[indexPath.item].0
+            reservable = updatedMovieData[indexPath.item].1 
+            targetVC.selectedItem = (updatedMovie, reservable, comming)
+        } else {
+            let showingMovie = showingMovieData[indexPath.item]
+            targetVC.selectedItem = (showingMovie, reservable, comming)
+        }
+
         targetVC.modalPresentationStyle = .fullScreen
         present(targetVC, animated: true, completion: nil)
+    }
+    
+    func isWithinOneYear(commingSoonMovie: CommingSoonDataModel) -> Bool {
+        guard let prdtYear = Int(commingSoonMovie.prdtYear) else { return false }
+        let currentYear = Calendar.current.component(.year, from: Date())
+        return currentYear - prdtYear <= 1
     }
 }

@@ -12,7 +12,7 @@ class TicketTimeCellController: UICollectionViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.textColor = .black
+        label.textColor = UIColor(named: "WhiteColor")
         label.font = UIFont.systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -32,11 +32,12 @@ class TicketTimeCellController: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.cornerRadius = 12
+        layer.borderWidth = 1
+        layer.borderColor = UIColor(named: "RedColor")?.cgColor
     }
     
     // MARK: - Setup
     private func setupCell() {
-        backgroundColor = .red
         addSubview(titleLabel)
         
         NSLayoutConstraint.activate([

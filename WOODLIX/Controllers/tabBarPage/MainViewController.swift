@@ -8,12 +8,6 @@
 import UIKit
 
 class MainViewController: UIViewController, UITableViewDelegate {
-    // MARK: - Properties
-    let boxofficeList: String = "boxoffice"
-    let movieList: String = "movie"
-    let today: Date = Date()
-    var yesterdayDateString: String = ""
-
     // MARK: - Outlets
     @IBOutlet weak var headerStackView: UIStackView!
     @IBOutlet weak var searchIcon: UIImageView!
@@ -23,6 +17,23 @@ class MainViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var showingView: UIView!
     @IBOutlet weak var ottView: UIView!
     
+    // MARK: - Properties
+    let boxofficeList: String = "boxoffice"
+    let movieList: String = "movie"
+    let today: Date = Date()
+    var yesterdayDateString: String = ""
+    
+    var movieData: [MovieDataModel] = []
+    
+    var boxOfficeData: [BoxOfficeDataModel] = []
+    
+    var commingSoonData: [CommingSoonDataModel] = []
+    
+    var boxOfficeMovieData: [MovieDataModel] = []
+    var commingSoonMovieData: [MovieDataModel] = []
+    var showingMovieData: [MovieDataModel] = []
+    var ottMovieData: [MovieDataModel] = []
+
     private var boxOfficCollectionView: UICollectionView!
     private var commingSoonCollectionView: UICollectionView!
     private var showingCollectionView: UICollectionView!
@@ -35,7 +46,17 @@ class MainViewController: UIViewController, UITableViewDelegate {
     private var showingViewHeight: CGFloat = 0
     private var ottViewHeight: CGFloat = 0
 
+    var activityIndicator: UIActivityIndicatorView!
+
     // MARK: - Setup Methods
+    private func setupActivityIndicator() {
+        activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.color = .gray
+        activityIndicator.center = view.center
+        activityIndicator.hidesWhenStopped = true
+        view.addSubview(activityIndicator)
+    }
+    
     private func setupBoxOfficeCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -192,6 +213,7 @@ class MainViewController: UIViewController, UITableViewDelegate {
     // MARK: - View Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupActivityIndicator()
 
         setupBoxOfficeCollectionView()
         setupCommingSoonCollectionView()
@@ -200,19 +222,109 @@ class MainViewController: UIViewController, UITableViewDelegate {
         setupTableView()
         tableView.register(MovieTableViewCellController.self, forCellReuseIdentifier: "tableCell")
 
-        if let formattedDate = formatDateString(today) {
-            if let yesterdayDate = subtractOneDay(from: formattedDate) {
-                yesterdayDateString = yesterdayDate
-                print("Yesterday's date: \(yesterdayDateString)")
-
-                fetchDataFromAPI()
-            } else {
-                print("Failed to subtract one day.")
-            }
-        } else {
-            print("Invalid date format.")
-        }
+        // API 요청 시작 전에 로딩 인디케이터 시작
+        activityIndicator.startAnimating()
         
+        // MARK: - APIMAnager
+        BoxOfficeAPIManager.fetchDataFromAPI { [weak self] boxOfficeData in
+            guard let self = self else { return }
+            
+            self.boxOfficeData = boxOfficeData // 원래의 변수에 저장
+            
+            var movieData: [MovieDataModel] = []
+            var existingIDs: Set<Int64> = Set()
+            var existingTitles: Set<String> = Set()
+            
+            let group = DispatchGroup()
+            
+            for boxOfficeItem in boxOfficeData {
+                let formattedMovieNm = boxOfficeItem.movieNm.separateCharacterDigitsAndJoinWithSpace()
+                
+                group.enter()
+                MovieAPIManager.fetchDataFromAPI(searchString: formattedMovieNm) { result in
+                    for movie in result {
+                        if !existingIDs.contains(movie.id), !existingTitles.contains(movie.title) {
+                            movieData.append(movie)
+                            existingIDs.insert(movie.id)
+                            existingTitles.insert(movie.title)
+                        }
+                    }
+                    group.leave()
+                }
+            }
+            
+            group.notify(queue: .main) {
+                self.boxOfficeMovieData = movieData // 새로운 변수에 저장
+                self.boxOfficCollectionView.reloadData()
+                // print("Box Office Movie Data: \(movieData)")
+            }
+            
+            // print("BOXOFFICE: \(boxOfficeData)")
+        }
+
+        CommingSoonAPIManager.fetchDataFromAPI { [weak self] commingSoonData in
+            guard let self = self else { return }
+            
+            let commingSoonMovies = commingSoonData.filter { $0.prdtStatNm == "개봉예정" }
+            let showingMovies = commingSoonData.filter { $0.prdtStatNm != "개봉예정" && self.isWithinOneYear(commingSoonMovie: $0) }
+            let ottMovies = commingSoonData.filter { $0.prdtStatNm != "개봉예정" && !self.isWithinOneYear(commingSoonMovie: $0) }
+
+
+            let group = DispatchGroup()
+            
+            func fetchDataAndUpdateData(_ movies: [CommingSoonDataModel], completion: @escaping ([MovieDataModel]) -> Void) {
+                var targetArray: [MovieDataModel] = []
+                for movieItem in movies {
+                    let formattedMovieNm = movieItem.movieNm.separateCharacterDigitsAndJoinWithSpace()
+                    group.enter()
+                    MovieAPIManager.fetchDataFromAPI(searchString: formattedMovieNm) { result in
+                        for movie in result {
+                            targetArray.append(movie)
+                        }
+                        group.leave()
+                    }
+                }
+                group.notify(queue: .main) {
+                    completion(targetArray)
+                }
+            }
+            
+            fetchDataAndUpdateData(commingSoonMovies) { result in
+                self.commingSoonMovieData = result
+            }
+            
+            fetchDataAndUpdateData(showingMovies) { result in
+                self.showingMovieData = result
+            }
+            
+            fetchDataAndUpdateData(ottMovies) { result in
+                self.ottMovieData = result
+            }
+            
+            group.notify(queue: .main) {
+                self.commingSoonMovieData = self.commingSoonMovieData
+                self.showingMovieData = self.showingMovieData
+                self.ottMovieData = self.ottMovieData
+                
+                DispatchQueue.main.async {
+                    self.commingSoonCollectionView.reloadData()
+                    self.showingCollectionView.reloadData()
+                    self.ottCollectionView.reloadData()
+                    
+                    self.activityIndicator.stopAnimating()
+                }
+                
+                print("COMMING SOON: \(commingSoonMovies)")
+                print("SHOWING: \(showingMovies)")
+                print("OTT: \(ottMovies)")
+                
+                print("Comming Soon Movie Data: \(self.commingSoonMovieData)")
+                print("Showing Movie Data: \(self.showingMovieData)")
+                print("OTT Movie Data: \(self.ottMovieData)")
+            }
+        }
+
+
         boxOfficCollectionView.showsHorizontalScrollIndicator = false
         commingSoonCollectionView.showsHorizontalScrollIndicator = false
         showingCollectionView.showsHorizontalScrollIndicator = false
@@ -225,11 +337,17 @@ class MainViewController: UIViewController, UITableViewDelegate {
 
         updateTableCellHeights()
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(navigateToMainPage))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(navigateToSearchPage))
         searchIcon.isUserInteractionEnabled = true
         searchIcon.addGestureRecognizer(tapGestureRecognizer)
     }
-
+    
+    func isWithinOneYear(commingSoonMovie: CommingSoonDataModel) -> Bool {
+        guard let prdtYear = Int(commingSoonMovie.prdtYear) else { return false }
+        let currentYear = Calendar.current.component(.year, from: Date())
+        return currentYear - prdtYear <= 1
+    }
+   
     private func updateTableCellHeights() {
         let boxOfficeHeight = boxOfficeView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
         let commingSoonHeight = commingSoonView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
@@ -277,7 +395,7 @@ class MainViewController: UIViewController, UITableViewDelegate {
 
         let itemWidth = layout.itemSize.width + layout.minimumInteritemSpacing
         let proposedOffset = targetContentOffset.pointee
-        let proposedPageIndex = round((proposedOffset.x + layout.minimumInteritemSpacing) / itemWidth) // Add layout.minimumInteritemSpacing
+        let proposedPageIndex = round((proposedOffset.x + layout.minimumInteritemSpacing) / itemWidth)
         let targetX = proposedPageIndex * itemWidth
 
         let updatedTargetOffset = CGPoint(x: targetX, y: proposedOffset.y)
@@ -291,7 +409,7 @@ class MainViewController: UIViewController, UITableViewDelegate {
 
         let itemWidth = layout.itemSize.width + layout.minimumInteritemSpacing
         let proposedOffset = targetContentOffset.pointee
-        let proposedPageIndex = round((proposedOffset.x + layout.minimumInteritemSpacing) / itemWidth) // Add layout.minimumInteritemSpacing
+        let proposedPageIndex = round((proposedOffset.x + layout.minimumInteritemSpacing) / itemWidth)
         let targetX = proposedPageIndex * itemWidth
 
         let updatedTargetOffset = CGPoint(x: targetX, y: proposedOffset.y)
@@ -311,81 +429,21 @@ class MainViewController: UIViewController, UITableViewDelegate {
         let updatedTargetOffset = CGPoint(x: targetX, y: proposedOffset.y)
         targetContentOffset.pointee = updatedTargetOffset
     }
-
-    // MARK: - API Methods
-    func fetchDataFromAPI() {
-        guard let apiKey = getApiKey() else {
-            print("API key not found.")
+    
+    // MARK: - Gesture Recognizer
+    @objc func navigateToSearchPage() {
+        // showingMovieData가 아직 로드되지 않은 경우, 로딩 인디케이터를 표시하고 데이터를 기다림
+        guard !showingMovieData.isEmpty else {
+            // API 요청 시작 전에 로딩 인디케이터 시작
+            activityIndicator.startAnimating()
             return
         }
 
-        // Daily box office
-        //        let urlString = "http://kobis.or.kr/kobisopenapi/webservice/rest/\(boxofficeList)/searchDailyBoxOfficeList.json?key=\(apiKey)&targetDt=\(yesterdayDateString)"
-
-        //        Movie List
-        let urlString = "https://kobis.or.kr/kobisopenapi/webservice/rest/\(movieList)/searchMovieList.json?key=\(apiKey)&curPage=5"
-
-        if let url = URL(string: urlString) {
-            URLSession.shared.dataTask(with: url) { (data, response, error) in
-                if let error = error {
-                    print("Error: \(error)")
-                } else if let data = data {
-                    if let jsonString = String(data: data, encoding: .utf8) {
-                        print("Response: \(jsonString)")
-                        print("Today: \(self.today)")
-                        //                        DispatchQueue.main.async {
-                        //                            self.collectionView.reloadData() // Reload collection view data after fetching
-                        //                        }
-                    }
-                }
-            }.resume()
-        } else {
-            print("Invalid URL")
-        }
+        // showingMovieData가 이미 로드된 경우, 검색 페이지로 이동
+        presentSearchViewController()
     }
 
-    func getApiKey() -> String? {
-        guard let path = Bundle.main.path(forResource: "ApiKey", ofType: "plist") else {
-            print("ApiKey.plist not found.")
-            return nil
-        }
-
-        guard let dict = NSDictionary(contentsOfFile: path) as? [String: Any] else {
-            print("Invalid format of ApiKey.plist.")
-            return nil
-        }
-
-        guard let apiKey = dict["API_KEY_MOVIE"] as? String else {
-            print("ApiKey not found in ApiKey.plist.")
-            return nil
-        }
-
-        return apiKey
-    }
-
-    func formatDateString(_ date: Date) -> String? {
-        let outputFormatter = DateFormatter()
-        outputFormatter.dateFormat = "yyyyMMdd"
-        return outputFormatter.string(from: date)
-    }
-
-    func subtractOneDay(from dateString: String) -> String? {
-        let inputFormatter = DateFormatter()
-        inputFormatter.dateFormat = "yyyyMMdd"
-
-        if let date = inputFormatter.date(from: dateString) {
-            if let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: date) {
-                let outputFormatter = DateFormatter()
-                outputFormatter.dateFormat = "yyyyMMdd"
-                return outputFormatter.string(from: yesterday)
-            }
-        }
-
-        return nil
-    }
-    
-    // MARK: - Gesture Recognizer
-    @objc func navigateToMainPage() {
+    private func presentSearchViewController() {
         let targetStoryboard = UIStoryboard(name: "Main", bundle: nil)
         guard let targetVC = targetStoryboard.instantiateViewController(withIdentifier: "SearchView") as? SearchViewController else {
             print("Failed to instantiate MainPageViewController from UserStoryboard.")
@@ -393,24 +451,40 @@ class MainViewController: UIViewController, UITableViewDelegate {
         }
         
         targetVC.modalPresentationStyle = .fullScreen
+        targetVC.showingMovieData = self.showingMovieData // 여기서 showingMovieData를 전달
+        
         present(targetVC, animated: true, completion: nil)
     }
 }
 
 extension MainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigateToDetailPage(indexPath: indexPath)
+        navigateToDetailPage(collectionView: collectionView, indexPath: indexPath)
     }
 
-    private func navigateToDetailPage(indexPath: IndexPath) {
+    private func navigateToDetailPage(collectionView: UICollectionView, indexPath: IndexPath) {
         let targetStoryboard = UIStoryboard(name: "Main", bundle: nil)
         guard let targetVC = targetStoryboard.instantiateViewController(withIdentifier: "DetailView") as? DetailViewController else {
             print("Failed to instantiate DetailViewController from Main storyboard.")
             return
         }
         
-        targetVC.selectedItemIndex = indexPath.row
-        
+        // 아이템 전달
+        var reservable: Bool = false
+        var comming: Bool = false
+        if collectionView == boxOfficCollectionView {
+            reservable = true
+            targetVC.selectedItem = (boxOfficeMovieData[indexPath.item], reservable, comming)
+        } else if collectionView == commingSoonCollectionView {
+            comming = true
+            targetVC.selectedItem = (commingSoonMovieData[indexPath.item], reservable, comming)
+        } else if collectionView == showingCollectionView {
+            reservable = true
+            targetVC.selectedItem = (showingMovieData[indexPath.item], reservable, comming)
+        } else if collectionView == ottCollectionView {
+            targetVC.selectedItem = (ottMovieData[indexPath.item], reservable, comming)
+        }
+
         targetVC.modalPresentationStyle = .fullScreen
         present(targetVC, animated: true, completion: nil)
     }
@@ -419,46 +493,114 @@ extension MainViewController: UICollectionViewDelegate {
 // MARK: - CollectionView DataSource
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        if collectionView == boxOfficCollectionView {
+            return boxOfficeMovieData.count
+        } else if collectionView == commingSoonCollectionView {
+            return commingSoonMovieData.count
+        } else if collectionView == showingCollectionView {
+            return showingMovieData.count
+        } else if collectionView == ottCollectionView {
+            return ottMovieData.count
+        }
+        return 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == boxOfficCollectionView {
+            guard indexPath.item < boxOfficeMovieData.count else {
+                return UICollectionViewCell()
+            }
+
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "boxOfficeCell", for: indexPath) as? BoxOfficeCellController else {
                 return UICollectionViewCell()
             }
             
-            cell.titleLabel.text = "123"
-            cell.backgroundColor = .red
+            let boxOfficeMovie = boxOfficeMovieData[indexPath.item]
+            
+            let imageUrl = "https://image.tmdb.org/t/p/w500/\(boxOfficeMovie.posterPath ?? "")"
+            let title = boxOfficeMovie.originalTitle ?? ""
+            
+            cell.configure(with: imageUrl, title: title)
             
             return cell
         } else if collectionView == commingSoonCollectionView {
+            guard indexPath.item < commingSoonMovieData.count else {
+                return UICollectionViewCell()
+            }
+            
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "commingSoonCell", for: indexPath) as? CommingSoonCellController else {
                 return UICollectionViewCell()
             }
             
-            cell.titleLabel.text = "123"
-            cell.backgroundColor = .red
+            let commingSoonMovie = commingSoonMovieData[indexPath.item]
+            
+            let imageUrl = "https://image.tmdb.org/t/p/w500/\(commingSoonMovie.posterPath ?? "")"
+            let title = commingSoonMovie.originalTitle ?? ""
+            
+            cell.configure(with: imageUrl, title: title)
             
             return cell
         } else if collectionView == showingCollectionView {
+            guard indexPath.item < showingMovieData.count else {
+                return UICollectionViewCell()
+            }
+            
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "showingCell", for: indexPath) as? ShowingCellController else {
                 return UICollectionViewCell()
             }
 
+            let showingMovie = showingMovieData[indexPath.item]
+            
+            let imageUrl = "https://image.tmdb.org/t/p/w500/\(showingMovie.posterPath ?? "")"
+            let title = showingMovie.originalTitle ?? ""
+
+            cell.configure(with: imageUrl, title: title)
+            
             return cell
         } else if collectionView == ottCollectionView {
-            // Handle cell configuration for showingCollectionView
+            guard indexPath.item < ottMovieData.count else {
+                return UICollectionViewCell()
+            }
+            
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ottCell", for: indexPath) as? OttCellViewController else {
                 return UICollectionViewCell()
             }
 
+            let ottMovie = ottMovieData[indexPath.item] // Corrected typo here
+            
+            let imageUrl = "https://image.tmdb.org/t/p/w500/\(ottMovie.posterPath ?? "")"
+            let title = ottMovie.originalTitle ?? ""
+            
+            cell.configure(with: imageUrl, title: title)
+            
             return cell
         } else {
             return UICollectionViewCell()
         }
     }
+
 }
+
+extension String {
+    func separateCharacterDigitsAndJoinWithSpace() -> String {
+        var separatedString = ""
+        var previousCharacter: Character? = nil
+        for character in self {
+            if let previous = previousCharacter {
+                if previous.isLetter && character.isNumber {
+                    separatedString.append(" \(character)")
+                } else {
+                    separatedString.append(character)
+                }
+            } else {
+                separatedString.append(character)
+            }
+            previousCharacter = character
+        }
+        return separatedString
+    }
+}
+
 
 // MARK: - TableView DataSource
 extension MainViewController: UITableViewDataSource {
@@ -486,7 +628,6 @@ extension MainViewController: UITableViewDataSource {
 
         cell.contentView.subviews.forEach { $0.removeFromSuperview() }
 
-        // Configure the cell
         if indexPath.row == 0 {
             cell.contentView.addSubview(boxOfficeView)
             boxOfficeView.translatesAutoresizingMaskIntoConstraints = false
