@@ -9,11 +9,14 @@ import UIKit
 
 class SearchViewController: UIViewController, UICollectionViewDelegate, UISearchBarDelegate, SearchWordCellDelegate {
     
-    var showingMovieData: [MovieDataModel] = []
-    var updatedMovieData: [(MovieDataModel, Bool)] = []
-
     // MARK: - Properties
     var wordItems: Array = ["파묘", "시라노", "범죄도시", "신과 함께", "파묘", "시라노", "범죄도시", "신과 함께"]
+    
+    var showingMovieData: [MovieDataModel] = []
+    var updatedMovieData: [(MovieDataModel, Bool, Bool)] = []
+    
+    var reservable: Bool = false
+    var comming: Bool = false
     
     // MARK: - Outlets
     @IBOutlet weak var backButton: UIButton!
@@ -47,7 +50,8 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UISearch
         searchBar.backgroundColor = .clear
         searchBar.tintColor = UIColor(named: "DarkGreyColor")
         searchBar.searchTextField.textColor = UIColor(named: "BackColor")
-  
+        searchBar.delegate = self
+
         goSearchButton.layer.cornerRadius = 12
         
         if let textField = searchBar.value(forKey: "searchField") as? UITextField {
@@ -92,8 +96,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UISearch
             searchWordCollectionView.bottomAnchor.constraint(equalTo: searchWordView.bottomAnchor)
         ])
     }
-    
-    // MARK: - Setup Methods
+
     private func setupSuggestionCollectionView() {
         let screenWidth = suggestionView.bounds.width
         
@@ -123,6 +126,10 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UISearch
             suggestionCollectionView.bottomAnchor.constraint(equalTo: suggestionView.bottomAnchor)
         ])
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+         goSearchWordTapped()
+     }
         
     // MARK: - Button Actions
     @IBAction func goSearchWordTapped() {
@@ -134,11 +141,9 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UISearch
         SearchAPIManager.fetchDataFromAPI(searchString: searchString) { [weak self] movieData in
             guard let self = self else { return }
             
-            var searchResults: [(SearchDataModel, Bool)] = []
+            var searchResults: [(SearchDataModel, Bool, Bool)] = []
 
             if !movieData.isEmpty {
-                var reservable: Bool = false
-                
                 var processedMovieNames: Set<String> = []
                 var processedMovieID: Set<String> = []
 
@@ -155,6 +160,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UISearch
                     }
                     
                     if movie.prdtStatNm == "개봉" || movie.prdtStatNm == "기타" {
+                        comming = false
                         reservable = true
                     } else if movie.prdtStatNm == "개봉예정" {
                         reservable = false
@@ -164,22 +170,28 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UISearch
                     
                     print("영화명: \(movieName), 개봉 여부: \(reservable), 1년 이내 개봉 여부: \(isWithinOneYear)")
                     
-                    searchResults.append((movie, reservable))
+                    searchResults.append((movie, reservable, comming))
                     
                     processedMovieNames.insert(movieName)
                 }
 
-                var updatedMovieData: [(MovieDataModel, Bool)] = []
-                
+                var updatedMovieData: [(MovieDataModel, Bool, Bool)] = []
+
                 let dispatchGroup = DispatchGroup()
                 
-                for (data, reservable) in searchResults {
+                for (data, reservable, comming) in searchResults {
                     dispatchGroup.enter()
                     MovieAPIManager.fetchDataFromAPI(searchString: data.movieNm) { searchData in
-                        let moviesWithReservable = searchData.map { ($0, reservable) }
+                        let moviesWithReservable = searchData.map { movie in
+                            return (movie, reservable, comming)
+                        }
                         updatedMovieData.append(contentsOf: moviesWithReservable)
                         dispatchGroup.leave()
                         print("MovieAPIManagersearchDatasearchData \(updatedMovieData)")
+                        
+                        DispatchQueue.main.async {
+                            self.searchBar.resignFirstResponder()
+                        }
                     }
                 }
                 
@@ -190,6 +202,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UISearch
             } else {
                 DispatchQueue.main.async {
                     self.searchBar.text = ""
+                    self.searchBar.resignFirstResponder()
                     self.showAlert(message: "검색어가 일치하지 않습니다.")
                 }
             }
@@ -320,8 +333,8 @@ extension SearchViewController: UICollectionViewDataSource {
                     return UICollectionViewCell()
                 }
                 
-                let updatedMovie = updatedMovieData[indexPath.item].0 // updatedMovieData 배열의 첫 번째 요소에 접근
-                let imageUrl = "https://image.tmdb.org/t/p/w500/\(updatedMovie.posterPath ?? "")" // updatedMovie의 posterPath에 접근
+                let updatedMovie = updatedMovieData[indexPath.item].0
+                let imageUrl = "https://image.tmdb.org/t/p/w500/\(updatedMovie.posterPath ?? "")"
                 let title = updatedMovie.title ?? ""
                 cell.configure(with: imageUrl, title: title)
                 
@@ -351,7 +364,6 @@ extension SearchViewController: UICollectionViewDataSource {
             cell.titleLabel.text = word
             cell.delegate = self
             cell.indexPath = indexPath
-            cell.backgroundColor = .red
             
             return cell
         } else {
@@ -376,14 +388,13 @@ extension SearchViewController: UICollectionViewDataSource {
             return
         }
         
-        var reservable: Bool = false
         if !updatedMovieData.isEmpty {
             let updatedMovie = updatedMovieData[indexPath.item].0
-            reservable = updatedMovieData[indexPath.item].1 // 예약 가능 여부 업데이트
-            targetVC.selectedItem = (updatedMovie, reservable)
+            reservable = updatedMovieData[indexPath.item].1 
+            targetVC.selectedItem = (updatedMovie, reservable, comming)
         } else {
             let showingMovie = showingMovieData[indexPath.item]
-            targetVC.selectedItem = (showingMovie, reservable)
+            targetVC.selectedItem = (showingMovie, reservable, comming)
         }
 
         targetVC.modalPresentationStyle = .fullScreen

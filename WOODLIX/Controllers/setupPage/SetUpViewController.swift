@@ -19,24 +19,20 @@ class SetUpViewController: UIViewController {
     
     private var setUpTableView: UITableView!
     
-    // Data source for the table view
     let data = ["프로필 수정", "결제 관리", "포인트 충전", "Cell 4"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarUIdesign()
         
-        // Initialize table view
         setUpTableView = UITableView(frame: tableViewBox.bounds, style: .plain)
         setUpTableView.dataSource = self
         setUpTableView.delegate = self
         setUpTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         setUpTableView.backgroundColor = UIColor(named: "BackColor")
         
-        // Add table view to tableViewBox
         tableViewBox.addSubview(setUpTableView)
         
-        // Set up back button action
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
     }
     
@@ -45,6 +41,7 @@ class SetUpViewController: UIViewController {
         let cornerRadius: CGFloat = 24.0
         logOutBarView.layer.cornerRadius = cornerRadius
         logOutBarView.clipsToBounds = true
+        
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = logOutBarView.bounds
         gradientLayer.colors = [UIColor(red: 84/255, green: 148/255, blue: 216/255, alpha: 0.3).cgColor, UIColor.white.cgColor]
@@ -62,12 +59,11 @@ class SetUpViewController: UIViewController {
     @IBAction func logOutButtonTapped() {
          UserDefaults.standard.removeObject(forKey: authLoginID)
          
-         // Show alert
          let alert = UIAlertController(title: "로그아웃 완료", message: "로그아웃이 성공적으로 완료되었습니다.", preferredStyle: .alert)
          let okAction = UIAlertAction(title: "확인", style: .default) { _ in
-             // Navigate to sign up page
              self.navigateToSignUpPage()
          }
+        
          alert.addAction(okAction)
          present(alert, animated: true, completion: nil)
      }
@@ -78,6 +74,7 @@ class SetUpViewController: UIViewController {
              print("Failed to instantiate SignUpViewController from Main storyboard.")
              return
          }
+         
          signUpVC.modalPresentationStyle = .fullScreen
          present(signUpVC, animated: true, completion: nil)
      }
@@ -95,7 +92,6 @@ extension SetUpViewController: UITableViewDataSource {
         cell.textLabel?.textColor = UIColor(named: "WhiteColor")
         cell.backgroundColor = UIColor(named: "BackColor")
         
-        // Add separator line
         let separator = UIView(frame: CGRect(x: 15, y: cell.frame.height - 1, width: cell.frame.width + 20, height: 0.4))
         separator.backgroundColor = UIColor(named: "DarkGreyColor")
         cell.addSubview(separator)
@@ -107,7 +103,7 @@ extension SetUpViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension SetUpViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60 // 셀의 높이
+        return 60
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -120,6 +116,7 @@ extension SetUpViewController: UITableViewDelegate {
                 print("Failed to instantiate SignUpViewController from Main storyboard.")
                 return
             }
+            
             signUpVC.modalPresentationStyle = .fullScreen
             present(signUpVC, animated: true, completion: nil)
         case 1:
@@ -128,6 +125,7 @@ extension SetUpViewController: UITableViewDelegate {
                 print("Failed to instantiate SignUpViewController from Main storyboard.")
                 return
             }
+            
             signUpVC.modalPresentationStyle = .fullScreen
             present(signUpVC, animated: true, completion: nil)
         case 2:
@@ -136,6 +134,7 @@ extension SetUpViewController: UITableViewDelegate {
                 print("Failed to instantiate SignUpViewController from Main storyboard.")
                 return
             }
+            
             signUpVC.modalPresentationStyle = .fullScreen
             present(signUpVC, animated: true, completion: nil)
         default:

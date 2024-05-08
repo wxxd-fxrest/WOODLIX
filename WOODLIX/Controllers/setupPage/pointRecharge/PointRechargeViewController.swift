@@ -57,7 +57,6 @@ class PointRechargeViewController: UIViewController {
     
     // MARK: - Gesture Recognizer
     func setupGestures() {
-        // Add tap gesture recognizer to dismiss keyboard
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
     }

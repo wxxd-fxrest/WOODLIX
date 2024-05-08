@@ -19,6 +19,7 @@
 		0B49129B2BE6113900274B78 /* DetailCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B49129A2BE6113900274B78 /* DetailCellController.swift */; };
 		0B49129D2BE6368C00274B78 /* TicketDateCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B49129C2BE6368C00274B78 /* TicketDateCellController.swift */; };
 		0B49129F2BE636A100274B78 /* TicketTimeCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B49129E2BE636A100274B78 /* TicketTimeCellController.swift */; };
+		0B5140412BEB4462004349BB /* OttPurchaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5140402BEB4462004349BB /* OttPurchaseViewController.swift */; };
 		0B6A91872BDBBE2E003333F1 /* UserInfo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A91852BDBBE2E003333F1 /* UserInfo+CoreDataClass.swift */; };
 		0B6A91882BDBBE2E003333F1 /* UserInfo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6A91862BDBBE2E003333F1 /* UserInfo+CoreDataProperties.swift */; };
 		0B787AE52BDA2D2B006F45FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B787AE42BDA2D2B006F45FF /* AppDelegate.swift */; };
@@ -77,6 +78,7 @@
 		0B49129A2BE6113900274B78 /* DetailCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCellController.swift; sourceTree = "<group>"; };
 		0B49129C2BE6368C00274B78 /* TicketDateCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketDateCellController.swift; sourceTree = "<group>"; };
 		0B49129E2BE636A100274B78 /* TicketTimeCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketTimeCellController.swift; sourceTree = "<group>"; };
+		0B5140402BEB4462004349BB /* OttPurchaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OttPurchaseViewController.swift; sourceTree = "<group>"; };
 		0B6A91852BDBBE2E003333F1 /* UserInfo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserInfo+CoreDataClass.swift"; sourceTree = "<group>"; };
 		0B6A91862BDBBE2E003333F1 /* UserInfo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserInfo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0B787AE12BDA2D2B006F45FF /* WOODLIX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WOODLIX.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -317,6 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				0BDA23D72BE7471E007A2ED8 /* PointRechargeViewController.swift */,
+				0B5140402BEB4462004349BB /* OttPurchaseViewController.swift */,
 			);
 			path = pointRecharge;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				0B787B252BDA2EE4006F45FF /* CoreDataManager.swift in Sources */,
 				0B9415DC2BE3EFB400CBBD4F /* OttListCellController.swift in Sources */,
 				0B323B762BEA652A008F23FB /* StructManager.swift in Sources */,
+				0B5140412BEB4462004349BB /* OttPurchaseViewController.swift in Sources */,
 				0B323B722BE9B88B008F23FB /* BoxOfficeAPIManager.swift in Sources */,
 				0B787B212BDA2EDD006F45FF /* ProfileViewController.swift in Sources */,
 				0BDA23D32BE7419C007A2ED8 /* ProfileEditViewController.swift in Sources */,

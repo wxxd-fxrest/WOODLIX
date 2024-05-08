@@ -1815,10 +1815,16 @@
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="basicImage" translatesAutoresizingMaskIntoConstraints="NO" id="k6q-1G-GEh">
                                                         <rect key="frame" x="-30" y="-30" width="453" height="610"/>
                                                     </imageView>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pNL-fo-R2w">
-                                                        <rect key="frame" x="0.0" y="410" width="393" height="140"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6XM-z2-g4K" userLabel="Top Shadow Box View">
+                                                        <rect key="frame" x="0.0" y="-30" width="393" height="220"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="140" id="1z0-gS-G7F"/>
+                                                            <constraint firstAttribute="height" constant="220" id="lqZ-nt-nZ5"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pNL-fo-R2w">
+                                                        <rect key="frame" x="0.0" y="400" width="393" height="150"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="150" id="1z0-gS-G7F"/>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Neon Bible" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ymw-jS-RKY">
@@ -1924,14 +1930,23 @@
                                                                     <constraint firstAttribute="width" constant="60" id="bQW-lr-UHG"/>
                                                                 </constraints>
                                                             </imageView>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8OB-OC-Zc5">
+                                                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                            </button>
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="1LE-c9-Kae"/>
                                                             <constraint firstAttribute="width" constant="60" id="5lf-ff-xMT"/>
+                                                            <constraint firstAttribute="bottom" secondItem="8OB-OC-Zc5" secondAttribute="bottom" id="8GX-a1-Hty"/>
+                                                            <constraint firstItem="8OB-OC-Zc5" firstAttribute="leading" secondItem="prV-04-Puh" secondAttribute="leading" id="9RA-uV-AiR"/>
                                                             <constraint firstItem="cKx-G0-Ycd" firstAttribute="centerY" secondItem="prV-04-Puh" secondAttribute="centerY" id="ipj-ML-GnC"/>
                                                             <constraint firstItem="zRn-j6-N6G" firstAttribute="centerY" secondItem="prV-04-Puh" secondAttribute="centerY" id="kry-yr-R7J"/>
                                                             <constraint firstItem="cKx-G0-Ycd" firstAttribute="centerX" secondItem="prV-04-Puh" secondAttribute="centerX" id="n0W-cg-5pI"/>
                                                             <constraint firstItem="zRn-j6-N6G" firstAttribute="centerX" secondItem="prV-04-Puh" secondAttribute="centerX" id="rxd-PZ-vMD"/>
+                                                            <constraint firstAttribute="trailing" secondItem="8OB-OC-Zc5" secondAttribute="trailing" id="uXL-P1-IN7"/>
+                                                            <constraint firstItem="8OB-OC-Zc5" firstAttribute="top" secondItem="prV-04-Puh" secondAttribute="top" id="xwl-S2-JGL"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
@@ -1939,6 +1954,7 @@
                                                 <constraints>
                                                     <constraint firstItem="k6q-1G-GEh" firstAttribute="leading" secondItem="tm3-Kk-uom" secondAttribute="leading" constant="-30" id="3QG-GL-Dgj"/>
                                                     <constraint firstItem="Bew-OV-O28" firstAttribute="leading" secondItem="tm3-Kk-uom" secondAttribute="leading" id="49A-dM-8Ya"/>
+                                                    <constraint firstItem="6XM-z2-g4K" firstAttribute="top" secondItem="tm3-Kk-uom" secondAttribute="top" constant="-30" id="7Kn-Sh-blx"/>
                                                     <constraint firstItem="prV-04-Puh" firstAttribute="centerX" secondItem="tm3-Kk-uom" secondAttribute="centerX" id="7r4-5o-tru"/>
                                                     <constraint firstItem="k6q-1G-GEh" firstAttribute="centerX" secondItem="tm3-Kk-uom" secondAttribute="centerX" id="7ta-g5-cUt"/>
                                                     <constraint firstItem="k6q-1G-GEh" firstAttribute="top" secondItem="tm3-Kk-uom" secondAttribute="top" constant="-30" id="8IY-An-YFn"/>
@@ -1951,8 +1967,10 @@
                                                     <constraint firstAttribute="trailing" secondItem="Bew-OV-O28" secondAttribute="trailing" id="SCs-ac-wLW"/>
                                                     <constraint firstItem="Bew-OV-O28" firstAttribute="top" secondItem="Ymw-jS-RKY" secondAttribute="bottom" id="YYn-ci-s34"/>
                                                     <constraint firstItem="Xcg-ih-SRi" firstAttribute="leading" secondItem="tm3-Kk-uom" secondAttribute="leading" id="ZAH-f6-YCa"/>
+                                                    <constraint firstAttribute="trailing" secondItem="6XM-z2-g4K" secondAttribute="trailing" id="ez0-vX-aUH"/>
                                                     <constraint firstAttribute="trailing" secondItem="Xcg-ih-SRi" secondAttribute="trailing" id="gYS-u3-vAb"/>
                                                     <constraint firstAttribute="bottom" secondItem="k6q-1G-GEh" secondAttribute="bottom" constant="-30" id="gr0-mW-SOh"/>
+                                                    <constraint firstItem="6XM-z2-g4K" firstAttribute="leading" secondItem="tm3-Kk-uom" secondAttribute="leading" id="kqw-a5-wJ5"/>
                                                     <constraint firstItem="Xcg-ih-SRi" firstAttribute="top" secondItem="tm3-Kk-uom" secondAttribute="top" id="orm-xf-dLq"/>
                                                     <constraint firstItem="prV-04-Puh" firstAttribute="centerY" secondItem="tm3-Kk-uom" secondAttribute="centerY" id="qaB-co-TVi"/>
                                                     <constraint firstAttribute="trailing" secondItem="pNL-fo-R2w" secondAttribute="trailing" id="zRz-Yn-Gpq"/>
@@ -2111,15 +2129,158 @@
                         <outlet property="movieImageView" destination="k6q-1G-GEh" id="X2G-Yp-uff"/>
                         <outlet property="overviewBoxView" destination="TWm-R7-rZU" id="D4J-2r-pgn"/>
                         <outlet property="playButtonBackgroundView" destination="zRn-j6-N6G" id="XgX-dA-b0W"/>
+                        <outlet property="playButtonIcon" destination="cKx-G0-Ycd" id="PsV-jD-r9w"/>
                         <outlet property="shadowBoxView" destination="pNL-fo-R2w" id="ZLA-xe-sIl"/>
                         <outlet property="tabBarView" destination="nS4-J6-NFh" id="lbt-0q-rse"/>
+                        <outlet property="ticketButtonIcon" destination="Yzw-Jp-2ki" id="x25-Sn-zoc"/>
+                        <outlet property="ticketButtonLabel" destination="gTb-kr-QQP" id="jy5-hW-fnH"/>
                         <outlet property="ticketingButton" destination="ySC-nO-qWW" id="SFh-Rc-RxV"/>
                         <outlet property="titleLabel" destination="Ymw-jS-RKY" id="RZP-Jm-0GU"/>
+                        <outlet property="topShadowBoxView" destination="6XM-z2-g4K" id="FLE-NK-Dwr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZPZ-vp-Obo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-34" y="2044"/>
+        </scene>
+        <!--Ott Purchase View Controller-->
+        <scene sceneID="7PV-GQ-RMH">
+            <objects>
+                <viewController storyboardIdentifier="OttPurchaseView" id="Uyv-UU-yiQ" customClass="OttPurchaseViewController" customModule="WOODLIX" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cab-Vy-pf9">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uFb-LM-LkB">
+                                <rect key="frame" x="0.0" y="59" width="393" height="420"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Un7-rB-V19">
+                                        <rect key="frame" x="20" y="40" width="353" height="100"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVJ-hP-Oa2">
+                                                <rect key="frame" x="10" y="36" width="333" height="28.666666666666671"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                <color key="textColor" name="BackColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="pJk-L1-FND">
+                                                <rect key="frame" x="20" y="80.666666666666657" width="313" height="19.333333333333329"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현재 사용 가능 포인트 : " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sK6-wL-c9Z">
+                                                        <rect key="frame" x="0.0" y="0.0" width="153" height="19.333333333333332"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <color key="textColor" name="DarkGreyColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50,000p" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRc-dW-Izt">
+                                                        <rect key="frame" x="193" y="0.0" width="120" height="19.333333333333332"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="120" id="xO4-Ru-t71"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <color key="textColor" name="DarkGreyColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="pJk-L1-FND" secondAttribute="bottom" id="CYx-PF-MLj"/>
+                                            <constraint firstItem="iVJ-hP-Oa2" firstAttribute="leading" secondItem="Un7-rB-V19" secondAttribute="leading" constant="10" id="Elb-Cv-50r"/>
+                                            <constraint firstAttribute="trailing" secondItem="iVJ-hP-Oa2" secondAttribute="trailing" constant="10" id="Tv9-U8-lYG"/>
+                                            <constraint firstItem="pJk-L1-FND" firstAttribute="leading" secondItem="Un7-rB-V19" secondAttribute="leading" constant="20" id="ZeO-SU-eNE"/>
+                                            <constraint firstAttribute="trailing" secondItem="pJk-L1-FND" secondAttribute="trailing" constant="20" id="b4f-fw-6c5"/>
+                                            <constraint firstAttribute="height" constant="100" id="gx7-a4-9Uc"/>
+                                            <constraint firstItem="pJk-L1-FND" firstAttribute="top" secondItem="iVJ-hP-Oa2" secondAttribute="bottom" constant="16" id="lOV-No-Zlj"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="st8-yb-raM">
+                                        <rect key="frame" x="20" y="320" width="353" height="60"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAx-5e-5rz">
+                                                <rect key="frame" x="0.0" y="0.0" width="353" height="60"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="결제하기">
+                                                    <color key="titleColor" name="WhiteColor"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" name="YellowColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="rAx-5e-5rz" secondAttribute="bottom" id="197-Hf-Khh"/>
+                                            <constraint firstItem="rAx-5e-5rz" firstAttribute="top" secondItem="st8-yb-raM" secondAttribute="top" id="7Ks-Vs-Yw6"/>
+                                            <constraint firstAttribute="height" constant="60" id="Ogo-OF-TZa"/>
+                                            <constraint firstItem="rAx-5e-5rz" firstAttribute="leading" secondItem="st8-yb-raM" secondAttribute="leading" id="aMW-ZL-k2q"/>
+                                            <constraint firstAttribute="trailing" secondItem="rAx-5e-5rz" secondAttribute="trailing" id="hXN-iq-8jp"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JH4-4m-z9Z">
+                                        <rect key="frame" x="20" y="220" width="353" height="60"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="adh-BA-hdM">
+                                                <rect key="frame" x="20" y="18" width="313" height="24"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="소장" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L2l-f0-u5k">
+                                                        <rect key="frame" x="0.0" y="0.0" width="193" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9,900p" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I9y-O2-4g0">
+                                                        <rect key="frame" x="193" y="0.0" width="120" height="24"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="120" id="gkZ-it-vLe"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="adh-BA-hdM" secondAttribute="trailing" constant="20" id="0Vt-ds-sFk"/>
+                                            <constraint firstItem="adh-BA-hdM" firstAttribute="leading" secondItem="JH4-4m-z9Z" secondAttribute="leading" constant="20" id="1SY-pV-xkw"/>
+                                            <constraint firstItem="adh-BA-hdM" firstAttribute="centerX" secondItem="JH4-4m-z9Z" secondAttribute="centerX" id="JwO-Lf-RDv"/>
+                                            <constraint firstItem="adh-BA-hdM" firstAttribute="centerY" secondItem="JH4-4m-z9Z" secondAttribute="centerY" id="Ww2-fq-iX9"/>
+                                            <constraint firstAttribute="height" constant="60" id="y6u-de-dmg"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="JH4-4m-z9Z" firstAttribute="leading" secondItem="uFb-LM-LkB" secondAttribute="leading" constant="20" id="3UT-cH-t4v"/>
+                                    <constraint firstItem="st8-yb-raM" firstAttribute="centerX" secondItem="uFb-LM-LkB" secondAttribute="centerX" id="442-tQ-JQt"/>
+                                    <constraint firstItem="Un7-rB-V19" firstAttribute="leading" secondItem="uFb-LM-LkB" secondAttribute="leading" constant="20" id="QBH-Jj-nHs"/>
+                                    <constraint firstAttribute="height" constant="420" id="X12-Md-fFx"/>
+                                    <constraint firstItem="Un7-rB-V19" firstAttribute="top" secondItem="uFb-LM-LkB" secondAttribute="top" constant="40" id="Zuz-3r-6gS"/>
+                                    <constraint firstItem="st8-yb-raM" firstAttribute="leading" secondItem="uFb-LM-LkB" secondAttribute="leading" constant="20" id="fDm-oG-YG3"/>
+                                    <constraint firstItem="st8-yb-raM" firstAttribute="top" secondItem="JH4-4m-z9Z" secondAttribute="bottom" constant="40" id="hTa-Rw-owP"/>
+                                    <constraint firstAttribute="trailing" secondItem="JH4-4m-z9Z" secondAttribute="trailing" constant="20" id="j5C-Ip-v8c"/>
+                                    <constraint firstAttribute="trailing" secondItem="st8-yb-raM" secondAttribute="trailing" constant="20" id="oVv-qn-azS"/>
+                                    <constraint firstAttribute="trailing" secondItem="Un7-rB-V19" secondAttribute="trailing" constant="20" id="pgZ-lO-Qga"/>
+                                    <constraint firstAttribute="bottom" secondItem="st8-yb-raM" secondAttribute="bottom" constant="40" id="vya-SB-FIo"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="DCM-6R-YnX"/>
+                        <color key="backgroundColor" name="WhiteColor"/>
+                        <constraints>
+                            <constraint firstItem="uFb-LM-LkB" firstAttribute="top" secondItem="DCM-6R-YnX" secondAttribute="top" id="GVL-ch-iJ0"/>
+                            <constraint firstItem="uFb-LM-LkB" firstAttribute="leading" secondItem="DCM-6R-YnX" secondAttribute="leading" id="Mse-lt-9ap"/>
+                            <constraint firstItem="DCM-6R-YnX" firstAttribute="trailing" secondItem="uFb-LM-LkB" secondAttribute="trailing" id="mIH-0y-Zj1"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="movieNameLabel" destination="iVJ-hP-Oa2" id="lXc-U6-c47"/>
+                        <outlet property="priceBoxView" destination="JH4-4m-z9Z" id="Vwa-aH-BHe"/>
+                        <outlet property="saveButton" destination="st8-yb-raM" id="vh1-mW-HuC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5BW-Zv-v2S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-34" y="2756"/>
         </scene>
         <!--Ticketing View Controller-->
         <scene sceneID="0gH-ba-o4V">
@@ -2215,6 +2376,9 @@
                                                                         <state key="normal" title="B1">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="vXr-mn-wvC"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2237,6 +2401,9 @@
                                                                         <state key="normal" title="C1">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="4CD-gp-e5K"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2259,6 +2426,9 @@
                                                                         <state key="normal" title="D1">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="6NO-9C-5RC"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2296,6 +2466,9 @@
                                                                         <state key="normal" title="A1">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="3Jc-2m-tRZ"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2318,6 +2491,9 @@
                                                                         <state key="normal" title="B2">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="UAg-H8-wsV"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2340,6 +2516,9 @@
                                                                         <state key="normal" title="C2">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="kBP-F4-7hz"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2362,6 +2541,9 @@
                                                                         <state key="normal" title="D2">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="9I6-N1-v3z"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2384,6 +2566,9 @@
                                                                         <state key="normal" title="E1">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="fPo-2T-BTd"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2411,6 +2596,9 @@
                                                                         <state key="normal" title="A2">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="DCw-AQ-TS0"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2433,6 +2621,9 @@
                                                                         <state key="normal" title="B3">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="hTe-Mi-hZo"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2455,6 +2646,9 @@
                                                                         <state key="normal" title="C3">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="9So-AV-vbS"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2477,6 +2671,9 @@
                                                                         <state key="normal" title="D3">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="pJB-jo-rvs"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2499,6 +2696,9 @@
                                                                         <state key="normal" title="E2">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="zRb-kh-UUD"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2526,6 +2726,9 @@
                                                                         <state key="normal" title="A3">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="h8H-UJ-StE"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2548,6 +2751,9 @@
                                                                         <state key="normal" title="B4">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="fVR-Mp-7BF"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2570,6 +2776,9 @@
                                                                         <state key="normal" title="C4">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="2I9-Z5-M6E"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2592,6 +2801,9 @@
                                                                         <state key="normal" title="D4">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="1Ev-9z-FD9"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2614,6 +2826,9 @@
                                                                         <state key="normal" title="E3">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="X4Q-pG-8nJ"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2641,6 +2856,9 @@
                                                                         <state key="normal" title="A4">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="Q9n-Qk-7JI"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2663,6 +2881,9 @@
                                                                         <state key="normal" title="B5">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="TGz-Kz-gmW"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2685,6 +2906,9 @@
                                                                         <state key="normal" title="C5">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="zUm-RV-ps3"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2707,6 +2931,9 @@
                                                                         <state key="normal" title="D5">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="Hex-fe-F0e"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2729,6 +2956,9 @@
                                                                         <state key="normal" title="E4">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="4pe-B0-1j8"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2766,6 +2996,9 @@
                                                                         <state key="normal" title="A5">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="cqg-6m-EMx"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2788,6 +3021,9 @@
                                                                         <state key="normal" title="B6">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="zfx-XA-NSw"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2810,6 +3046,9 @@
                                                                         <state key="normal" title="C6">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="2eJ-J1-kz4"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2832,6 +3071,9 @@
                                                                         <state key="normal" title="D6">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="Rbh-5K-Nb8"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2854,6 +3096,9 @@
                                                                         <state key="normal" title="E5">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="shM-Gr-dQB"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2881,6 +3126,9 @@
                                                                         <state key="normal" title="A6">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="ike-qB-Sb5"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2903,6 +3151,9 @@
                                                                         <state key="normal" title="B7">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="a5Q-sS-vS3"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2925,6 +3176,9 @@
                                                                         <state key="normal" title="C7">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="1cH-ka-Y0y"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2947,6 +3201,9 @@
                                                                         <state key="normal" title="D7">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="Dg7-Q9-jai"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2969,6 +3226,9 @@
                                                                         <state key="normal" title="E6">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="Wfo-2p-zhp"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -2996,6 +3256,9 @@
                                                                         <state key="normal" title="A7">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="Hh9-j9-dco"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -3018,6 +3281,9 @@
                                                                         <state key="normal" title="B8">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="h7P-e1-Tee"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -3040,6 +3306,9 @@
                                                                         <state key="normal" title="C8">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="IDq-8C-0jk"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -3062,6 +3331,9 @@
                                                                         <state key="normal" title="D8">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="AuN-ok-1cR"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -3084,6 +3356,9 @@
                                                                         <state key="normal" title="E7">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="Asi-rv-IS6"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -3111,6 +3386,9 @@
                                                                         <state key="normal" title="A8">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="sMF-Ui-TNk"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -3133,6 +3411,9 @@
                                                                         <state key="normal" title="B9">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="Dc8-0X-Fbu"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -3155,6 +3436,9 @@
                                                                         <state key="normal" title="C9">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="RFt-c7-Lqj"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -3177,6 +3461,9 @@
                                                                         <state key="normal" title="D9">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="pUJ-fC-JKu"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -3199,6 +3486,9 @@
                                                                         <state key="normal" title="E8">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="KPk-Li-Sps"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -3231,6 +3521,9 @@
                                                                         <state key="normal" title="B10">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="0YA-kn-VKj"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -3253,6 +3546,9 @@
                                                                         <state key="normal" title="C10">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="5Fm-BM-THl"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -3275,6 +3571,9 @@
                                                                         <state key="normal" title="D10">
                                                                             <color key="titleColor" name="BackColor"/>
                                                                         </state>
+                                                                        <connections>
+                                                                            <action selector="seatButtonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="ewd-0U-SVe"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -3301,95 +3600,221 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ngi-n4-3Sf">
-                                <rect key="frame" x="0.0" y="452" width="393" height="400"/>
+                                <rect key="frame" x="0.0" y="418" width="393" height="434"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Date &amp; Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EX6-43-7cB">
-                                        <rect key="frame" x="115.33333333333333" y="20" width="162.66666666666669" height="21.666666666666671"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <rect key="frame" x="107.66666666666667" y="20" width="177.66666666666663" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="ZoK-M6-2l1"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <color key="textColor" name="RedColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Odh-IF-vwj">
-                                        <rect key="frame" x="0.0" y="53.666666666666686" width="393" height="160"/>
+                                        <rect key="frame" x="0.0" y="128" width="393" height="100"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="160" id="TBy-5z-qbP"/>
+                                            <constraint firstAttribute="height" constant="100" id="XK2-Ve-LYl"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6D2-J8-cjy">
-                                        <rect key="frame" x="0.0" y="213.66666666666663" width="393" height="64"/>
+                                        <rect key="frame" x="0.0" y="240" width="393" height="64"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="64" id="tL5-Nc-muJ"/>
+                                            <constraint firstAttribute="height" constant="64" id="2kj-C3-gm8"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SC6-ex-bl2">
-                                        <rect key="frame" x="153" y="287.66666666666663" width="220" height="54"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HKN-Zz-db5">
+                                        <rect key="frame" x="20" y="326" width="353" height="54"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gc-zg-YYE">
-                                                <rect key="frame" x="0.0" y="0.0" width="220" height="54"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="Buy Ticket">
-                                                    <color key="titleColor" name="WhiteColor"/>
-                                                </state>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" name="RedColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="4gc-zg-YYE" secondAttribute="bottom" id="0Vk-8E-8NV"/>
-                                            <constraint firstAttribute="trailing" secondItem="4gc-zg-YYE" secondAttribute="trailing" id="6PP-lB-wsR"/>
-                                            <constraint firstItem="4gc-zg-YYE" firstAttribute="top" secondItem="SC6-ex-bl2" secondAttribute="top" id="71C-QH-Rem"/>
-                                            <constraint firstAttribute="height" constant="54" id="PLq-QN-UjC"/>
-                                            <constraint firstItem="4gc-zg-YYE" firstAttribute="leading" secondItem="SC6-ex-bl2" secondAttribute="leading" id="hsn-C8-6BJ"/>
-                                            <constraint firstAttribute="width" constant="220" id="tWt-7n-W4O"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eu0-Nq-LoM">
-                                        <rect key="frame" x="4" y="287.66666666666663" width="139" height="54"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="aYV-fu-lFV">
-                                                <rect key="frame" x="16" y="6.6666666666667425" width="120" height="40.666666666666664"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eu0-Nq-LoM">
+                                                <rect key="frame" x="0.0" y="0.0" width="133" height="54"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHx-rK-igC">
-                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="17"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <color key="textColor" name="GreyColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30,000원" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x6o-3x-nBk">
-                                                        <rect key="frame" x="0.0" y="19" width="120" height="21.666666666666671"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="120" id="KwR-jf-eVb"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="aYV-fu-lFV">
+                                                        <rect key="frame" x="16" y="6.6666666666666288" width="120" height="40.666666666666664"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHx-rK-igC">
+                                                                <rect key="frame" x="0.0" y="0.0" width="120" height="17"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <color key="textColor" name="GreyColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30,000원" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x6o-3x-nBk">
+                                                                <rect key="frame" x="0.0" y="19" width="120" height="21.666666666666671"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="120" id="KwR-jf-eVb"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                                <color key="textColor" name="BackColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="aYV-fu-lFV" firstAttribute="centerY" secondItem="eu0-Nq-LoM" secondAttribute="centerY" id="Wbp-Iy-kf2"/>
+                                                    <constraint firstItem="aYV-fu-lFV" firstAttribute="leading" secondItem="eu0-Nq-LoM" secondAttribute="leading" constant="16" id="jup-kt-2Vg"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SC6-ex-bl2">
+                                                <rect key="frame" x="133" y="0.0" width="220" height="54"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4gc-zg-YYE">
+                                                        <rect key="frame" x="0.0" y="0.0" width="220" height="54"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="결제하기">
+                                                            <color key="titleColor" name="WhiteColor"/>
+                                                        </state>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" name="RedColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="4gc-zg-YYE" secondAttribute="trailing" id="6PP-lB-wsR"/>
+                                                    <constraint firstAttribute="bottom" secondItem="4gc-zg-YYE" secondAttribute="bottom" id="LjT-h3-d2l"/>
+                                                    <constraint firstAttribute="height" constant="54" id="PLq-QN-UjC"/>
+                                                    <constraint firstItem="4gc-zg-YYE" firstAttribute="top" secondItem="SC6-ex-bl2" secondAttribute="top" id="fem-I8-Tfj"/>
+                                                    <constraint firstItem="4gc-zg-YYE" firstAttribute="leading" secondItem="SC6-ex-bl2" secondAttribute="leading" id="hsn-C8-6BJ"/>
+                                                    <constraint firstAttribute="width" constant="220" id="tWt-7n-W4O"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iaY-8q-Nnv">
+                                        <rect key="frame" x="0.0" y="70" width="393" height="44"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yrL-Dr-swo">
+                                                <rect key="frame" x="14" y="6" width="340" height="30"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="chQ-sd-3I4">
+                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5i3-t8-wII">
+                                                                <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="30" id="neP-XI-iBs"/>
+                                                                </constraints>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                                <connections>
+                                                                    <action selector="buttonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="I9I-y1-jtt"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CGV" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZg-2s-Mea">
+                                                                <rect key="frame" x="35" y="6.6666666666666856" width="30.333333333333329" height="17"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                                <color key="textColor" name="WhiteColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" name="BlueColor"/>
+                                                        <constraints>
+                                                            <constraint firstItem="mZg-2s-Mea" firstAttribute="centerX" secondItem="chQ-sd-3I4" secondAttribute="centerX" id="Axg-WA-fib"/>
+                                                            <constraint firstItem="5i3-t8-wII" firstAttribute="centerY" secondItem="chQ-sd-3I4" secondAttribute="centerY" id="Q0g-8h-SbU"/>
+                                                            <constraint firstItem="5i3-t8-wII" firstAttribute="leading" secondItem="chQ-sd-3I4" secondAttribute="leading" id="TjB-aQ-VrA"/>
+                                                            <constraint firstItem="mZg-2s-Mea" firstAttribute="centerY" secondItem="chQ-sd-3I4" secondAttribute="centerY" id="YuQ-9a-nAj"/>
+                                                            <constraint firstItem="5i3-t8-wII" firstAttribute="centerX" secondItem="chQ-sd-3I4" secondAttribute="centerX" id="joK-S4-PUW"/>
+                                                            <constraint firstAttribute="bottom" secondItem="5i3-t8-wII" secondAttribute="bottom" id="mlr-fn-YT2"/>
+                                                            <constraint firstItem="5i3-t8-wII" firstAttribute="top" secondItem="chQ-sd-3I4" secondAttribute="top" id="odz-p1-EwR"/>
+                                                            <constraint firstAttribute="trailing" secondItem="5i3-t8-wII" secondAttribute="trailing" id="pxt-2e-Hm2"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4lX-0z-4kc">
+                                                        <rect key="frame" x="120" y="0.0" width="100" height="30"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9lF-Z1-nv0">
+                                                                <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="30" id="Hhn-Cu-QY1"/>
+                                                                </constraints>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                                <connections>
+                                                                    <action selector="buttonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="L1l-jb-6am"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mega Box" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SmR-s2-08N">
+                                                                <rect key="frame" x="17" y="6.6666666666666856" width="66" height="17"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                                <color key="textColor" name="WhiteColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" name="BlueColor"/>
+                                                        <constraints>
+                                                            <constraint firstItem="9lF-Z1-nv0" firstAttribute="top" secondItem="4lX-0z-4kc" secondAttribute="top" id="0aS-Hg-Uap"/>
+                                                            <constraint firstAttribute="bottom" secondItem="9lF-Z1-nv0" secondAttribute="bottom" id="FI7-KT-AXd"/>
+                                                            <constraint firstItem="9lF-Z1-nv0" firstAttribute="leading" secondItem="4lX-0z-4kc" secondAttribute="leading" id="MAq-tf-FLb"/>
+                                                            <constraint firstItem="SmR-s2-08N" firstAttribute="centerY" secondItem="4lX-0z-4kc" secondAttribute="centerY" id="NEf-Ih-xL6"/>
+                                                            <constraint firstAttribute="width" constant="100" id="a6A-qx-tiM"/>
+                                                            <constraint firstItem="9lF-Z1-nv0" firstAttribute="centerX" secondItem="4lX-0z-4kc" secondAttribute="centerX" id="hyJ-sO-Kog"/>
+                                                            <constraint firstAttribute="trailing" secondItem="9lF-Z1-nv0" secondAttribute="trailing" id="lEK-T8-7OI"/>
+                                                            <constraint firstItem="SmR-s2-08N" firstAttribute="centerX" secondItem="4lX-0z-4kc" secondAttribute="centerX" id="prB-Yy-aWc"/>
+                                                            <constraint firstItem="9lF-Z1-nv0" firstAttribute="centerY" secondItem="4lX-0z-4kc" secondAttribute="centerY" id="se0-c2-DXZ"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UHT-vB-Neb">
+                                                        <rect key="frame" x="240" y="0.0" width="100" height="30"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5K-u6-Bjp">
+                                                                <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                                <connections>
+                                                                    <action selector="buttonTapped:" destination="99T-Wo-arf" eventType="touchUpInside" id="cvG-nV-ym0"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="롯데 시네마" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2z-xS-1oc">
+                                                                <rect key="frame" x="18" y="6.6666666666666856" width="64.333333333333329" height="17"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                                <color key="textColor" name="WhiteColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" name="BlueColor"/>
+                                                        <constraints>
+                                                            <constraint firstItem="L5K-u6-Bjp" firstAttribute="leading" secondItem="UHT-vB-Neb" secondAttribute="leading" id="4PW-et-bnk"/>
+                                                            <constraint firstAttribute="bottom" secondItem="L5K-u6-Bjp" secondAttribute="bottom" id="7KF-zz-HfP"/>
+                                                            <constraint firstItem="L5K-u6-Bjp" firstAttribute="centerY" secondItem="UHT-vB-Neb" secondAttribute="centerY" id="KTo-hV-ewe"/>
+                                                            <constraint firstItem="L5K-u6-Bjp" firstAttribute="top" secondItem="UHT-vB-Neb" secondAttribute="top" id="LhL-wx-Mki"/>
+                                                            <constraint firstAttribute="height" constant="30" id="RPY-Eo-o4y"/>
+                                                            <constraint firstAttribute="width" constant="100" id="aQf-Pb-W9L"/>
+                                                            <constraint firstItem="Z2z-xS-1oc" firstAttribute="centerX" secondItem="UHT-vB-Neb" secondAttribute="centerX" id="aaE-fn-DDR"/>
+                                                            <constraint firstAttribute="trailing" secondItem="L5K-u6-Bjp" secondAttribute="trailing" id="e5E-GT-cy1"/>
+                                                            <constraint firstItem="L5K-u6-Bjp" firstAttribute="centerX" secondItem="UHT-vB-Neb" secondAttribute="centerX" id="eQ2-KO-JCU"/>
+                                                            <constraint firstItem="Z2z-xS-1oc" firstAttribute="centerY" secondItem="UHT-vB-Neb" secondAttribute="centerY" id="l7l-wA-fmC"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="4lX-0z-4kc" firstAttribute="centerY" secondItem="yrL-Dr-swo" secondAttribute="centerY" id="PLI-vO-t7D"/>
+                                                    <constraint firstItem="4lX-0z-4kc" firstAttribute="centerX" secondItem="yrL-Dr-swo" secondAttribute="centerX" id="Shi-Mc-1NV"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="54" id="Qpn-R0-qDZ"/>
-                                            <constraint firstItem="aYV-fu-lFV" firstAttribute="centerY" secondItem="eu0-Nq-LoM" secondAttribute="centerY" id="Wbp-Iy-kf2"/>
-                                            <constraint firstItem="aYV-fu-lFV" firstAttribute="leading" secondItem="eu0-Nq-LoM" secondAttribute="leading" constant="16" id="jup-kt-2Vg"/>
+                                            <constraint firstItem="yrL-Dr-swo" firstAttribute="leading" secondItem="iaY-8q-Nnv" secondAttribute="leading" constant="14" id="8gE-eA-a2F"/>
+                                            <constraint firstItem="yrL-Dr-swo" firstAttribute="top" secondItem="iaY-8q-Nnv" secondAttribute="top" constant="6" id="DDj-ac-Kb7"/>
+                                            <constraint firstAttribute="height" constant="44" id="Nv9-mz-AvF"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" name="WhiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="Odh-IF-vwj" firstAttribute="top" secondItem="EX6-43-7cB" secondAttribute="bottom" constant="12" id="0dI-Gi-BXl"/>
                                     <constraint firstItem="Odh-IF-vwj" firstAttribute="leading" secondItem="ngi-n4-3Sf" secondAttribute="leading" id="2wL-dP-JTy"/>
+                                    <constraint firstItem="HKN-Zz-db5" firstAttribute="top" secondItem="6D2-J8-cjy" secondAttribute="bottom" constant="22" id="4Je-i8-j4n"/>
                                     <constraint firstAttribute="trailing" secondItem="Odh-IF-vwj" secondAttribute="trailing" id="7th-Ba-tI1"/>
+                                    <constraint firstAttribute="trailing" secondItem="HKN-Zz-db5" secondAttribute="trailing" constant="20" id="9fH-MB-ANM"/>
                                     <constraint firstItem="EX6-43-7cB" firstAttribute="centerX" secondItem="ngi-n4-3Sf" secondAttribute="centerX" id="Bst-Id-evc"/>
-                                    <constraint firstItem="6D2-J8-cjy" firstAttribute="leading" secondItem="ngi-n4-3Sf" secondAttribute="leading" id="Htx-7V-5SX"/>
-                                    <constraint firstAttribute="height" constant="400" id="I0C-Li-NxC"/>
-                                    <constraint firstItem="eu0-Nq-LoM" firstAttribute="leading" secondItem="ngi-n4-3Sf" secondAttribute="leading" constant="4" id="P4p-DY-7G5"/>
-                                    <constraint firstItem="EX6-43-7cB" firstAttribute="top" secondItem="ngi-n4-3Sf" secondAttribute="top" constant="20" id="cRM-ab-xg8"/>
-                                    <constraint firstAttribute="trailing" secondItem="6D2-J8-cjy" secondAttribute="trailing" id="nNU-e4-Gd5"/>
-                                    <constraint firstItem="6D2-J8-cjy" firstAttribute="top" secondItem="Odh-IF-vwj" secondAttribute="bottom" id="u37-9L-DB4"/>
-                                    <constraint firstItem="SC6-ex-bl2" firstAttribute="leading" secondItem="eu0-Nq-LoM" secondAttribute="trailing" constant="10" id="uLR-zr-FeS"/>
-                                    <constraint firstItem="SC6-ex-bl2" firstAttribute="top" secondItem="6D2-J8-cjy" secondAttribute="bottom" constant="10" id="ulf-TT-kAD"/>
-                                    <constraint firstAttribute="trailing" secondItem="SC6-ex-bl2" secondAttribute="trailing" constant="20" id="y6O-GJ-fsn"/>
-                                    <constraint firstItem="eu0-Nq-LoM" firstAttribute="top" secondItem="6D2-J8-cjy" secondAttribute="bottom" constant="10" id="zW1-vy-fyd"/>
+                                    <constraint firstItem="iaY-8q-Nnv" firstAttribute="trailing" secondItem="Odh-IF-vwj" secondAttribute="trailing" id="Ckg-r9-4YM"/>
+                                    <constraint firstItem="6D2-J8-cjy" firstAttribute="leading" secondItem="ngi-n4-3Sf" secondAttribute="leading" id="Egh-R2-vRP"/>
+                                    <constraint firstItem="iaY-8q-Nnv" firstAttribute="top" secondItem="EX6-43-7cB" secondAttribute="bottom" constant="20" id="QEd-7B-Lou"/>
+                                    <constraint firstAttribute="height" constant="434" id="XZf-ox-jos"/>
+                                    <constraint firstItem="6D2-J8-cjy" firstAttribute="top" secondItem="Odh-IF-vwj" secondAttribute="bottom" constant="12" id="aIB-IT-BJQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="6D2-J8-cjy" secondAttribute="trailing" id="aZq-hC-wXx"/>
+                                    <constraint firstItem="HKN-Zz-db5" firstAttribute="leading" secondItem="ngi-n4-3Sf" secondAttribute="leading" constant="20" id="igZ-aJ-Nib"/>
+                                    <constraint firstItem="iaY-8q-Nnv" firstAttribute="leading" secondItem="Odh-IF-vwj" secondAttribute="leading" id="m6q-zw-Xee"/>
+                                    <constraint firstItem="EX6-43-7cB" firstAttribute="top" secondItem="ngi-n4-3Sf" secondAttribute="top" constant="20" id="wW1-B2-OYU"/>
+                                    <constraint firstItem="Odh-IF-vwj" firstAttribute="top" secondItem="iaY-8q-Nnv" secondAttribute="bottom" constant="14" id="xHq-jx-PBF"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -3399,9 +3824,9 @@
                             <constraint firstItem="oJc-qV-c3o" firstAttribute="leading" secondItem="nVe-fo-jrA" secondAttribute="leading" constant="79" id="Bdr-en-7ki"/>
                             <constraint firstItem="XtE-34-khW" firstAttribute="centerX" secondItem="ZGY-XX-Jmk" secondAttribute="centerX" id="Cb7-Uo-nJw"/>
                             <constraint firstItem="XtE-34-khW" firstAttribute="top" secondItem="oJc-qV-c3o" secondAttribute="bottom" constant="50" id="O2t-UU-7Nu"/>
-                            <constraint firstAttribute="bottom" secondItem="ngi-n4-3Sf" secondAttribute="bottom" id="POg-Ax-qmx"/>
                             <constraint firstItem="Rlv-Pm-fmS" firstAttribute="leading" secondItem="ZGY-XX-Jmk" secondAttribute="leading" id="R9g-T7-B65"/>
                             <constraint firstItem="Rlv-Pm-fmS" firstAttribute="centerX" secondItem="XtE-34-khW" secondAttribute="centerX" id="Wps-YY-cmu"/>
+                            <constraint firstAttribute="bottom" secondItem="ngi-n4-3Sf" secondAttribute="bottom" id="XNA-cZ-PMd"/>
                             <constraint firstItem="nVe-fo-jrA" firstAttribute="trailing" secondItem="ngi-n4-3Sf" secondAttribute="trailing" id="gmm-3P-Rpo"/>
                             <constraint firstItem="nVe-fo-jrA" firstAttribute="trailing" secondItem="oJc-qV-c3o" secondAttribute="trailing" constant="74" id="hhs-UL-WzO"/>
                             <constraint firstItem="Rlv-Pm-fmS" firstAttribute="top" secondItem="ZGY-XX-Jmk" secondAttribute="top" constant="70" id="iJk-5c-wfW"/>
@@ -3411,16 +3836,22 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="Ov7-1D-5oj" id="5Fx-1W-SV3"/>
+                        <outlet property="cgvButton" destination="5i3-t8-wII" id="Wod-f3-IaG"/>
+                        <outlet property="cinemaButton" destination="L5K-u6-Bjp" id="6I1-7x-UIe"/>
+                        <outlet property="magaBoxButton" destination="9lF-Z1-nv0" id="8JA-6h-jbh"/>
                         <outlet property="priceView" destination="eu0-Nq-LoM" id="2S0-Fc-BeD"/>
+                        <outlet property="selectCGVView" destination="chQ-sd-3I4" id="TQh-Vm-R53"/>
+                        <outlet property="selectCINEMAView" destination="UHT-vB-Neb" id="hnl-wn-cCo"/>
                         <outlet property="selectDateView" destination="Odh-IF-vwj" id="5qo-Sn-X1e"/>
+                        <outlet property="selectMEGAView" destination="4lX-0z-4kc" id="IeG-4y-TsL"/>
                         <outlet property="selectModalView" destination="ngi-n4-3Sf" id="sxt-Fa-yA3"/>
-                        <outlet property="selectTimeView" destination="6D2-J8-cjy" id="A7u-hO-mfz"/>
+                        <outlet property="selectTimeView" destination="6D2-J8-cjy" id="Pqo-Wk-YTJ"/>
                         <outlet property="ticketingButtonView" destination="SC6-ex-bl2" id="4HJ-Os-L2D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="88M-nO-KwU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="687.78625954198469" y="2043.661971830986"/>
+            <point key="canvasLocation" x="687.78625954198469" y="2755.6338028169016"/>
         </scene>
         <!--Profile Edit View Controller-->
         <scene sceneID="Pah-GK-axs">
@@ -4428,6 +4859,9 @@
         <image name="point" width="14" height="14"/>
         <namedColor name="BackColor">
             <color red="0.027000000700354576" green="0.050999999046325684" blue="0.12200000137090683" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="BlueColor">
+            <color red="0.38823530080000002" green="0.57254904510000004" blue="0.82745099070000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="DarkGreyColor">
             <color red="0.49000000953674316" green="0.50300002098083496" blue="0.51399999856948853" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

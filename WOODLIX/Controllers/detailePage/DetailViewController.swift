@@ -9,33 +9,65 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    var selectedItem: (movie: MovieDataModel, reservable: Bool)?
+    var selectedItem: (movie: MovieDataModel, reservable: Bool, comming: Bool)?
 
     // MARK: - Outlets
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarView: UIView!
+    
+    @IBOutlet weak var topShadowBoxView: UIView!
     @IBOutlet weak var shadowBoxView: UIView!
     
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     
+    @IBOutlet weak var playButtonIcon: UIImageView!
     @IBOutlet weak var playButtonBackgroundView: UIView!
     
     @IBOutlet weak var overviewBoxView: UIView!
     
+    @IBOutlet weak var ticketButtonIcon: UIImageView!
+    @IBOutlet weak var ticketButtonLabel: UILabel!
     @IBOutlet weak var ticketingButton: UIButton!
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         if let selectedItem = selectedItem {
-             let imageUrl = "https://image.tmdb.org/t/p/w500/\(selectedItem.movie.posterPath ?? "")"
-             configure(with: imageUrl, title: selectedItem.movie.originalTitle)
+            let imageUrl = "https://image.tmdb.org/t/p/w500/\(selectedItem.movie.posterPath ?? "")"
+            configure(with: imageUrl, title: selectedItem.movie.originalTitle)
             addOverviewLabel(overview: selectedItem.movie.overview)
-         }
+        }
         
-        print("selectedItemselectedItem \(selectedItem)")
+        // reservable = true // 예매 가능
+        // reservable = false // 예매 불가능
+        // comming = true // comming soon
+        if let selectedItem = selectedItem {
+            let movie = selectedItem.movie
+            let reservable = selectedItem.reservable
+            let comming = selectedItem.comming
+            
+            print("Movie: \(movie)")
+            print("Reservable: \(reservable)")
+            print("Comming: \(comming)")
+            
+            if reservable {
+                playButtonIcon.isHidden = true
+                ticketButtonLabel.text = "바로 예매"
+             } else if comming {
+                 playButtonIcon.isHidden = true
+                 ticketButtonIcon.image = UIImage(named: "Fire")
+                 ticketButtonLabel.text = "Comming Soon"
+             } else {
+                 ticketButtonIcon.image = UIImage(named: "Play")
+                 ticketButtonLabel.text = "OTT 구매"
+             }
+        } else {
+            print("Selected item is nil")
+        }
+
         tabBarUIdesign()
+        topShadowBoxUIdesign()
         shadowBoxUIdesign()
 
         playButtonBackgroundView.layer.cornerRadius = min(playButtonBackgroundView.bounds.width, playButtonBackgroundView.bounds.height) / 2
@@ -51,18 +83,28 @@ class DetailViewController: UIViewController {
         tabBarView.clipsToBounds = true
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = tabBarView.bounds
-        gradientLayer.colors = [UIColor(red: 84/255, green: 148/255, blue: 216/255, alpha: 0.3).cgColor, UIColor.white.cgColor]
+        gradientLayer.colors = [UIColor(red: 84/255, green: 148/255, blue: 216/255, alpha: 0.5).cgColor, UIColor.white.cgColor]
         gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
         gradientLayer.endPoint = CGPoint(x: 4.0, y: 0.3)
         
         tabBarView.layer.insertSublayer(gradientLayer, at: 0)
     }
     
+    func topShadowBoxUIdesign() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = topShadowBoxView.bounds
+        gradientLayer.colors = [UIColor(red: 6/255, green: 13/255, blue: 32/255, alpha: 1.0).cgColor, UIColor(red: 6/255, green: 13/255, blue: 32/255, alpha: 0.0).cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradientLayer.endPoint = CGPoint(x: 0.0, y: 0.8)
+        
+        topShadowBoxView.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
     func shadowBoxUIdesign() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = shadowBoxView.bounds
         gradientLayer.colors = [UIColor(red: 6/255, green: 13/255, blue: 32/255, alpha: 1.0).cgColor, UIColor(red: 6/255, green: 13/255, blue: 32/255, alpha: 0.0).cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.6)
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 1)
         gradientLayer.endPoint = CGPoint(x: 0.0, y: 0.0)
         
         shadowBoxView.layer.insertSublayer(gradientLayer, at: 0)
@@ -142,17 +184,41 @@ class DetailViewController: UIViewController {
             }
         }.resume()
     }
-
     
     // MARK: - Tab Button Actions
     @IBAction func navigateToMainPage() {
-        let targetStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let targetVC = targetStoryboard.instantiateViewController(withIdentifier: "TicketingView") as? TicketingViewController else {
-            print("Failed to instantiate MainPageViewController from UserStoryboard.")
-            return
+        if let selectedItem = selectedItem {
+            if selectedItem.reservable {
+                let targetStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                guard let targetVC = targetStoryboard.instantiateViewController(withIdentifier: "TicketingView") as? TicketingViewController else {
+                    print("Failed to instantiate MainPageViewController from UserStoryboard.")
+                    return
+                }
+                
+                targetVC.selectedItem = selectedItem
+                targetVC.modalPresentationStyle = .fullScreen
+                present(targetVC, animated: true, completion: nil)
+            } else if selectedItem.comming {
+                let alert = UIAlertController(title: nil, message: "개봉 후 예매가 가능합니다.", preferredStyle: .alert)
+                present(alert, animated: true) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        alert.dismiss(animated: true, completion: nil)
+                    }
+                }
+            } else {
+                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                let bottomSheetVC = storyboard.instantiateViewController(identifier: "OttPurchaseView") as! OttPurchaseViewController
+                bottomSheetVC.selectedItem = selectedItem
+
+                guard let sheet = bottomSheetVC.presentationController as? UISheetPresentationController else {
+                    return
+                }
+
+                sheet.detents = [.medium()]
+                sheet.prefersGrabberVisible = true
+
+                self.present(bottomSheetVC, animated: true)
+            }
         }
-        
-        targetVC.modalPresentationStyle = .fullScreen
-        present(targetVC, animated: true, completion: nil)
     }
 }

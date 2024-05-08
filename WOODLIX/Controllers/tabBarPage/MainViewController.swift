@@ -8,6 +8,15 @@
 import UIKit
 
 class MainViewController: UIViewController, UITableViewDelegate {
+    // MARK: - Outlets
+    @IBOutlet weak var headerStackView: UIStackView!
+    @IBOutlet weak var searchIcon: UIImageView!
+
+    @IBOutlet weak var boxOfficeView: UIView!
+    @IBOutlet weak var commingSoonView: UIView!
+    @IBOutlet weak var showingView: UIView!
+    @IBOutlet weak var ottView: UIView!
+    
     // MARK: - Properties
     let boxofficeList: String = "boxoffice"
     let movieList: String = "movie"
@@ -25,16 +34,6 @@ class MainViewController: UIViewController, UITableViewDelegate {
     var showingMovieData: [MovieDataModel] = []
     var ottMovieData: [MovieDataModel] = []
 
-
-    // MARK: - Outlets
-    @IBOutlet weak var headerStackView: UIStackView!
-    @IBOutlet weak var searchIcon: UIImageView!
-
-    @IBOutlet weak var boxOfficeView: UIView!
-    @IBOutlet weak var commingSoonView: UIView!
-    @IBOutlet weak var showingView: UIView!
-    @IBOutlet weak var ottView: UIView!
-    
     private var boxOfficCollectionView: UICollectionView!
     private var commingSoonCollectionView: UICollectionView!
     private var showingCollectionView: UICollectionView!
@@ -47,7 +46,17 @@ class MainViewController: UIViewController, UITableViewDelegate {
     private var showingViewHeight: CGFloat = 0
     private var ottViewHeight: CGFloat = 0
 
+    var activityIndicator: UIActivityIndicatorView!
+
     // MARK: - Setup Methods
+    private func setupActivityIndicator() {
+        activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.color = .gray
+        activityIndicator.center = view.center
+        activityIndicator.hidesWhenStopped = true
+        view.addSubview(activityIndicator)
+    }
+    
     private func setupBoxOfficeCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -204,6 +213,7 @@ class MainViewController: UIViewController, UITableViewDelegate {
     // MARK: - View Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupActivityIndicator()
 
         setupBoxOfficeCollectionView()
         setupCommingSoonCollectionView()
@@ -212,6 +222,9 @@ class MainViewController: UIViewController, UITableViewDelegate {
         setupTableView()
         tableView.register(MovieTableViewCellController.self, forCellReuseIdentifier: "tableCell")
 
+        // API 요청 시작 전에 로딩 인디케이터 시작
+        activityIndicator.startAnimating()
+        
         // MARK: - APIMAnager
         BoxOfficeAPIManager.fetchDataFromAPI { [weak self] boxOfficeData in
             guard let self = self else { return }
@@ -297,6 +310,8 @@ class MainViewController: UIViewController, UITableViewDelegate {
                     self.commingSoonCollectionView.reloadData()
                     self.showingCollectionView.reloadData()
                     self.ottCollectionView.reloadData()
+                    
+                    self.activityIndicator.stopAnimating()
                 }
                 
                 print("COMMING SOON: \(commingSoonMovies)")
@@ -380,7 +395,7 @@ class MainViewController: UIViewController, UITableViewDelegate {
 
         let itemWidth = layout.itemSize.width + layout.minimumInteritemSpacing
         let proposedOffset = targetContentOffset.pointee
-        let proposedPageIndex = round((proposedOffset.x + layout.minimumInteritemSpacing) / itemWidth) // Add layout.minimumInteritemSpacing
+        let proposedPageIndex = round((proposedOffset.x + layout.minimumInteritemSpacing) / itemWidth)
         let targetX = proposedPageIndex * itemWidth
 
         let updatedTargetOffset = CGPoint(x: targetX, y: proposedOffset.y)
@@ -394,7 +409,7 @@ class MainViewController: UIViewController, UITableViewDelegate {
 
         let itemWidth = layout.itemSize.width + layout.minimumInteritemSpacing
         let proposedOffset = targetContentOffset.pointee
-        let proposedPageIndex = round((proposedOffset.x + layout.minimumInteritemSpacing) / itemWidth) // Add layout.minimumInteritemSpacing
+        let proposedPageIndex = round((proposedOffset.x + layout.minimumInteritemSpacing) / itemWidth)
         let targetX = proposedPageIndex * itemWidth
 
         let updatedTargetOffset = CGPoint(x: targetX, y: proposedOffset.y)
@@ -417,6 +432,18 @@ class MainViewController: UIViewController, UITableViewDelegate {
     
     // MARK: - Gesture Recognizer
     @objc func navigateToSearchPage() {
+        // showingMovieData가 아직 로드되지 않은 경우, 로딩 인디케이터를 표시하고 데이터를 기다림
+        guard !showingMovieData.isEmpty else {
+            // API 요청 시작 전에 로딩 인디케이터 시작
+            activityIndicator.startAnimating()
+            return
+        }
+
+        // showingMovieData가 이미 로드된 경우, 검색 페이지로 이동
+        presentSearchViewController()
+    }
+
+    private func presentSearchViewController() {
         let targetStoryboard = UIStoryboard(name: "Main", bundle: nil)
         guard let targetVC = targetStoryboard.instantiateViewController(withIdentifier: "SearchView") as? SearchViewController else {
             print("Failed to instantiate MainPageViewController from UserStoryboard.")
@@ -444,16 +471,18 @@ extension MainViewController: UICollectionViewDelegate {
         
         // 아이템 전달
         var reservable: Bool = false
+        var comming: Bool = false
         if collectionView == boxOfficCollectionView {
             reservable = true
-            targetVC.selectedItem = (boxOfficeMovieData[indexPath.item], reservable)
+            targetVC.selectedItem = (boxOfficeMovieData[indexPath.item], reservable, comming)
         } else if collectionView == commingSoonCollectionView {
-            targetVC.selectedItem = (commingSoonMovieData[indexPath.item], reservable)
+            comming = true
+            targetVC.selectedItem = (commingSoonMovieData[indexPath.item], reservable, comming)
         } else if collectionView == showingCollectionView {
             reservable = true
-            targetVC.selectedItem = (showingMovieData[indexPath.item], reservable)
+            targetVC.selectedItem = (showingMovieData[indexPath.item], reservable, comming)
         } else if collectionView == ottCollectionView {
-            targetVC.selectedItem = (ottMovieData[indexPath.item], reservable)
+            targetVC.selectedItem = (ottMovieData[indexPath.item], reservable, comming)
         }
 
         targetVC.modalPresentationStyle = .fullScreen
