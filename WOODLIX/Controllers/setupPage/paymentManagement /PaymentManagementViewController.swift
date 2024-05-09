@@ -27,14 +27,7 @@ class PaymentManagementViewController: UIViewController {
         let cornerRadius: CGFloat = 24.0
         addCardBarView.layer.cornerRadius = cornerRadius
         addCardBarView.clipsToBounds = true
-        
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = addCardBarView.bounds
-        gradientLayer.colors = [UIColor(red: 84/255, green: 148/255, blue: 216/255, alpha: 0.3).cgColor, UIColor.white.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 4.0, y: 0.3)
-        
-        addCardBarView.layer.insertSublayer(gradientLayer, at: 0)
+        addCardBarView.backgroundColor = UIColor(named: "TabColor")?.withAlphaComponent(0.9)
     }
     
     // MARK: - Gesture Recognizer

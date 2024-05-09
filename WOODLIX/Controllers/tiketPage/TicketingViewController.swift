@@ -38,7 +38,10 @@ class TicketingViewController: UIViewController, UICollectionViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("TicketingViewController \(selectedItem)")
-
+        cgvButton.backgroundColor = UIColor(named: "RedColor")?.withAlphaComponent(0.5)
+        magaBoxButton.backgroundColor = UIColor(named: "RedColor")?.withAlphaComponent(0.5)
+        cinemaButton.backgroundColor = UIColor(named: "RedColor")?.withAlphaComponent(0.5)
+        
         selectCGVView.layer.cornerRadius = 4
         selectMEGAView.layer.cornerRadius = 4
         selectCINEMAView.layer.cornerRadius = 4
@@ -114,20 +117,20 @@ class TicketingViewController: UIViewController, UICollectionViewDelegate {
         for button in [cgvButton, magaBoxButton, cinemaButton] {
             if let button = button {
                 button.layer.cornerRadius = 4
-                button.backgroundColor = UIColor(named: "BlueColor")
+                button.backgroundColor = UIColor(named: "RedColor")?.withAlphaComponent(0.5)
             }
         }
         
         sender.layer.cornerRadius = 4
-        sender.backgroundColor = UIColor(named: "RedColor")
+        sender.backgroundColor = UIColor(named: "RedColor")?.withAlphaComponent(1.0)
         
         var selectedButtonText = ""
         if sender == cgvButton {
             selectedButtonText = "CGV"
         } else if sender == magaBoxButton {
-            selectedButtonText = "MagaBox"
+            selectedButtonText = "Maga Box"
         } else if sender == cinemaButton {
-            selectedButtonText = "Cinema"
+            selectedButtonText = "롯데 시네마"
         }
         
         print("Selected button: \(selectedButtonText)")
@@ -170,6 +173,42 @@ class TicketingViewController: UIViewController, UICollectionViewDelegate {
         let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func ticketingButtonPressed(_ sender: UIButton) {
+        let alert = UIAlertController(title: "결제 안내", message: "결제를 진행하시겠습니까?", preferredStyle: .alert)
+        
+        let yesAction = UIAlertAction(title: "Yes", style: .default) { _ in
+            self.showCompletionAlert()
+        }
+        
+        let noAction = UIAlertAction(title: "No", style: .cancel) { _ in
+            self.showCancellationNotification()
+        }
+        
+        alert.addAction(yesAction)
+        alert.addAction(noAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+
+    func showCancellationNotification() {
+        let alert = UIAlertController(title: nil, message: "예매가 취소되었습니다.", preferredStyle: .alert)
+        present(alert, animated: true) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                alert.dismiss(animated: true, completion: nil)
+            }
+        }
+        print("Reservation cancelled.")
+    }
+    
+    func showCompletionAlert() {
+        let completionAlert = UIAlertController(title: "결제 안내", message: "결제가 완료되었습니다.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            self.dismiss(animated: true, completion: nil)
+        }
+        completionAlert.addAction(okAction)
+        present(completionAlert, animated: true, completion: nil)
     }
 }
 

@@ -15,6 +15,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarView: UIView!
     
+    @IBOutlet weak var wishButton: UIButton!
+    
     @IBOutlet weak var topShadowBoxView: UIView!
     @IBOutlet weak var shadowBoxView: UIView!
     
@@ -30,6 +32,11 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var ticketButtonLabel: UILabel!
     @IBOutlet weak var ticketingButton: UIButton!
     
+    var isWishListed = false
+
+    let heartImage = UIImage(systemName: "heart")
+    let heartFillImage = UIImage(systemName: "heart.fill")
+
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,13 +88,7 @@ class DetailViewController: UIViewController {
         let cornerRadius: CGFloat = 24.0
         tabBarView.layer.cornerRadius = cornerRadius
         tabBarView.clipsToBounds = true
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = tabBarView.bounds
-        gradientLayer.colors = [UIColor(red: 84/255, green: 148/255, blue: 216/255, alpha: 0.5).cgColor, UIColor.white.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 4.0, y: 0.3)
-        
-        tabBarView.layer.insertSublayer(gradientLayer, at: 0)
+        tabBarView.backgroundColor = UIColor(named: "TabColor")?.withAlphaComponent(0.9)
     }
     
     func topShadowBoxUIdesign() {
@@ -186,6 +187,20 @@ class DetailViewController: UIViewController {
     }
     
     // MARK: - Tab Button Actions
+    @IBAction func wishListButtonTapped(_ sender: UIButton) {
+        isWishListed.toggle()
+        
+        if isWishListed {
+            wishButton.setImage(heartFillImage, for: .normal)
+        } else {
+            wishButton.setImage(heartImage, for: .normal)
+        }
+        
+        print("Is wish listed: \(isWishListed)")
+        let currentStateImage = wishButton.image(for: .normal)
+        print("Current button image: \(currentStateImage)")
+    }
+    
     @IBAction func navigateToMainPage() {
         if let selectedItem = selectedItem {
             if selectedItem.reservable {

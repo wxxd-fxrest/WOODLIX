@@ -1242,6 +1242,7 @@
                         <outlet property="ottListView" destination="837-me-0x6" id="hel-Z1-zLX"/>
                         <outlet property="profileImage" destination="xmu-hL-pWe" id="DGe-3o-5bI"/>
                         <outlet property="setUpButton" destination="xe7-vz-RwG" id="MWz-x6-Udo"/>
+                        <outlet property="userNameLabel" destination="A8k-PT-MqC" id="ki7-PL-QPH"/>
                         <outlet property="wishListButton" destination="CEu-hJ-a0W" id="Sw6-IQ-1t3"/>
                     </connections>
                 </viewController>
@@ -2059,9 +2060,12 @@
                                             <constraint firstAttribute="width" constant="50" id="5d8-Od-nFi"/>
                                             <constraint firstAttribute="height" constant="50" id="cRz-iS-CSZ"/>
                                         </constraints>
-                                        <color key="tintColor" name="WhiteColor"/>
+                                        <color key="tintColor" name="RedColor"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="heart.fill" catalog="system"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
+                                        <connections>
+                                            <action selector="wishListButtonTapped:" destination="jc6-RW-vTL" eventType="touchUpInside" id="k9l-qr-YDY"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -2137,6 +2141,7 @@
                         <outlet property="ticketingButton" destination="ySC-nO-qWW" id="SFh-Rc-RxV"/>
                         <outlet property="titleLabel" destination="Ymw-jS-RKY" id="RZP-Jm-0GU"/>
                         <outlet property="topShadowBoxView" destination="6XM-z2-g4K" id="FLE-NK-Dwr"/>
+                        <outlet property="wishButton" destination="d15-rm-ku9" id="dki-Am-lRl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZPZ-vp-Obo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3665,6 +3670,9 @@
                                                         <state key="normal" title="결제하기">
                                                             <color key="titleColor" name="WhiteColor"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="ticketingButtonPressed:" destination="99T-Wo-arf" eventType="touchUpInside" id="o8E-lB-Nvq"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" name="RedColor"/>
@@ -3706,7 +3714,6 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" name="BlueColor"/>
                                                         <constraints>
                                                             <constraint firstItem="mZg-2s-Mea" firstAttribute="centerX" secondItem="chQ-sd-3I4" secondAttribute="centerX" id="Axg-WA-fib"/>
                                                             <constraint firstItem="5i3-t8-wII" firstAttribute="centerY" secondItem="chQ-sd-3I4" secondAttribute="centerY" id="Q0g-8h-SbU"/>
@@ -3739,7 +3746,6 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" name="BlueColor"/>
                                                         <constraints>
                                                             <constraint firstItem="9lF-Z1-nv0" firstAttribute="top" secondItem="4lX-0z-4kc" secondAttribute="top" id="0aS-Hg-Uap"/>
                                                             <constraint firstAttribute="bottom" secondItem="9lF-Z1-nv0" secondAttribute="bottom" id="FI7-KT-AXd"/>
@@ -3770,7 +3776,6 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" name="BlueColor"/>
                                                         <constraints>
                                                             <constraint firstItem="L5K-u6-Bjp" firstAttribute="leading" secondItem="UHT-vB-Neb" secondAttribute="leading" id="4PW-et-bnk"/>
                                                             <constraint firstAttribute="bottom" secondItem="L5K-u6-Bjp" secondAttribute="bottom" id="7KF-zz-HfP"/>
@@ -4853,15 +4858,13 @@
         <image name="circle" catalog="system" width="128" height="123"/>
         <image name="e517ecec9cd1fe162ebb67ec3acbf702" width="605" height="899"/>
         <image name="eye" catalog="system" width="128" height="79"/>
+        <image name="heart" catalog="system" width="128" height="107"/>
         <image name="heart.fill" catalog="system" width="128" height="107"/>
         <image name="mapArrow" width="14" height="14"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
         <image name="point" width="14" height="14"/>
         <namedColor name="BackColor">
             <color red="0.027000000700354576" green="0.050999999046325684" blue="0.12200000137090683" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
-        <namedColor name="BlueColor">
-            <color red="0.38823530080000002" green="0.57254904510000004" blue="0.82745099070000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="DarkGreyColor">
             <color red="0.49000000953674316" green="0.50300002098083496" blue="0.51399999856948853" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

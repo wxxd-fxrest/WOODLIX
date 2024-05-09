@@ -9,6 +9,13 @@ import UIKit
 
 class OTTListViewController: UIViewController, UICollectionViewDelegate {
     
+    var ottPurchaseListArray: [(
+        originalTitle: String,
+        title: String,
+        id: Int,
+        posterPath: String?
+    )] = []
+    
     // MARK: - Outlets
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var ottListView: UIView!
@@ -17,6 +24,9 @@ class OTTListViewController: UIViewController, UICollectionViewDelegate {
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("ProfileViewController -> OTTListViewController: \(ottPurchaseListArray)")
+        
         setupOTTListCollectionView()
         ottListCollectionView.showsVerticalScrollIndicator = false
         
@@ -62,17 +72,26 @@ class OTTListViewController: UIViewController, UICollectionViewDelegate {
 extension OTTListViewController: UICollectionViewDataSource {
     // MARK: - UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return ottPurchaseListArray.count
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == ottListCollectionView {
+            guard indexPath.item < ottPurchaseListArray.count else {
+                return UICollectionViewCell()
+            }
+            
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OTTListCell", for: indexPath) as? OTTListCellController else {
                 return UICollectionViewCell()
             }
             
-            cell.titleLabel.text = "123"
-            cell.backgroundColor = .red
+            let commingSoonMovie = ottPurchaseListArray[indexPath.item]
+            
+            let imageUrl = "https://image.tmdb.org/t/p/w500/\(commingSoonMovie.posterPath ?? "")"
+            let title = commingSoonMovie.originalTitle ?? ""
+            
+            cell.configure(with: imageUrl, title: title)
             
             return cell
         } else {

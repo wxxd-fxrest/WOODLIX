@@ -8,6 +8,7 @@
 import UIKit
 
 class MainViewController: UIViewController, UITableViewDelegate {
+    
     // MARK: - Outlets
     @IBOutlet weak var headerStackView: UIStackView!
     @IBOutlet weak var searchIcon: UIImageView!
@@ -213,6 +214,7 @@ class MainViewController: UIViewController, UITableViewDelegate {
     // MARK: - View Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupActivityIndicator()
 
         setupBoxOfficeCollectionView()
@@ -314,13 +316,13 @@ class MainViewController: UIViewController, UITableViewDelegate {
                     self.activityIndicator.stopAnimating()
                 }
                 
-                print("COMMING SOON: \(commingSoonMovies)")
-                print("SHOWING: \(showingMovies)")
-                print("OTT: \(ottMovies)")
-                
-                print("Comming Soon Movie Data: \(self.commingSoonMovieData)")
-                print("Showing Movie Data: \(self.showingMovieData)")
-                print("OTT Movie Data: \(self.ottMovieData)")
+//                print("COMMING SOON: \(commingSoonMovies)")
+//                print("SHOWING: \(showingMovies)")
+//                print("OTT: \(ottMovies)")
+//                
+//                print("Comming Soon Movie Data: \(self.commingSoonMovieData)")
+//                print("Showing Movie Data: \(self.showingMovieData)")
+//                print("OTT Movie Data: \(self.ottMovieData)")
             }
         }
 

@@ -39,6 +39,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Variables
     var IDCheck: Bool = false
+    var profileOrNot: Bool = false
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -214,7 +215,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 }
             }
             
-            db.collection("UserInfo").addDocument(data: ["email": id])
+            db.collection("UserInfo").addDocument(data: [
+                "email": id,
+                "profile_or_not": false,
+                "profile_image": ""
+            ])
             
             let alert = UIAlertController(title: "회원가입", message: "회원가입이 완료되었습니다. 다시 한 번 로그인해 주세요.", preferredStyle: .alert)
             let okayAction = UIAlertAction(title: "OK", style: .default) { _ in

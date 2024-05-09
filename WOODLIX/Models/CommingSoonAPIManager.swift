@@ -61,7 +61,7 @@ class CommingSoonAPIManager {
         
         group.notify(queue: .main) {
             completion(allCommingSoonData)
-            print("allCommingSoonData: \(allCommingSoonData)")
+//            print("allCommingSoonData: \(allCommingSoonData)")
         }
     }
 
