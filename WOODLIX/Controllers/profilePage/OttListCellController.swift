@@ -10,13 +10,13 @@ import UIKit
 class OttListCellController: UICollectionViewCell {
     
     // MARK: - Properties
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    let imageBox: UIImageView = {
+        let imageView = UIImageView()
+        imageView.layer.cornerRadius = 12
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
     // MARK: - Initialization
@@ -25,8 +25,8 @@ class OttListCellController: UICollectionViewCell {
         setupCell()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     
     // MARK: - Layout
@@ -37,14 +37,42 @@ class OttListCellController: UICollectionViewCell {
     
     // MARK: - Setup
     private func setupCell() {
-        backgroundColor = .red
-        addSubview(titleLabel)
+        backgroundColor = .clear
+        
+        addSubview(imageBox)
         
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 4),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 4),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -4)
+            imageBox.topAnchor.constraint(equalTo: topAnchor),
+            imageBox.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageBox.trailingAnchor.constraint(equalTo: trailingAnchor),
+            imageBox.heightAnchor.constraint(equalTo: heightAnchor)
         ])
+    }
+    
+    // MARK: - Configure
+    func configure(with imageUrl: String) {
+        imageBox.image = UIImage(named: "basicImage")
+        
+        guard let url = URL(string: imageUrl) else {
+            print("Invalid image URL")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
+            if let error = error {
+                print("Error: \(error)")
+                return
+            }
+            
+            if let data = data {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.imageBox.image = image
+                    }
+                } else {
+                    print("Failed to convert data to UIImage")
+                }
+            }
+        }.resume()
     }
 }

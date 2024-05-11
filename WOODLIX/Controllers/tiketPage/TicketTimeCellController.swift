@@ -33,7 +33,7 @@ class TicketTimeCellController: UICollectionViewCell {
         super.layoutSubviews()
         layer.cornerRadius = 12
         layer.borderWidth = 1
-        layer.borderColor = UIColor(named: "RedColor")?.cgColor
+        layer.borderColor = UIColor(named: "TabColor")?.cgColor
     }
     
     // MARK: - Setup

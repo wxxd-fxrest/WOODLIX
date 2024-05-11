@@ -46,13 +46,7 @@ class PointRechargeViewController: UIViewController {
         let cornerRadius: CGFloat = 24.0
         PointRechargeBarView.layer.cornerRadius = cornerRadius
         PointRechargeBarView.clipsToBounds = true
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = PointRechargeBarView.bounds
-        gradientLayer.colors = [UIColor(red: 84/255, green: 148/255, blue: 216/255, alpha: 0.3).cgColor, UIColor.white.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 4.0, y: 0.3)
-        
-        PointRechargeBarView.layer.insertSublayer(gradientLayer, at: 0)
+        PointRechargeBarView.backgroundColor = UIColor(named: "TabColor")?.withAlphaComponent(0.9)
     }
     
     // MARK: - Gesture Recognizer

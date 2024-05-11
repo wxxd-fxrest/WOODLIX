@@ -8,12 +8,13 @@
 import UIKit
 
 class MainViewController: UIViewController, UITableViewDelegate {
+    
     // MARK: - Outlets
     @IBOutlet weak var headerStackView: UIStackView!
     @IBOutlet weak var searchIcon: UIImageView!
 
     @IBOutlet weak var boxOfficeView: UIView!
-    @IBOutlet weak var commingSoonView: UIView!
+    @IBOutlet weak var comingSoonView: UIView!
     @IBOutlet weak var showingView: UIView!
     @IBOutlet weak var ottView: UIView!
     
@@ -24,25 +25,32 @@ class MainViewController: UIViewController, UITableViewDelegate {
     var yesterdayDateString: String = ""
     
     var movieData: [MovieDataModel] = []
-    
+
     var boxOfficeData: [BoxOfficeDataModel] = []
-    
-    var commingSoonData: [CommingSoonDataModel] = []
+    var relayBoxOfficeData: [APIMovieDataModel] = []
+
+    var comingSoonData: [APIMovieDataModel] = []
     
     var boxOfficeMovieData: [MovieDataModel] = []
-    var commingSoonMovieData: [MovieDataModel] = []
+    var comingSoonMovieData: [MovieDataModel] = []
     var showingMovieData: [MovieDataModel] = []
     var ottMovieData: [MovieDataModel] = []
+    
+    
+    var comingSoonMovies: [APIMovieDataModel] = []
+    var showingMovies: [APIMovieDataModel] = []
+    var ottMovies: [APIMovieDataModel] = []
+
 
     private var boxOfficCollectionView: UICollectionView!
-    private var commingSoonCollectionView: UICollectionView!
+    private var comingSoonCollectionView: UICollectionView!
     private var showingCollectionView: UICollectionView!
     private var ottCollectionView: UICollectionView!
 
     private var tableView: UITableView!
 
     private var boxOfficeViewHeight: CGFloat = 0
-    private var commingSoonViewHeight: CGFloat = 0
+    private var comingSoonViewHeight: CGFloat = 0
     private var showingViewHeight: CGFloat = 0
     private var ottViewHeight: CGFloat = 0
 
@@ -80,26 +88,26 @@ class MainViewController: UIViewController, UITableViewDelegate {
         ])
     }
 
-    private func setupCommingSoonCollectionView() {
+    private func setupComingSoonCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumInteritemSpacing = 10
         layout.itemSize = CGSize(width: 100, height: 140)
 
-        commingSoonCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        commingSoonCollectionView.backgroundColor = .clear
-        commingSoonCollectionView.dataSource = self
-        commingSoonCollectionView.delegate = self
-        commingSoonCollectionView.contentInset = UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0)
-        commingSoonCollectionView.register(CommingSoonCellController.self, forCellWithReuseIdentifier: "commingSoonCell")
-        commingSoonCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        commingSoonView.addSubview(commingSoonCollectionView)
+        comingSoonCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        comingSoonCollectionView.backgroundColor = .clear
+        comingSoonCollectionView.dataSource = self
+        comingSoonCollectionView.delegate = self
+        comingSoonCollectionView.contentInset = UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0)
+        comingSoonCollectionView.register(ComingSoonCellController.self, forCellWithReuseIdentifier: "comingSoonCell")
+        comingSoonCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        comingSoonView.addSubview(comingSoonCollectionView)
 
         NSLayoutConstraint.activate([
-            commingSoonCollectionView.topAnchor.constraint(equalTo: commingSoonView.topAnchor),
-            commingSoonCollectionView.leadingAnchor.constraint(equalTo: commingSoonView.leadingAnchor),
-            commingSoonCollectionView.trailingAnchor.constraint(equalTo: commingSoonView.trailingAnchor),
-            commingSoonCollectionView.bottomAnchor.constraint(equalTo: commingSoonView.bottomAnchor)
+            comingSoonCollectionView.topAnchor.constraint(equalTo: comingSoonView.topAnchor),
+            comingSoonCollectionView.leadingAnchor.constraint(equalTo: comingSoonView.leadingAnchor),
+            comingSoonCollectionView.trailingAnchor.constraint(equalTo: comingSoonView.trailingAnchor),
+            comingSoonCollectionView.bottomAnchor.constraint(equalTo: comingSoonView.bottomAnchor)
         ])
     }
     
@@ -181,11 +189,11 @@ class MainViewController: UIViewController, UITableViewDelegate {
     }
 
     private func calculateComingSoonContentSize() -> CGSize {
-        guard let layout = commingSoonCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
+        guard let layout = comingSoonCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
             return CGSize.zero
         }
 
-        let itemCount = collectionView(commingSoonCollectionView, numberOfItemsInSection: 0)
+        let itemCount = collectionView(comingSoonCollectionView, numberOfItemsInSection: 0)
         let contentWidth = CGFloat(itemCount) * (layout.itemSize.width + layout.minimumInteritemSpacing)
         return CGSize(width: contentWidth, height: layout.itemSize.height)
     }
@@ -213,10 +221,11 @@ class MainViewController: UIViewController, UITableViewDelegate {
     // MARK: - View Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupActivityIndicator()
 
         setupBoxOfficeCollectionView()
-        setupCommingSoonCollectionView()
+        setupComingSoonCollectionView()
         setupShowingCollectionView()
         setupOttCollectionView()
         setupTableView()
@@ -229,17 +238,38 @@ class MainViewController: UIViewController, UITableViewDelegate {
         BoxOfficeAPIManager.fetchDataFromAPI { [weak self] boxOfficeData in
             guard let self = self else { return }
             
-            self.boxOfficeData = boxOfficeData // 원래의 변수에 저장
+            self.boxOfficeData = boxOfficeData
             
             var movieData: [MovieDataModel] = []
+
             var existingIDs: Set<Int64> = Set()
             var existingTitles: Set<String> = Set()
             
             let group = DispatchGroup()
             
             for boxOfficeItem in boxOfficeData {
-                let formattedMovieNm = boxOfficeItem.movieNm.separateCharacterDigitsAndJoinWithSpace()
+                // BoxOfficeDataModel에서 필요한 데이터를 가져와서 APIMovieDataModel로 변환
+                let relayData = APIMovieDataModel(movieCd: boxOfficeItem.movieCd,
+                                                  movieNm: boxOfficeItem.movieNm,
+                                                  movieNmEn: "",
+                                                  prdtYear: nil,
+                                                  openDt: boxOfficeItem.openDt,
+                                                  typeNm: "",
+                                                  prdtStatNm: "",
+                                                  nationAlt: "",
+                                                  genreAlt: "",
+                                                  repNationNm: "",
+                                                  repGenreNm: "",
+                                                  rank: boxOfficeItem.rank,
+                                                  salesAmt: boxOfficeItem.salesAmt,
+                                                  audiCnt: boxOfficeItem.audiCnt)
                 
+                relayBoxOfficeData.append(relayData)
+            }
+            
+            for boxOfficeItem in boxOfficeData {
+                let formattedMovieNm = boxOfficeItem.movieNm.separateCharacterDigitsAndJoinWithSpace()
+                print("formattedMovieNmformattedMovieNmformattedMovieNm\(formattedMovieNm)")
                 group.enter()
                 MovieAPIManager.fetchDataFromAPI(searchString: formattedMovieNm) { result in
                     for movie in result {
@@ -256,23 +286,23 @@ class MainViewController: UIViewController, UITableViewDelegate {
             group.notify(queue: .main) {
                 self.boxOfficeMovieData = movieData // 새로운 변수에 저장
                 self.boxOfficCollectionView.reloadData()
-                // print("Box Office Movie Data: \(movieData)")
+//                 print("Box Office Movie Data: \(movieData)")
             }
             
-            // print("BOXOFFICE: \(boxOfficeData)")
+            print("BOXOFFICE: \(boxOfficeData)")
+//            print("Relay Box Office Data: \(relayBoxOfficeData)")
         }
 
-        CommingSoonAPIManager.fetchDataFromAPI { [weak self] commingSoonData in
+        ComingSoonAPIManager.fetchDataFromAPI { [weak self] comingSoonData in
             guard let self = self else { return }
-            
-            let commingSoonMovies = commingSoonData.filter { $0.prdtStatNm == "개봉예정" }
-            let showingMovies = commingSoonData.filter { $0.prdtStatNm != "개봉예정" && self.isWithinOneYear(commingSoonMovie: $0) }
-            let ottMovies = commingSoonData.filter { $0.prdtStatNm != "개봉예정" && !self.isWithinOneYear(commingSoonMovie: $0) }
 
+            comingSoonMovies = comingSoonData.filter { $0.prdtStatNm == "개봉예정" }
+            showingMovies = comingSoonData.filter { $0.prdtStatNm != "개봉예정" && self.isWithinOneYear(comingSoonMovie: $0) }
+            ottMovies = comingSoonData.filter { $0.prdtStatNm != "개봉예정" && !self.isWithinOneYear(comingSoonMovie: $0) }
 
             let group = DispatchGroup()
             
-            func fetchDataAndUpdateData(_ movies: [CommingSoonDataModel], completion: @escaping ([MovieDataModel]) -> Void) {
+            func fetchDataAndUpdateData(_ movies: [APIMovieDataModel], completion: @escaping ([MovieDataModel]) -> Void) {
                 var targetArray: [MovieDataModel] = []
                 for movieItem in movies {
                     let formattedMovieNm = movieItem.movieNm.separateCharacterDigitsAndJoinWithSpace()
@@ -289,8 +319,8 @@ class MainViewController: UIViewController, UITableViewDelegate {
                 }
             }
             
-            fetchDataAndUpdateData(commingSoonMovies) { result in
-                self.commingSoonMovieData = result
+            fetchDataAndUpdateData(comingSoonMovies) { result in
+                self.comingSoonMovieData = result
             }
             
             fetchDataAndUpdateData(showingMovies) { result in
@@ -302,31 +332,32 @@ class MainViewController: UIViewController, UITableViewDelegate {
             }
             
             group.notify(queue: .main) {
-                self.commingSoonMovieData = self.commingSoonMovieData
+                self.comingSoonMovieData = self.comingSoonMovieData
                 self.showingMovieData = self.showingMovieData
                 self.ottMovieData = self.ottMovieData
                 
                 DispatchQueue.main.async {
-                    self.commingSoonCollectionView.reloadData()
+                    self.comingSoonCollectionView.reloadData()
                     self.showingCollectionView.reloadData()
                     self.ottCollectionView.reloadData()
                     
                     self.activityIndicator.stopAnimating()
                 }
                 
-                print("COMMING SOON: \(commingSoonMovies)")
-                print("SHOWING: \(showingMovies)")
-                print("OTT: \(ottMovies)")
-                
-                print("Comming Soon Movie Data: \(self.commingSoonMovieData)")
-                print("Showing Movie Data: \(self.showingMovieData)")
-                print("OTT Movie Data: \(self.ottMovieData)")
+//                print("COMING SOON: \(comingSoonMovies)")
+//                print("SHOWING: \(showingMovies)")
+//                print("OTT: \(ottMovies)")
+//                
+//                print("Coming Soon Movie Data: \(self.comingSoonMovieData)")
+//                print("Showing Movie Data: \(self.showingMovieData)")
+//                print("OTT Movie Data: \(self.ottMovieData)")
             }
         }
+        
 
 
         boxOfficCollectionView.showsHorizontalScrollIndicator = false
-        commingSoonCollectionView.showsHorizontalScrollIndicator = false
+        comingSoonCollectionView.showsHorizontalScrollIndicator = false
         showingCollectionView.showsHorizontalScrollIndicator = false
         tableView.showsVerticalScrollIndicator = false
 
@@ -342,20 +373,20 @@ class MainViewController: UIViewController, UITableViewDelegate {
         searchIcon.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    func isWithinOneYear(commingSoonMovie: CommingSoonDataModel) -> Bool {
-        guard let prdtYear = Int(commingSoonMovie.prdtYear) else { return false }
+    func isWithinOneYear(comingSoonMovie: APIMovieDataModel) -> Bool {
+        guard let prdtYear = Int(comingSoonMovie.prdtYear ?? "0") else { return false }
         let currentYear = Calendar.current.component(.year, from: Date())
         return currentYear - prdtYear <= 1
     }
    
     private func updateTableCellHeights() {
         let boxOfficeHeight = boxOfficeView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
-        let commingSoonHeight = commingSoonView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+        let comingSoonHeight = comingSoonView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
         let showingHeight = showingView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
         let ottHeight = ottView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
 
         boxOfficeViewHeight = boxOfficeHeight
-        commingSoonViewHeight = commingSoonHeight
+        comingSoonViewHeight = comingSoonHeight
         showingViewHeight = showingHeight
         ottViewHeight = ottHeight
 
@@ -365,8 +396,8 @@ class MainViewController: UIViewController, UITableViewDelegate {
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         if scrollView == boxOfficCollectionView {
             boxOfficeScrollViewDragging(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
-        } else if scrollView == commingSoonCollectionView {
-            commingSoonScrollViewDragging(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
+        } else if scrollView == comingSoonCollectionView {
+            comingSoonScrollViewDragging(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
         } else if scrollView == showingCollectionView {
             showingScrollViewDragging(scrollView, withVelocity: velocity, targetContentOffset: targetContentOffset)
         } else if scrollView == ottCollectionView {
@@ -388,8 +419,8 @@ class MainViewController: UIViewController, UITableViewDelegate {
         targetContentOffset.pointee = updatedTargetOffset
     }
 
-    func commingSoonScrollViewDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        guard let layout = commingSoonCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
+    func comingSoonScrollViewDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        guard let layout = comingSoonCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
             return
         }
 
@@ -423,7 +454,7 @@ class MainViewController: UIViewController, UITableViewDelegate {
 
         let itemWidth = layout.itemSize.width + layout.minimumInteritemSpacing
         let proposedOffset = targetContentOffset.pointee
-        let proposedPageIndex = round((proposedOffset.x + layout.minimumInteritemSpacing) / itemWidth) // Add layout.minimumInteritemSpacing
+        let proposedPageIndex = round((proposedOffset.x + layout.minimumInteritemSpacing) / itemWidth) 
         let targetX = proposedPageIndex * itemWidth
 
         let updatedTargetOffset = CGPoint(x: targetX, y: proposedOffset.y)
@@ -471,18 +502,18 @@ extension MainViewController: UICollectionViewDelegate {
         
         // 아이템 전달
         var reservable: Bool = false
-        var comming: Bool = false
+        var coming: Bool = false
         if collectionView == boxOfficCollectionView {
             reservable = true
-            targetVC.selectedItem = (boxOfficeMovieData[indexPath.item], reservable, comming)
-        } else if collectionView == commingSoonCollectionView {
-            comming = true
-            targetVC.selectedItem = (commingSoonMovieData[indexPath.item], reservable, comming)
+            targetVC.selectedItem = (boxOfficeMovieData[indexPath.item], relayBoxOfficeData[indexPath.item], reservable, coming)
+        } else if collectionView == comingSoonCollectionView {
+            coming = true
+            targetVC.selectedItem = (comingSoonMovieData[indexPath.item], comingSoonMovies[indexPath.item], reservable, coming)
         } else if collectionView == showingCollectionView {
             reservable = true
-            targetVC.selectedItem = (showingMovieData[indexPath.item], reservable, comming)
+            targetVC.selectedItem = (showingMovieData[indexPath.item], showingMovies[indexPath.item], reservable, coming)
         } else if collectionView == ottCollectionView {
-            targetVC.selectedItem = (ottMovieData[indexPath.item], reservable, comming)
+            targetVC.selectedItem = (ottMovieData[indexPath.item], ottMovies[indexPath.item], reservable, coming)
         }
 
         targetVC.modalPresentationStyle = .fullScreen
@@ -495,8 +526,8 @@ extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == boxOfficCollectionView {
             return boxOfficeMovieData.count
-        } else if collectionView == commingSoonCollectionView {
-            return commingSoonMovieData.count
+        } else if collectionView == comingSoonCollectionView {
+            return comingSoonMovieData.count
         } else if collectionView == showingCollectionView {
             return showingMovieData.count
         } else if collectionView == ottCollectionView {
@@ -523,19 +554,19 @@ extension MainViewController: UICollectionViewDataSource {
             cell.configure(with: imageUrl, title: title)
             
             return cell
-        } else if collectionView == commingSoonCollectionView {
-            guard indexPath.item < commingSoonMovieData.count else {
+        } else if collectionView == comingSoonCollectionView {
+            guard indexPath.item < comingSoonMovieData.count else {
                 return UICollectionViewCell()
             }
             
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "commingSoonCell", for: indexPath) as? CommingSoonCellController else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "comingSoonCell", for: indexPath) as? ComingSoonCellController else {
                 return UICollectionViewCell()
             }
             
-            let commingSoonMovie = commingSoonMovieData[indexPath.item]
+            let comingSoonMovie = comingSoonMovieData[indexPath.item]
             
-            let imageUrl = "https://image.tmdb.org/t/p/w500/\(commingSoonMovie.posterPath ?? "")"
-            let title = commingSoonMovie.originalTitle ?? ""
+            let imageUrl = "https://image.tmdb.org/t/p/w500/\(comingSoonMovie.posterPath ?? "")"
+            let title = comingSoonMovie.originalTitle ?? ""
             
             cell.configure(with: imageUrl, title: title)
             
@@ -613,7 +644,7 @@ extension MainViewController: UITableViewDataSource {
         if indexPath.row == 0 {
             return boxOfficeViewHeight
         } else if indexPath.row == 1 {
-            return commingSoonViewHeight
+            return comingSoonViewHeight
         } else if indexPath.row == 2 {
             return showingViewHeight
         } else if indexPath.row == 3 {
@@ -638,13 +669,13 @@ extension MainViewController: UITableViewDataSource {
                 boxOfficeView.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor)
             ])
         } else if indexPath.row == 1 {
-            cell.contentView.addSubview(commingSoonView)
-            commingSoonView.translatesAutoresizingMaskIntoConstraints = false
+            cell.contentView.addSubview(comingSoonView)
+            comingSoonView.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
-                commingSoonView.topAnchor.constraint(equalTo: cell.contentView.topAnchor),
-                commingSoonView.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor),
-                commingSoonView.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor),
-                commingSoonView.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor)
+                comingSoonView.topAnchor.constraint(equalTo: cell.contentView.topAnchor),
+                comingSoonView.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor),
+                comingSoonView.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor),
+                comingSoonView.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor)
             ])
         } else if indexPath.row == 2 {
             cell.contentView.addSubview(showingView)

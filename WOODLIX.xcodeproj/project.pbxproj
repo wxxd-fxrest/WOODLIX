@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B1C19832BE32ED0001BB1C7 /* CommingSoonCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C19822BE32ED0001BB1C7 /* CommingSoonCellController.swift */; };
+		0B1C19832BE32ED0001BB1C7 /* ComingSoonCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C19822BE32ED0001BB1C7 /* ComingSoonCellController.swift */; };
 		0B1C19852BE33F7B001BB1C7 /* MovieTableViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C19842BE33F7B001BB1C7 /* MovieTableViewCellController.swift */; };
 		0B1C19872BE35B8F001BB1C7 /* ShowingCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C19862BE35B8F001BB1C7 /* ShowingCellController.swift */; };
 		0B1C198B2BE37275001BB1C7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C198A2BE37275001BB1C7 /* SearchViewController.swift */; };
 		0B1C198D2BE3916A001BB1C7 /* OttCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C198C2BE3916A001BB1C7 /* OttCellViewController.swift */; };
 		0B323B722BE9B88B008F23FB /* BoxOfficeAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B323B712BE9B88B008F23FB /* BoxOfficeAPIManager.swift */; };
-		0B323B742BE9EC59008F23FB /* CommingSoonAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B323B732BE9EC59008F23FB /* CommingSoonAPIManager.swift */; };
+		0B323B742BE9EC59008F23FB /* ComingSoonAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B323B732BE9EC59008F23FB /* ComingSoonAPIManager.swift */; };
 		0B323B762BEA652A008F23FB /* StructManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B323B752BEA652A008F23FB /* StructManager.swift */; };
 		0B4670242BEA7C92009EE175 /* SearchAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4670232BEA7C92009EE175 /* SearchAPIManager.swift */; };
 		0B49129B2BE6113900274B78 /* DetailCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B49129A2BE6113900274B78 /* DetailCellController.swift */; };
@@ -66,13 +66,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0B1C19822BE32ED0001BB1C7 /* CommingSoonCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommingSoonCellController.swift; sourceTree = "<group>"; };
+		0B1C19822BE32ED0001BB1C7 /* ComingSoonCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonCellController.swift; sourceTree = "<group>"; };
 		0B1C19842BE33F7B001BB1C7 /* MovieTableViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCellController.swift; sourceTree = "<group>"; };
 		0B1C19862BE35B8F001BB1C7 /* ShowingCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingCellController.swift; sourceTree = "<group>"; };
 		0B1C198A2BE37275001BB1C7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		0B1C198C2BE3916A001BB1C7 /* OttCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OttCellViewController.swift; sourceTree = "<group>"; };
 		0B323B712BE9B88B008F23FB /* BoxOfficeAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeAPIManager.swift; sourceTree = "<group>"; };
-		0B323B732BE9EC59008F23FB /* CommingSoonAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommingSoonAPIManager.swift; sourceTree = "<group>"; };
+		0B323B732BE9EC59008F23FB /* ComingSoonAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonAPIManager.swift; sourceTree = "<group>"; };
 		0B323B752BEA652A008F23FB /* StructManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructManager.swift; sourceTree = "<group>"; };
 		0B4670232BEA7C92009EE175 /* SearchAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAPIManager.swift; sourceTree = "<group>"; };
 		0B49129A2BE6113900274B78 /* DetailCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCellController.swift; sourceTree = "<group>"; };
@@ -209,7 +209,7 @@
 				0B787B232BDA2EE4006F45FF /* CoreDataManager.swift */,
 				0B787B242BDA2EE4006F45FF /* MovieAPIManager.swift */,
 				0B323B712BE9B88B008F23FB /* BoxOfficeAPIManager.swift */,
-				0B323B732BE9EC59008F23FB /* CommingSoonAPIManager.swift */,
+				0B323B732BE9EC59008F23FB /* ComingSoonAPIManager.swift */,
 				0B323B752BEA652A008F23FB /* StructManager.swift */,
 				0B4670232BEA7C92009EE175 /* SearchAPIManager.swift */,
 			);
@@ -270,7 +270,7 @@
 			children = (
 				0B1C19842BE33F7B001BB1C7 /* MovieTableViewCellController.swift */,
 				0B7BF7E92BE21C8D00654E04 /* BoxOfficeCellController.swift */,
-				0B1C19822BE32ED0001BB1C7 /* CommingSoonCellController.swift */,
+				0B1C19822BE32ED0001BB1C7 /* ComingSoonCellController.swift */,
 				0B1C19862BE35B8F001BB1C7 /* ShowingCellController.swift */,
 				0B1C198C2BE3916A001BB1C7 /* OttCellViewController.swift */,
 			);
@@ -481,7 +481,7 @@
 				0BDA23D32BE7419C007A2ED8 /* ProfileEditViewController.swift in Sources */,
 				0B7BF7E52BE1DB4C00654E04 /* MainViewController.swift in Sources */,
 				0B4670242BEA7C92009EE175 /* SearchAPIManager.swift in Sources */,
-				0B1C19832BE32ED0001BB1C7 /* CommingSoonCellController.swift in Sources */,
+				0B1C19832BE32ED0001BB1C7 /* ComingSoonCellController.swift in Sources */,
 				0B787B1A2BDA2EDD006F45FF /* SignUpViewController.swift in Sources */,
 				0BDA23CB2BE73174007A2ED8 /* SetUpViewController.swift in Sources */,
 				0B787AE72BDA2D2B006F45FF /* SceneDelegate.swift in Sources */,
@@ -494,7 +494,7 @@
 				0BF6A4BA2BE6957300490AE7 /* SearchWordCellController.swift in Sources */,
 				0B49129F2BE636A100274B78 /* TicketTimeCellController.swift in Sources */,
 				0BDA23E62BE790EA007A2ED8 /* WishListCellController.swift in Sources */,
-				0B323B742BE9EC59008F23FB /* CommingSoonAPIManager.swift in Sources */,
+				0B323B742BE9EC59008F23FB /* ComingSoonAPIManager.swift in Sources */,
 				0B49129B2BE6113900274B78 /* DetailCellController.swift in Sources */,
 				0BDA23CD2BE731D5007A2ED8 /* WishListViewController.swift in Sources */,
 				0B787B1E2BDA2EDD006F45FF /* DetailViewController.swift in Sources */,

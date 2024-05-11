@@ -8,7 +8,7 @@
 import Foundation
 
 class SearchAPIManager {
-    static func fetchDataFromAPI(searchString: String, completion: @escaping ([SearchDataModel]) -> Void) {
+    static func fetchDataFromAPI(searchString: String, completion: @escaping ([APIMovieDataModel]) -> Void) {
         guard let apiKeySearch = getApiKey(keyName: "API_KEY_BOXOFFICE") else {
             print("Movie API key not found.")
             return
@@ -29,10 +29,10 @@ class SearchAPIManager {
                         if let jsonObject = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
                            let movieListResult = jsonObject["movieListResult"] as? [String: Any],
                            let movieList = movieListResult["movieList"] as? [[String: Any]] {
-                            var searchData: [SearchDataModel] = []
+                            var searchData: [APIMovieDataModel] = []
                             for movieData in movieList {
                                 if let jsonData = try? JSONSerialization.data(withJSONObject: movieData),
-                                   let movie = try? decoder.decode(SearchDataModel.self, from: jsonData) {
+                                   let movie = try? decoder.decode(APIMovieDataModel.self, from: jsonData) {
                                     searchData.append(movie)
                                     print("searchDatasearchDatasearchDatasearchData\(searchData)")
                                 }

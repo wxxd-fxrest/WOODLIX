@@ -51,6 +51,7 @@ class BoxOfficeAPIManager {
                                 }
                             }
                             completion(boxOfficeData)
+                            print("boxOfficeDataboxOfficeDataboxOfficeData\(boxOfficeData)")
                         } else {
                             print("Box office data not found in JSON response")
                         }

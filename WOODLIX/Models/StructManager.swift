@@ -34,21 +34,7 @@ struct BoxOfficeDataModel: Decodable {
     let audiCnt: String
 }
 
-struct CommingSoonDataModel: Decodable {
-    let movieCd: String
-    let movieNm: String
-    let movieNmEn: String
-    let prdtYear: String
-    let openDt: String
-    let typeNm: String
-    let prdtStatNm: String
-    let nationAlt: String
-    let genreAlt: String
-    let repNationNm: String
-    let repGenreNm: String
-}
-
-struct SearchDataModel: Decodable {
+struct APIMovieDataModel: Decodable {
     let movieCd: String
     let movieNm: String
     let movieNmEn: String
@@ -60,6 +46,9 @@ struct SearchDataModel: Decodable {
     let genreAlt: String
     let repNationNm: String
     let repGenreNm: String
+    let rank: String?
+    let salesAmt: String?
+    let audiCnt: String?
 }
 
 struct MovieApiResponse: Decodable {
@@ -67,9 +56,9 @@ struct MovieApiResponse: Decodable {
 }
 
 struct BoxOfficeApiResponse: Decodable {
-    let results: [BoxOfficeDataModel]
+    let results: [APIMovieDataModel]
 }
 
 struct CommingSoonApiResponse: Decodable {
-    let results: [CommingSoonDataModel]
+    let results: [APIMovieDataModel]
 }

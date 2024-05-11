@@ -8,7 +8,7 @@
 import UIKit
 
 class OttPurchaseViewController: UIViewController {
-    var selectedItem: (movie: MovieDataModel, reservable: Bool, comming: Bool)?
+    var selectedItem: (movie: MovieDataModel, data: APIMovieDataModel, reservable: Bool, coming: Bool)?
 
     @IBOutlet weak var movieNameLabel: UILabel!
     @IBOutlet weak var priceBoxView: UIView!
