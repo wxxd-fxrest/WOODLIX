@@ -13,7 +13,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UISearch
     var wordItems: Array = ["파묘", "시라노", "범죄도시", "신과 함께", "파묘", "시라노", "범죄도시", "신과 함께"]
     
     var showingMovieData: [MovieDataModel] = []
-    var updatedMovieData: [(MovieDataModel, Bool, Bool)] = []
+    var updatedMovieData: [(MovieDataModel, APIMovieDataModel, Bool, Bool)] = []
     
     var reservable: Bool = false
     var comming: Bool = false
@@ -141,7 +141,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UISearch
         SearchAPIManager.fetchDataFromAPI(searchString: searchString) { [weak self] movieData in
             guard let self = self else { return }
             
-            var searchResults: [(SearchDataModel, Bool, Bool)] = []
+            var searchResults: [(APIMovieDataModel, Bool, Bool)] = []
 
             if !movieData.isEmpty {
                 var processedMovieNames: Set<String> = []
@@ -175,15 +175,15 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UISearch
                     processedMovieNames.insert(movieName)
                 }
 
-                var updatedMovieData: [(MovieDataModel, Bool, Bool)] = []
+                var updatedMovieData: [(MovieDataModel, APIMovieDataModel, Bool, Bool)] = []
 
                 let dispatchGroup = DispatchGroup()
                 
                 for (data, reservable, comming) in searchResults {
                     dispatchGroup.enter()
                     MovieAPIManager.fetchDataFromAPI(searchString: data.movieNm) { searchData in
-                        let moviesWithReservable = searchData.map { movie in
-                            return (movie, reservable, comming)
+                        let moviesWithReservable = searchData.map { movieData in
+                            return (movieData, data, reservable, comming)
                         }
                         updatedMovieData.append(contentsOf: moviesWithReservable)
                         dispatchGroup.leave()
@@ -209,7 +209,7 @@ class SearchViewController: UIViewController, UICollectionViewDelegate, UISearch
         }
     }
 
-    func isWithinOneYear(searchMovie: SearchDataModel) -> Bool {
+    func isWithinOneYear(searchMovie: APIMovieDataModel) -> Bool {
         guard let prdtYearString = searchMovie.prdtYear, let prdtYear = Int(prdtYearString) else { return false }
         let currentYear = Calendar.current.component(.year, from: Date())
         return currentYear - prdtYear <= 1
@@ -390,19 +390,21 @@ extension SearchViewController: UICollectionViewDataSource {
         
         if !updatedMovieData.isEmpty {
             let updatedMovie = updatedMovieData[indexPath.item].0
-            reservable = updatedMovieData[indexPath.item].1 
-            targetVC.selectedItem = (updatedMovie, reservable, comming)
+            let updatedData = updatedMovieData[indexPath.item].1
+            let comming = updatedMovieData[indexPath.item].2
+            targetVC.selectedItem = (movie: updatedMovie, data: updatedData, reservable: reservable, coming: comming)
         } else {
             let showingMovie = showingMovieData[indexPath.item]
-            targetVC.selectedItem = (showingMovie, reservable, comming)
+            let updatedData = updatedMovieData[indexPath.item].1
+            targetVC.selectedItem = (movie: showingMovie, data: updatedData, reservable: reservable, coming: comming)
         }
 
         targetVC.modalPresentationStyle = .fullScreen
         present(targetVC, animated: true, completion: nil)
     }
     
-    func isWithinOneYear(commingSoonMovie: CommingSoonDataModel) -> Bool {
-        guard let prdtYear = Int(commingSoonMovie.prdtYear) else { return false }
+    func isWithinOneYear(commingSoonMovie: APIMovieDataModel) -> Bool {
+        guard let prdtYear = Int(commingSoonMovie.prdtYear ?? "0") else { return false }
         let currentYear = Calendar.current.component(.year, from: Date())
         return currentYear - prdtYear <= 1
     }

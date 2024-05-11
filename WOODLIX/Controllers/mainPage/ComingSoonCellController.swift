@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CommingSoonCellController: UICollectionViewCell {
+class ComingSoonCellController: UICollectionViewCell {
     
     // MARK: - Properties
     let titleLabel: UILabel = {

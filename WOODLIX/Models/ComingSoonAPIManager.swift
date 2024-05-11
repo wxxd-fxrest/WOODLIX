@@ -7,8 +7,8 @@
 
 import Foundation
 
-class CommingSoonAPIManager {
-    static func fetchDataFromAPI(completion: @escaping ([CommingSoonDataModel]) -> Void) {
+class ComingSoonAPIManager {
+    static func fetchDataFromAPI(completion: @escaping ([APIMovieDataModel]) -> Void) {
         guard let apiKeyBoxOffice = getApiKey(keyName: "API_KEY_BOXOFFICE") else {
             print("Movie API key not found.")
             return
@@ -16,7 +16,7 @@ class CommingSoonAPIManager {
         
         let boxofficeList = "movie"
         
-        var allCommingSoonData: [CommingSoonDataModel] = []
+        var allComingSoonData: [APIMovieDataModel] = []
         
         let group = DispatchGroup()
         
@@ -37,15 +37,15 @@ class CommingSoonAPIManager {
                             if let jsonObject = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
                                let movieListResult = jsonObject["movieListResult"] as? [String: Any],
                                let movieList = movieListResult["movieList"] as? [[String: Any]] {
-                                var commingSoonData: [CommingSoonDataModel] = []
+                                var commingSoonData: [APIMovieDataModel] = []
                                 for movieData in movieList {
                                     if let jsonData = try? JSONSerialization.data(withJSONObject: movieData),
-                                       let movie = try? decoder.decode(CommingSoonDataModel.self, from: jsonData) {
+                                       let movie = try? decoder.decode(APIMovieDataModel.self, from: jsonData) {
                                         commingSoonData.append(movie)
                                     }
                                 }
                                 
-                                allCommingSoonData += commingSoonData
+                                allComingSoonData += commingSoonData
                             } else {
                                 print("Box office data not found in JSON response")
                             }
@@ -60,7 +60,7 @@ class CommingSoonAPIManager {
         }
         
         group.notify(queue: .main) {
-            completion(allCommingSoonData)
+            completion(allComingSoonData)
 //            print("allCommingSoonData: \(allCommingSoonData)")
         }
     }

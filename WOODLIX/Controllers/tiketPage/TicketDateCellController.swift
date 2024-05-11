@@ -48,12 +48,12 @@ class TicketDateCellController: UICollectionViewCell {
         super.layoutSubviews()
         layer.cornerRadius = 26
         layer.borderWidth = 1
-        layer.borderColor = UIColor(named: "RedColor")?.cgColor
+        layer.borderColor = UIColor(named: "TabColor")?.cgColor
     }
     
     // MARK: - Setup
     private func setupCell() {
-        circleView.backgroundColor = UIColor(named: "RedColor")
+        circleView.backgroundColor = UIColor(named: "TabColor")
         circleView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(circleView)
         
@@ -73,12 +73,12 @@ class TicketDateCellController: UICollectionViewCell {
             dayLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4),
             dayLabel.heightAnchor.constraint(equalToConstant: 20),
             
-            // Circle view constraints
             circleView.centerXAnchor.constraint(equalTo: dayLabel.centerXAnchor),
             circleView.centerYAnchor.constraint(equalTo: dayLabel.centerYAnchor),
             circleView.widthAnchor.constraint(equalTo: dayLabel.widthAnchor),
             circleView.heightAnchor.constraint(equalTo: circleView.widthAnchor, constant: 2),
         ])
+        
         circleView.layer.cornerRadius = 22
 
         sendSubviewToBack(circleView)

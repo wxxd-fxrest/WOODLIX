@@ -39,7 +39,7 @@ class ProfileEditViewController: UIViewController, UIImagePickerControllerDelega
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         if let user = Auth.auth().currentUser {
             logineedEmail = user.email!
             print("firebase User Email: \(logineedEmail)")
@@ -52,6 +52,7 @@ class ProfileEditViewController: UIViewController, UIImagePickerControllerDelega
                 print("Error fetching documents: \(error)")
             } else {
                 for document in querySnapshot!.documents {
+                    self.userInfoDocID = document.documentID
                     let data = document.data()
                     
                     if let profileName = data["profile_name"] as? String {
@@ -113,24 +114,47 @@ class ProfileEditViewController: UIViewController, UIImagePickerControllerDelega
     }
 
     @objc func dataSaveButtonTapped() {
-        newUserName = nameEditField.text ?? ""
-        if let imageURL = imageURL {
+        newUserName = nameEditField.text!
+        
+        print("User \(self.newUserName)")
+        showLoadingIndicator()
+        
+        if previewImage.image != nil && newUserName != "" {
             uploadImageToStorage()
-        } else if newUserName != "" {
+            
             let userRef = db.collection("UserInfo").document(userInfoDocID)
             userRef.updateData(["profile_name": newUserName]) { error in
+                self.hideLoadingIndicator()
+
                 if let error = error {
                     print("Error updating user profile name: \(error.localizedDescription)")
                 } else {
-                    print("User profile name updated successfully")
+                    print("User profile name updated successfully \(self.newUserName)")
+                    self.showAlert()
+                }
+            }
+        } else if previewImage.image != nil  {
+            uploadImageToStorage()
+        } else if newUserName != "" {
+            print("newUserNamenewUserName \(self.newUserName)")
+            
+            let userRef = db.collection("UserInfo").document(userInfoDocID)
+            userRef.updateData(["profile_name": newUserName]) { error in
+                self.hideLoadingIndicator()
+
+                if let error = error {
+                    print("Error updating user profile name: \(error.localizedDescription)")
+                } else {
+                    print("User profile name updated successfully \(self.newUserName)")
                     self.showAlert()
                 }
             }
         } else {
+            self.hideLoadingIndicator()
+            
             print("No changes to save")
         }
     }
-
 
     @objc func imageEditButtonTapped() {
         let imagePicker = UIImagePickerController()
@@ -199,8 +223,40 @@ class ProfileEditViewController: UIViewController, UIImagePickerControllerDelega
     // MARK: - Alert
     func showAlert() {
         let alertController = UIAlertController(title: "저장 완료", message: "데이터가 성공적으로 저장되었습니다.", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+        let okAction = UIAlertAction(title: "확인", style: .default) { _ in
+            self.navigateToMain()
+        }
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
+    }
+    
+    func navigateToMain() {
+        let targetStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let targetVC = targetStoryboard.instantiateViewController(withIdentifier: "ViewController") as? ViewController else {
+            print("Failed to instantiate MainPageViewController from UserStoryboard.")
+            return
+        }
+        
+        targetVC.modalPresentationStyle = .fullScreen
+        present(targetVC, animated: true, completion: nil)
+    }
+}
+
+extension ProfileEditViewController {
+    func showLoadingIndicator() {
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.color = UIColor(named: "WhiteColor")
+        activityIndicator.center = view.center
+        activityIndicator.startAnimating()
+        view.addSubview(activityIndicator)
+    }
+    
+    func hideLoadingIndicator() {
+        for subview in view.subviews {
+            if let activityIndicator = subview as? UIActivityIndicatorView {
+                activityIndicator.stopAnimating()
+                activityIndicator.removeFromSuperview()
+            }
+        }
     }
 }
